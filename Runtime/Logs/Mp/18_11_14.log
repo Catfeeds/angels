@@ -5612,3 +5612,464 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
 
+[ 2018-11-14T15:52:14+08:00 ] 127.0.0.1 /Mp/Warehouse/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.025001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.025001s ]
+SQL: SHOW COLUMNS FROM `fw_warehouse` [ RunTime:0.0140s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_warehouse` WHERE `wh_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_warehouse` WHERE `wh_unitcode` = '3321' ORDER BY wh_id ASC LIMIT 0,50   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 18000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\da022b79e2d259813d01023a49edbcb9.php 第 71 行.
+NOTIC: [8] Undefined offset: 40000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\da022b79e2d259813d01023a49edbcb9.php 第 95 行.
+NOTIC: [8] Undefined offset: 12000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\da022b79e2d259813d01023a49edbcb9.php 第 104 行.
+NOTIC: [8] Undefined offset: 70017 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\da022b79e2d259813d01023a49edbcb9.php 第 117 行.
+NOTIC: [8] Undefined offset: 70019 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\da022b79e2d259813d01023a49edbcb9.php 第 118 行.
+NOTIC: [8] Undefined offset: 70021 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\da022b79e2d259813d01023a49edbcb9.php 第 125 行.
+NOTIC: [8] Undefined offset: 70022 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\da022b79e2d259813d01023a49edbcb9.php 第 126 行.
+NOTIC: [8] Undefined offset: 70014 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\da022b79e2d259813d01023a49edbcb9.php 第 133 行.
+NOTIC: [8] Undefined offset: 80000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\da022b79e2d259813d01023a49edbcb9.php 第 138 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.046003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-14T15:52:15+08:00 ] 127.0.0.1 /Mp/Product/proprice
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0020s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.025001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.025001s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0090s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_product` WHERE `pro_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: parameter D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Apps\Mp\Controller\ProductController.class.php 第 1221 行.
+SQL: SELECT * FROM `fw_product` WHERE `pro_unitcode` = '3321' ORDER BY pro_id DESC LIMIT 0,50   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dltype` [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `fw_proprice` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `fw_dltype` WHERE `dlt_unitcode` = '3321' ORDER BY dlt_level ASC,dlt_id ASC  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 20 AND `pri_dltype` = 9 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 20 AND `pri_dltype` = 10 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 20 AND `pri_dltype` = 11 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 20 AND `pri_dltype` = 12 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 19 AND `pri_dltype` = 9 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 19 AND `pri_dltype` = 10 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 19 AND `pri_dltype` = 11 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 19 AND `pri_dltype` = 12 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 18 AND `pri_dltype` = 9 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 18 AND `pri_dltype` = 10 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 18 AND `pri_dltype` = 11 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_proprice` WHERE `pri_unitcode` = '3321' AND `pri_proid` = 18 AND `pri_dltype` = 12 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 18000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\287a8f1e71d5f582a131def99d690e48.php 第 71 行.
+NOTIC: [8] Undefined offset: 40000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\287a8f1e71d5f582a131def99d690e48.php 第 95 行.
+NOTIC: [8] Undefined offset: 12000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\287a8f1e71d5f582a131def99d690e48.php 第 104 行.
+NOTIC: [8] Undefined offset: 70017 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\287a8f1e71d5f582a131def99d690e48.php 第 117 行.
+NOTIC: [8] Undefined offset: 70019 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\287a8f1e71d5f582a131def99d690e48.php 第 118 行.
+NOTIC: [8] Undefined offset: 70021 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\287a8f1e71d5f582a131def99d690e48.php 第 125 行.
+NOTIC: [8] Undefined offset: 70022 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\287a8f1e71d5f582a131def99d690e48.php 第 126 行.
+NOTIC: [8] Undefined offset: 70014 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\287a8f1e71d5f582a131def99d690e48.php 第 133 行.
+NOTIC: [8] Undefined offset: 80000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\287a8f1e71d5f582a131def99d690e48.php 第 138 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-14T15:52:16+08:00 ] 127.0.0.1 /Mp/Product/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.026001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.026001s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_product` WHERE `pro_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: parameter D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Apps\Mp\Controller\ProductController.class.php 第 40 行.
+SQL: SELECT * FROM `fw_product` WHERE `pro_unitcode` = '3321' ORDER BY pro_id DESC LIMIT 0,50   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_protype` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_id` = 19 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_id` = 19 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_id` = 19 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_iswho` = 0 ORDER BY protype_order ASC  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_iswho` = 20 ORDER BY protype_order ASC  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_iswho` = 19 ORDER BY protype_order ASC  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 18000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 71 行.
+NOTIC: [8] Undefined offset: 40000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 95 行.
+NOTIC: [8] Undefined offset: 12000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 104 行.
+NOTIC: [8] Undefined offset: 70017 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 117 行.
+NOTIC: [8] Undefined offset: 70019 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 118 行.
+NOTIC: [8] Undefined offset: 70021 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 125 行.
+NOTIC: [8] Undefined offset: 70022 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 126 行.
+NOTIC: [8] Undefined offset: 70014 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 133 行.
+NOTIC: [8] Undefined offset: 80000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 138 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-14T15:58:32+08:00 ] 127.0.0.1 /mp
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021002s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0190s ]
+SQL: SELECT * FROM fw_orders a,fw_orderbelong b WHERE a.od_unitcode = '3321' AND a.od_state = 3 AND `od_expressdate` < 1540886311 AND a.od_id =b.odbl_odid AND a.od_oddlid =b.odbl_oddlid ORDER BY a.od_expressdate ASC LIMIT 100   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `fw_orderbelong` [ RunTime:0.0140s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_status` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM fw_orders a,fw_orderbelong b WHERE a.od_unitcode = '3321' AND a.od_state IN ('0','1','2') AND b.odbl_rcdlid = 0 AND a.od_id =b.odbl_odid AND a.od_oddlid =b.odbl_oddlid LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_recash` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_recash` WHERE `rc_unitcode` = '3321' AND `rc_sdlid` = 0 AND `rc_state` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_dljfexchange` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_dljfexchange` WHERE `exch_unitcode` = '3321' AND `exch_state` IN ('0','1') LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_jffeedback` [ RunTime:0.0110s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_jffeedback` WHERE `fb_unitcode` = '3321' AND `fb_state` = 0 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 46 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 47 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 48 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 49 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 55 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 56 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 57 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 64 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 65 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 66 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 67 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 68 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 69 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 70 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 77 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 78 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 79 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 80 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 81 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 82 行.
+NOTIC: [8] Undefined offset: 18000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 87 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 104 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 105 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 106 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 107 行.
+NOTIC: [8] Undefined offset: 40000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 111 行.
+NOTIC: [8] Undefined offset: 12000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 120 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 132 行.
+NOTIC: [8] Undefined offset: 70017 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 133 行.
+NOTIC: [8] Undefined offset: 70019 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 134 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 135 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 136 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 139 行.
+NOTIC: [8] Undefined offset: 70021 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 141 行.
+NOTIC: [8] Undefined offset: 70022 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 142 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 143 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 144 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 146 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 148 行.
+NOTIC: [8] Undefined offset: 70014 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 149 行.
+NOTIC: [8] Undefined offset: 80000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 154 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 164 行.
+NOTIC: [8] Undefined variable: curr D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\7b8faf8817bf995ca0c5f7bbae2f4c63.php 第 165 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.053003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.053003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2018-11-14T15:58:35+08:00 ] 127.0.0.1 /Mp/Jfmobi/basic
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.030002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.031002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 18000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 71 行.
+NOTIC: [8] Undefined offset: 40000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 95 行.
+NOTIC: [8] Undefined offset: 12000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 104 行.
+NOTIC: [8] Undefined offset: 70017 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 117 行.
+NOTIC: [8] Undefined offset: 70019 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 118 行.
+NOTIC: [8] Undefined offset: 70021 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 125 行.
+NOTIC: [8] Undefined offset: 70022 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 126 行.
+NOTIC: [8] Undefined offset: 70014 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 133 行.
+NOTIC: [8] Undefined offset: 80000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 138 行.
+NOTIC: [8] Undefined offset: 70002 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 178 行.
+NOTIC: [8] Undefined offset: 70003 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 178 行.
+NOTIC: [8] Undefined offset: 70004 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 178 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-14T15:58:37+08:00 ] 127.0.0.1 /Mp/Jfmobi/basic/action/profile
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 18000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 155 行.
+NOTIC: [8] Undefined offset: 40000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 179 行.
+NOTIC: [8] Undefined offset: 12000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 188 行.
+NOTIC: [8] Undefined offset: 70017 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 201 行.
+NOTIC: [8] Undefined offset: 70019 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 202 行.
+NOTIC: [8] Undefined offset: 70021 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 209 行.
+NOTIC: [8] Undefined offset: 70022 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 210 行.
+NOTIC: [8] Undefined offset: 70014 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 217 行.
+NOTIC: [8] Undefined offset: 80000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 222 行.
+NOTIC: [8] Undefined offset: 70002 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 262 行.
+NOTIC: [8] Undefined offset: 70003 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 262 行.
+NOTIC: [8] Undefined offset: 70004 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\44278a3186e6e5ffc8742507ed3e089a.php 第 262 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-14T15:58:38+08:00 ] 127.0.0.1 /Mp/Jfmobi/basic/action/contact
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.037002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.037002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 18000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 155 行.
+NOTIC: [8] Undefined offset: 40000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 179 行.
+NOTIC: [8] Undefined offset: 12000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 188 行.
+NOTIC: [8] Undefined offset: 70017 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 201 行.
+NOTIC: [8] Undefined offset: 70019 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 202 行.
+NOTIC: [8] Undefined offset: 70021 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 209 行.
+NOTIC: [8] Undefined offset: 70022 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 210 行.
+NOTIC: [8] Undefined offset: 70014 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 217 行.
+NOTIC: [8] Undefined offset: 80000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 222 行.
+NOTIC: [8] Undefined offset: 70002 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 262 行.
+NOTIC: [8] Undefined offset: 70003 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 262 行.
+NOTIC: [8] Undefined offset: 70004 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1141bc41543079e030516f8568f1d069.php 第 262 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.034002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-14T15:58:40+08:00 ] 127.0.0.1 /Mp/Jfmobi/basic
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 18000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 71 行.
+NOTIC: [8] Undefined offset: 40000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 95 行.
+NOTIC: [8] Undefined offset: 12000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 104 行.
+NOTIC: [8] Undefined offset: 70017 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 117 行.
+NOTIC: [8] Undefined offset: 70019 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 118 行.
+NOTIC: [8] Undefined offset: 70021 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 125 行.
+NOTIC: [8] Undefined offset: 70022 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 126 行.
+NOTIC: [8] Undefined offset: 70014 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 133 行.
+NOTIC: [8] Undefined offset: 80000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 138 行.
+NOTIC: [8] Undefined offset: 70002 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 178 行.
+NOTIC: [8] Undefined offset: 70003 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 178 行.
+NOTIC: [8] Undefined offset: 70004 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\1c81aad3ff985ef13ea708e9e6ff2422.php 第 178 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-14T15:59:36+08:00 ] 127.0.0.1 /Mp/Dealer/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_dltype` [ RunTime:0.0130s ]
+SQL: SHOW COLUMNS FROM `fw_dlsttype` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_dealer` WHERE `dl_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_dealer` WHERE `dl_unitcode` = '3321' ORDER BY dl_id DESC LIMIT 0,50   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_dltype` WHERE `dlt_id` = 10 AND `dlt_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_dealer` WHERE `dl_id` = 1 AND `dl_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_dltype` WHERE `dlt_id` = 9 AND `dlt_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_dltype` WHERE `dlt_unitcode` = '3321' ORDER BY dlt_level ASC,dlt_id ASC  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined offset: 18000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\2a39d99bd652d611eda0dd51ddecdabd.php 第 71 行.
+NOTIC: [8] Undefined offset: 40000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\2a39d99bd652d611eda0dd51ddecdabd.php 第 95 行.
+NOTIC: [8] Undefined offset: 12000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\2a39d99bd652d611eda0dd51ddecdabd.php 第 104 行.
+NOTIC: [8] Undefined offset: 70017 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\2a39d99bd652d611eda0dd51ddecdabd.php 第 117 行.
+NOTIC: [8] Undefined offset: 70019 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\2a39d99bd652d611eda0dd51ddecdabd.php 第 118 行.
+NOTIC: [8] Undefined offset: 70021 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\2a39d99bd652d611eda0dd51ddecdabd.php 第 125 行.
+NOTIC: [8] Undefined offset: 70022 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\2a39d99bd652d611eda0dd51ddecdabd.php 第 126 行.
+NOTIC: [8] Undefined offset: 70014 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\2a39d99bd652d611eda0dd51ddecdabd.php 第 133 行.
+NOTIC: [8] Undefined offset: 80000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\2a39d99bd652d611eda0dd51ddecdabd.php 第 138 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-14T15:59:40+08:00 ] 127.0.0.1 /Mp/Product/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.027002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.027002s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_product` WHERE `pro_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: parameter D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Apps\Mp\Controller\ProductController.class.php 第 40 行.
+SQL: SELECT * FROM `fw_product` WHERE `pro_unitcode` = '3321' ORDER BY pro_id DESC LIMIT 0,50   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_protype` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_id` = 19 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_id` = 19 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_id` = 19 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_iswho` = 0 ORDER BY protype_order ASC  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_iswho` = 20 ORDER BY protype_order ASC  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_protype` WHERE `protype_unitcode` = '3321' AND `protype_iswho` = 19 ORDER BY protype_order ASC  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined offset: 18000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 71 行.
+NOTIC: [8] Undefined offset: 40000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 95 行.
+NOTIC: [8] Undefined offset: 12000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 104 行.
+NOTIC: [8] Undefined offset: 70017 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 117 行.
+NOTIC: [8] Undefined offset: 70019 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 118 行.
+NOTIC: [8] Undefined offset: 70021 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 125 行.
+NOTIC: [8] Undefined offset: 70022 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 126 行.
+NOTIC: [8] Undefined offset: 70014 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 133 行.
+NOTIC: [8] Undefined offset: 80000 D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Runtime\Cache\Mp\91fe222cbd51c3bf0f31f98f34d596da.php 第 138 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
