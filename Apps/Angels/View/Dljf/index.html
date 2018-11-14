@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>我的积分</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/angels/css/font.css" />
+<style>
+.ui-border-t span.jicon {
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+    padding: 0;
+    position: inherit;
+}
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Dealer/index')}>"  ></i><h1>我的积分</h1>
+</header>
+<section class="ui-container">
+<ul class="ui-row">
+<li class="ui-col ui-col-50">
+<div style="border:solid 1px #dcdcdc; padding:20px 0 20px 0; text-align:center"><if condition="$dl_name neq ''" ><{$dl_name}></if> <if condition="$dl_weixin neq ''" >(<{$dl_weixin}>)</if></div>
+</li>
+<li class="ui-col ui-col-50">
+<div style="border:solid 1px #dcdcdc; border-left:none; padding:20px 0 20px 0; text-align:center">剩余积分：<{$surplusjf}></div>
+</li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<ul class="ui-list ui-list-link ui-border-tb">
+    <li class="ui-border-t" data-href="<{:U('./Angels/Dljf/dljflist')}>" >
+        <div class="ui-list-thumb">
+            <span class="jicon list"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">积分记录</h4>
+        </div>
+    </li>
+	<li class="ui-border-t" data-href="<{:U('./Angels/Dljf/exchlist')}>" >
+        <div class="ui-list-thumb">
+            <span class="jicon tab"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">兑换记录</h4>
+        </div>
+		
+    </li>
+	
+
+</ul>
+</section>
+
+<script>
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+
+$('.ui-list li').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+
+</script>
+</body>
+</html>

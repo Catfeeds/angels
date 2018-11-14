@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>提现详细</title>
+<include file="Com/head" />
+<script type="text/javascript" src="__PUBLIC__/angels/js/lrz.all.bundle.js"></script>
+<style>
+.weui_uploader_input_wrp {
+    border: 1px solid #d9d9d9;
+    float: left;
+    height: 77px;
+    margin-bottom: 9px;
+    margin-right: 9px;
+    position: relative;
+    width: 77px;
+}
+.weui_uploader_input_wrp::after, .weui_uploader_input_wrp::before {
+    background-color: #d9d9d9;
+    content: " ";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.weui_uploader_input_wrp::before {
+    height: 39.5px;
+    width: 2px;
+}
+.weui_uploader_input_wrp::after {
+    height: 2px;
+    width: 39.5px;
+}
+.weui_uploader_input_wrp:active {
+    border-color: #999;
+}
+.weui_uploader_input_wrp:active::after, .weui_uploader_input_wrp:active::before {
+    background-color: #999;
+}
+.weui_uploader_input {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Fanli/paylist')}>" ></i><h1>提现详细</h1>
+</header>
+<section class="ui-container" >
+<div class="ui-whitespace">
+　
+</div>
+<form action="<{:U('./Angels/Fanli/paydeal_save')}>"   method="post" name="fmmm"  id="fmmm"  >
+<input type="hidden" value="<{$recashinfo.rc_id}>" name="rc_id" id="rc_id" />
+<input type="hidden" name="ttamp" id="ttamp" value="<{$ttamp}>">
+<input type="hidden" name="sture" id="sture" value="<{$sture}>">	
+<input type="hidden" name="file_name" id="file_name"  value="" >
+
+<ul class="ui-list ui-list-text  ui-border-tb">
+    <li class="ui-border-t">
+        <h4 class="ui-nowrap">提现代理：<{$recashinfo.dl_name_str}> </h4>
+    </li>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">付款代理：<{$recashinfo.dl_sendname_str}></h4>
+    </li>
+    <li class="ui-border-t">
+        <h4 class="ui-nowrap">开户银行：<{$recashinfo.rc_bankstr}> </h4>
+    </li>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">卡号/账号：<{$recashinfo.rc_bankcardstr}></h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">卡号姓名：<{$recashinfo.rc_name}></h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">提取金额：<{$recashinfo.rc_moneystr}> 元</h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">提现时间：<{$recashinfo.rc_addtime|date='Y-m-d H:i:s',###}></h4>
+    </li>
+	<if condition="($recashinfo.rc_dealtime gt 0)" >
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">处理时间：<{$recashinfo.rc_dealtime|date='Y-m-d H:i:s',###}></h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">凭证：<{$recashinfo.rc_pic_str}></h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">处理备注：<{$recashinfo.rc_remark|nl2br}></h4>
+    </li>
+	</if>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">当前状态：<{$recashinfo.rc_statestr}></h4>
+    </li>
+	<if condition="($recashinfo.rc_dealtime eq 0)" >
+	<li class="ui-border-t">
+		<div class="ui-select">
+		<select name="rc_state"  id="rc_state"  >
+					<option value="0" selected >处理状态更改为　</option>
+					<option value="1" >提现成功</option>
+					<option value="2" >提现失败</option>
+		</select>
+		</div>
+    </li>
+
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap"><textarea placeholder="请输入处理备注..." id="rc_remark" name="rc_remark" style="height:120px;width:90%"></textarea></h4>
+    </li>
+	<li class="ui-border-t">
+<div class="ui-whitespace" style="margin:10px 0 10px 0" >
+<p >上传凭证(大小2M以内)</p>
+<div style="float:left;padding-right:5px; max-height:77px; max-width:77px;border:none;display:none" id="img_div" >
+<img id="img_file" style=" width:100%;border:none" src="" />
+</div>
+<div class="weui_uploader_input_wrp"> 
+<input id="pic_file" name="pic_file" class="weui_uploader_input js_file"  type="file"   accept="image/gif,image/jpeg,image/jpg,image/png" >
+</div>
+</div>
+
+</li>	
+</if>
+	
+</ul>
+</form>
+<if condition="($recashinfo.rc_dealtime eq 0)" >
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary" id="deal" >
+        确认处理
+    </button>
+</div>
+</if>
+</section>
+<div class="ui-dialog">
+    <div class="ui-dialog-cnt">
+        <div class="ui-dialog-bd">
+		    <h4>确认是否已正确处理</h4>
+        </div>
+        <div class="ui-dialog-ft">
+            <button type="button" data-role="button" id="cancel"  style="z-index:9999" >取消</button>
+            <button type="button" data-role="button" id="confirm" style="z-index:9999"  >确认</button>
+        </div>
+    </div>        
+</div>
+
+
+<script>
+$("#cancel").click(function(){
+	$(".ui-dialog-cnt").css('display','none');
+	$(".ui-dialog").css('display','none');
+	return false; 
+});
+
+$("#confirm").click(function(){
+	$(".ui-dialog-cnt").css('display','none');
+	$(".ui-dialog").css('display','none');
+	
+    $("#fmmm").submit()
+	return false; 
+});
+
+$("#deal").click(function(){
+	if($("#rc_state").val() == 0 ) { 
+		mpoptips("请选择处理状态","warn",2000);
+		return false; 
+	}
+	if($("#rc_remark").val() == "" ) { 
+		mpoptips("请填写处理备注","warn",2000);
+		return false; 
+	}
+	
+    $(".ui-dialog").css('display','-webkit-box');
+	$(".ui-dialog-cnt").css('display','block');
+});
+
+(function (){
+
+		$('.ui-icon-return').click(function(){
+			if($(this).data('href')){
+				location.href= $(this).data('href');
+			}
+		});	
+		
+        $("#pic_file").change(function(){
+             lrz(this.files[0], {width: 800})
+                .then(function (rst) {
+                    //console.log(rst);
+					 var el=$.loading({
+							content:'上传中...',
+					 });
+                    $.ajax({
+                        url: '<{:U('./Angels/Orders/uploadpic')}>',
+                        type: 'post',
+                        data: {pic_file: rst.base64},
+                        dataType: 'json',
+                        timeout: 200000,
+                        success: function (response) {
+						    el.loading("hide");
+                            if (response.stat == '0') {
+								$("#file_name").val(response.filename);
+								$("#img_file").attr('src',"__PUBLIC__/uploads/temp/"+response.filename); 
+								$("#img_div").show();
+                                 return true;
+                            } else {
+								alert('图片提交失败');
+								return false;
+                            }
+                        },
+
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            el.loading("hide");
+                            if (textStatus == 'timeout') {
+                                a_info_alert('请求超时');
+                                return false;
+                            }
+
+                            alert(jqXHR.responseText);
+                        }
+                    });
+                        
+                })
+                .catch(function (err) {
+                   el.loading("hide");
+                })
+                .always(function () {
+                   el.loading("hide");
+                });
+        });
+		
+})();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>出货记录</title>
+<include file="Com/head" />
+
+<style>
+
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return"  <if condition="$back eq '1' ">  onclick="history.back()" <else /> data-href="<{:U('./Angels/Orders/dlorders/od_state/1')}>" </if> ></i><h1>出货记录</h1>
+</header>
+<section class="ui-container" >
+<ul class="ui-list ui-list-text ui-border-tb">
+    <li class="ui-border-t active">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">发货订单号：<{$ordersinfo.oddt_orderid}></h4>
+        </div>
+    </li>
+	<li class="ui-border-t">
+	<div class="ui-list-info">
+	<p>发货产品：<{$ordersinfo.oddt_proname}> (<{$ordersinfo.oddt_pronumber}>)</p>
+	<p>订购数量：<{$ordersinfo.oddt_qty}><{$ordersinfo.oddt_prounits}><{$ordersinfo.oddt_totalqty}></p>
+	<p>已发数量：<{$ordersinfo.oddt_shipqty}>  </p>
+	</div>
+	</li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+
+<foreach name='list' item='item'  key='key'>
+    <li class="ui-border-t" data-href="<{:U('./Angels/Orders/odshipdetail?shid='.$item['ship_id'].'&od_id='.$od_id.'&odbl_id='.$odbl_id.'&oddt_id='.$oddt_id.'')}>" >
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap"><{$item.ship_barcode}></h4>
+			<p class="ui-nowrap"><{$item.ship_proname}></p>
+			<p class="ui-nowrap"><{$item.ship_date|date='Y-m-d H:i:s',###}>　发向　<{$item.dl_name}></p>
+        </div>
+		<div class="ui-badge-muted"><{$item.ship_proqty}></div>
+    </li>
+</foreach>
+
+</ul>
+
+<if condition="$page neq ''" >
+<div style="margin:0 auto;" >
+<table class="page" cellpadding="0" cellspacing="0" align="center"><tbody>
+<tr>
+<td><{$page}></td>
+</tr></tbody></table>
+</div>
+</if>
+
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+</section>
+<script>
+$('.ui-list li').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+</script>
+</body>
+</html>

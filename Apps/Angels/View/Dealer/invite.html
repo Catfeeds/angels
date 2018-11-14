@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>代理邀请</title>
+<include file="Com/head" />
+
+<style>
+
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b" style="background-color: white">
+	<i class="ui-icon-return" style="color:#E8E8E8" data-href="<{:U('./Angels/Dealer/index')}>"  ></i><h1 style="color: #0C0C0C">代理邀请</h1>
+</header>
+<section class="ui-container" style="margin-top: 3px">
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+<foreach name='sharelinkslist' item='item'  key='key'>
+    <li class="ui-border-t" data-href="<{:U('./Angels/Dealer/marklinks?slid='.$item['sl_id'].'')}>" >
+	 <div class="ui-list-info timeList">
+        <h4 class="ui-nowrap"><{$item['br_name']}> <{$item['dlt_name']}> 邀请链接</h4>
+		<p class="ui-nowrap ">打开:<{$item['sl_views']}> / 已申请:<{$item['sl_applynum']}>  倒计时:<span><{$item['timing']}></span></p>
+	 </div>	
+	 <div class="ui-btn-s ui-btn-primary">分享</div>
+    </li>
+</foreach>
+</ul>
+<div class="ui-form ui-border-t">
+<form action="<{:U('./Angels/Dealer/marklinks')}>" method="get" id="fmm" >
+<div class="ui-form-item ui-border-b">
+	<label for="#"></label>
+</div>
+		
+<div class="ui-form-item ui-border-b">
+	<label>选择级别：</label>
+	<div class="ui-select">
+		<select name="dltype" >
+		    <foreach name='dltypelist' item='item'  key='key'>
+				<option  value="<{$item.dlt_id}>" ><{$item.dlt_name}></option>
+            </foreach>
+			<foreach name='dlsttypelist' item='item'  key='key'>
+				<option  value="<{$item.dlstt_id}>" ><{$item.dlstt_name}></option>
+            </foreach>
+		</select>
+	</div>
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary" id="makelinks" >
+        生成邀请链接
+    </button>
+</div>
+</form>
+</div>
+</section>
+<script>
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-list li').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+(function (){
+    //计时
+    var timeList = $(".timeList");
+    function startTime() {
+	    var hasCount = 0;
+	    timeList.each(function(index){  
+		    var self = this;
+			var count = parseInt($(self).find('span').text());
+			if(count > 0){
+				  count--;
+				  $(self).find('span').text(count);
+				  hasCount++;
+			}else{
+			    $(self).find('span').remove();
+				$(self).find('p').html('已过期');
+			}
+		});
+
+		if (hasCount == 0) {
+			stopTime();
+		} 
+	}
+	
+    var monitorInterval = null;
+	monitorInterval = setInterval(startTime, 1000);
+	
+	//删除计时
+	function stopTime() {
+	  if (monitorInterval) {
+		  clearInterval(monitorInterval);
+		  monitorInterval = null;
+	  }
+	}
+	
+	//点击分享按钮
+    $("#sharelinks").click(function(){
+	     var count = parseInt($("#timing").text());
+		 if(count<=0){
+			stopTime();
+			mpoptips("该邀请链接已过期","warn",2000);
+			$("#timing").hide();
+			$("#timingtxt").text('该邀请链接已过期');
+			return false; 
+		 }
+		 
+	     $("#shareit").show();
+	
+	});
+	
+	$("#shareit").click(function() {
+	    $("#shareit").hide();
+	});
+	
+})();
+</script>
+</body>
+</html>

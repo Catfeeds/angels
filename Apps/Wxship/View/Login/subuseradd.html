@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>申请授权</title>
+<include file="Com/head" />
+<style>
+
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<h1>申请授权</h1>
+</header>
+<section class="ui-container">
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<div class="ui-form ui-border-t">
+<form action="#">
+<input name="qycode" id="qycode" value="<{$qycode}>"  type="hidden" >
+<input name="sture" id="sture" value="<{$sture}>"  type="hidden" >
+<input name="ttamp" id="ttamp" value="<{$ttamp}>"  type="hidden" >
+
+<div class="ui-form-item ui-border-b">
+	<label for="#">微信号</label>
+	<input type="text" value=""  placeholder="请输入..."  id="su_weixin"  >
+</div>
+<div class="ui-form-item ui-border-b">
+	<label for="#">姓　名</label>
+	<input type="text" value=""  placeholder="请输入..." id="su_name" >
+</div>
+
+		 
+</form>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary" id="ssubmit" >
+        提交申请
+    </button>
+</div>
+
+</div>
+
+</section>
+<script>
+(function (){
+	//点击提交
+    $("#ssubmit").click(function(){
+	
+			if($("#su_weixin").val() == "") { 
+				mpoptips("请填写您的微信号","warn",2000);
+				return false; 
+			}
+			
+            if($("#su_name").val() == "") { 
+				mpoptips("请填写您的姓名","warn",2000);
+				return false; 
+			} 
+			 
+
+			
+			
+			var ttamp = $("#ttamp").val();
+			var sture = $("#sture").val();
+			var qycode = $("#qycode").val();
+			var su_weixin = $("#su_weixin").val();
+			var su_name = $("#su_name").val();
+
+			
+            try {
+				$.ajax({
+					type: 'POST',
+					url: '<{:U('./Wxship/Login/subuseradd')}>',
+					data: {action: 'save', qycode:qycode, su_weixin:su_weixin, su_name:su_name, ttamp:ttamp, sture:sture },
+					dataType: 'json',
+					timeout: 30000,
+					success: function (data) {
+
+						var stat=0;
+						stat=parseInt(data.stat);
+						
+						if (stat == 1) {
+							 alert(data.msg);
+						     location.href = "<{:U('./Wxship/Index/index')}>";
+						}else{
+							 mpoptips(data.msg,"warn",2000);
+							 return false; 
+						}
+					},
+					error: function (xhr, type) {
+						mpoptips("超时或服务错误","warn",2000);
+						return false; 
+					}
+				});
+
+			} catch (e) {
+				mpoptips(e,"warn",2000);
+				return false; 
+			}
+	
+	});
+	
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+
+		
+})();
+</script>
+</body>
+</html>

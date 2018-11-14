@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>提现详细</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/angels/css/font.css" />
+<style>
+
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" onClick="history.back()"  ></i><h1>提现详细</h1>
+</header>
+<section class="ui-container" >
+<div class="ui-whitespace">
+　
+</div>
+<ul class="ui-list ui-list-text  ui-border-tb">
+    <li class="ui-border-t">
+        <h4 class="ui-nowrap">开户银行：<{$recashinfo.rc_bankstr}> </h4>
+    </li>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">卡号/账号：<{$recashinfo.rc_bankcardstr}></h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">卡号姓名：<{$recashinfo.rc_name}></h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">提取金额：<{$recashinfo.rc_moneystr}> 元</h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">提现时间：<{$recashinfo.rc_addtime|date='Y-m-d H:i:s',###}></h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">付款代理：<notempty name="recashinfo.fl_sdl_name"><{$recashinfo.fl_sdl_name}></notempty> <notempty name="recashinfo.fl_sdl_username">(<{$recashinfo.fl_sdl_username}>)</notempty></h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">处理状态：<{$recashinfo.rc_statestr}></h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">凭证：<{$recashinfo.rc_pic_str}></h4>
+    </li>
+	
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">处理时间：<if condition="($recashinfo.rc_dealtime gt 0)" ><{$recashinfo.rc_dealtime|date='Y-m-d H:i:s',###}></if></h4>
+    </li>
+
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">处理备注：<{$recashinfo.rc_remark|nl2br}></h4>
+    </li>
+
+</ul>
+
+     
+</section>
+
+
+<script>
+(function (){
+
+		$('.ui-icon-return').click(function(){
+			if($(this).data('href')){
+				location.href= $(this).data('href');
+			}
+		});	
+		
+		
+})();
+</script>
+</body>
+
+</html>

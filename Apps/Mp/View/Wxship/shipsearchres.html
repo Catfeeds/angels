@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>出货查询结果</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/mp/css/style-wx.css" />
+<script type="text/javascript" src="__PUBLIC__/mp/js/jquery.min.js"></script>
+</head>
+<body>
+<div class="header">
+<div class="top"><div style="font-weight:bold; font-size:16px; line-height:30px"><{$title}></div></div>
+</div>
+<!-- header -->
+<div class="main">
+<div class="block">
+<div  class="height10"></div>
+<table class="tablelist" >
+     <tbody>
+       <tr>
+         <td style="vertical-align:middle; text-align:right; width:20%" >条码：</td>
+		 <td style="vertical-align:middle; text-align:left" ><{$shipinfo.code}></td>
+       </tr>
+	    <notempty name="shipinfo.warehouse">
+	    <tr>
+         <td style="vertical-align:middle; text-align:right" >出货仓库：</td>
+		 <td style="vertical-align:middle; text-align:left" ><{$shipinfo.warehouse}></td>
+       </tr>
+	   </notempty>
+	   <notempty name="shipinfo.ship_pro_name">
+	    <tr>
+         <td style="vertical-align:middle; text-align:right" >产品：</td>
+		 <td style="vertical-align:middle; text-align:left" ><{$shipinfo.ship_pro_name}></td>
+       </tr>
+	   </notempty>
+	   <notempty name="shipinfo.qty">
+	   <tr>
+		 <td style="vertical-align:middle; text-align:right" >数量：</td>
+		 <td style="vertical-align:middle; text-align:left" ><{$shipinfo.qty}></td>
+		</tr>
+		</notempty>
+		<tr>
+		 <td style="vertical-align:middle; text-align:right" >流向：</td>
+		 <td style="vertical-align:middle; text-align:left" >
+		 <notempty name="shipinfo.ship_dealer_from_name">
+		 <b><{$shipinfo.ship_date|date='Y-m-d',###}></b><br/>  由 <b><{$shipinfo.ship_dealer_from_name}></b>  发向  <b><{$shipinfo.ship_dealer_name}></b> <br/>
+		 </notempty>
+		 </td>
+		 
+		</tr>
+     </tbody>
+</table>
+<div  class="height20"></div>
+
+</div>
+</div>
+
+<!-- foot -->
+<div class="height60"></div>
+<div class="footer2">
+<div class="back"><div style="padding:10px 0 10px 8px; float:left; text-align:left" ><A  href="javascript:history.go(-1)"  ><img src="__PUBLIC__/mp/static/back.png"   /></A></div></div>
+<div class="title"><div style="padding:10px 0 10px 0; text-align:center" ><A  href="<{:U('./Mp/Wxship/index')}>"  ><img src="__PUBLIC__/mp/static/home.png"   /></A></div></div>
+<div class="menu"><div style="padding:10px 8px 10px 0; text-align:right" ><A   style="cursor:pointer"  id="popmenu" ><img src="__PUBLIC__/mp/static/menu.png" /></A></div></div>
+</div>
+
+<div id="overlay" style="display:none" ></div>
+<div id="window"  style="display:none" >
+<ul class="windowlist">
+<li><a href="<{:U('./Mp/Wxship/shiplist')}>"><span>出货记录</span></a></li>
+<li><a href="<{:U('./Mp/Wxship/index')}>"><span>出货扫描</span></a></li>
+<li><a href="<{:U('./Mp/Wxship/shipsearch')}>"><span>出货查询</span></a></li>
+<div class="clear"></div></ul></div>
+<div class="clear"></div>
+<script type="text/javascript">
+	$(document).ready(function() {
+        var oWin = document.getElementById("window");
+        var oLay = document.getElementById("overlay");	
+        var oBtn = document.getElementById("popmenu");
+
+        oBtn.onclick = function (){oLay.style.display = "block";oWin.style.display = "block"};
+        oLay.onclick = function (){oLay.style.display = "none";oWin.style.display = "none"	}
+    });
+</script>
+<div class="tipsbox dnone" id="tipsbox" >
+	<i class="tips_icon"   ><img  src="__PUBLIC__/mp/static/info-white.png" width="40" height="40"/></i>
+	<div class="tipstitle" id="tipstitle" ></div>
+</div>
+
+</body>
+</html>

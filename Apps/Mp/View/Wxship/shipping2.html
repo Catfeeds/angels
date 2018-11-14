@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>出货结果</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/mp/css/style-wx.css" />
+<script type="text/javascript" src="__PUBLIC__/mp/js/jquery.min.js"></script>
+<script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+             $("#button2").click(function() {
+			      self.location.href='http://www.cn315fw.com/mp/wxship/shiplist'; 
+			  });
+			 
+			 $("#button1").click(function() {
+			      self.location.href='http://www.cn315fw.com/mp/wxship/index'; 
+			  });
+			 
+	   }); 
+</script>
+</head>
+<body>
+<div class="header">
+<div class="top"><div style="font-weight:bold; font-size:16px; line-height:30px"><{$title}></div></div>
+</div>
+<!-- header -->
+<div class="main">
+<div class="block">
+<table class="tablelist" >
+     <tbody>
+<foreach name='list' item='item'  key='key'>
+       <tr>
+         <td style="text-align:left; vertical-align:middle"><{$item.error}></td>
+       </tr>
+</foreach>
+     </tbody>
+</table>
+
+</div>
+<div  class="height10"></div>
+<div class="block">
+<div  class="height10"></div>
+<div style="text-align:center;">
+<input  id="button2"  value="返回出货记录" type="button" class="ssubmit">　
+</div>
+<div  class="height10"></div>
+<div style="text-align:center;">
+<input  id="button1"  value="返回出货扫描" type="button" class="ssubmit">　
+</div>
+</div>
+<div  class="height10"></div>
+</div>
+
+<!-- foot -->
+<div class="height60"></div>
+<div class="footer2">
+<div class="back"><div style="padding:10px 0 10px 8px; float:left; text-align:left" ><A  href="javascript:history.go(-1)"  ><img src="__PUBLIC__/mp/static/back.png"   /></A></div></div>
+<div class="title"><div style="padding:10px 0 10px 0; text-align:center" ><A  href="<{:U('./Mp/Wxship/index')}>"  ><img src="__PUBLIC__/mp/static/home.png"   /></A></div></div>
+<div class="menu"><div style="padding:10px 8px 10px 0; text-align:right" ><A   style="cursor:pointer"  id="popmenu" ><img src="__PUBLIC__/mp/static/menu.png" /></A></div></div>
+</div>
+
+<div id="overlay" style="display:none" ></div>
+<div id="window"  style="display:none" >
+<ul class="windowlist">
+<li><a href="<{:U('./Mp/Wxship/shiplist')}>"><span>出货记录</span></a></li>
+<li><a href="<{:U('./Mp/Wxship/index')}>"><span>出货扫描</span></a></li>
+<li><a href="<{:U('./Mp/Wxship/shipsearch')}>"><span>出货查询</span></a></li>
+<div class="clear"></div></ul></div>
+<div class="clear"></div>
+<script type="text/javascript">
+	$(document).ready(function() {
+        var oWin = document.getElementById("window");
+        var oLay = document.getElementById("overlay");	
+        var oBtn = document.getElementById("popmenu");
+
+        oBtn.onclick = function (){oLay.style.display = "block";oWin.style.display = "block"};
+        oLay.onclick = function (){oLay.style.display = "none";oWin.style.display = "none"	}
+    });
+</script>
+<div class="tipsbox dnone" id="tipsbox" >
+	<i class="tips_icon"   ><img  src="__PUBLIC__/mp/static/info-white.png" width="40" height="40"/></i>
+	<div class="tipstitle" id="tipstitle" ></div>
+</div>
+</body>
+</html>

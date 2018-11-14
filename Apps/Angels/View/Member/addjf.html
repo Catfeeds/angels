@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>我要积分</title>
+<include file="Com/head" />
+<style>
+
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Member/index')}>"  ></i><h1>我要积分</h1>
+</header>
+<section class="ui-container">
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<div class="ui-form ui-border-t">
+<form action="#">
+<div class="ui-form-item ui-form-item-pure ui-border-b">
+	<input type="text" value="<{$fwcode}>"  placeholder="请输入积分码"  id="fwcode"  >
+</div>
+
+<div id="verify"   <if condition="$is_checkcode eq 0" > style="display:none" </if>  >
+<div class="ui-form-item ui-form-item-pure ui-border-b" >
+<input    type="text" placeholder="请输入验证码"  name="checkcode"   value=""  id="checkcode"    >
+</div>
+<div class="ui-whitespace" style="text-align:center">
+ <img  alt="点击换另一个" title="点击换另一个"   style="vertical-align:middle; cursor:pointer"  id="verifyImg" src="<{:U('Angels/Member/verify')}>"  />
+</div>
+</div>
+</form>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary" id="search" >
+        添加积分
+    </button>
+</div>
+<div class="ui-whitespace"  id="result" style="padding:15px; color:#FF0000" >
+</div>
+</div>
+
+</section>
+
+<script>
+(function (){
+
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+	$("#verifyImg").click(function(){
+			$("#verifyImg").attr("src","<{:U('Angels/Member/verify')}>?"+ Math.random());
+	});
+
+	//点击提交
+    $("#search").click(function(){
+	
+			
+            if($("#fwcode").val() == "") { 
+				mpoptips("请输入积分码","warn",2000);
+				$("#result").html('');
+				return false; 
+			} 
+			
+			var filter=/^\s*[0-9]{12,27}\s*$/; 
+			if  (!filter.test($("#fwcode").val())) { 
+				mpoptips("积分码只能填数字,不要有空格,长度不能少于12位","warn",2000);
+				$("#result").html('');
+				return false; 
+			}
+			
+			var fwcode = $("#fwcode").val();
+			var checkcode = $("#checkcode").val();
+
+			$("#result").html("正在处理......");
+			$("#search").attr("disabled", true);
+
+            try {
+				$.ajax({
+					type: 'POST',
+					url: '<{:U('./Angels/Member/addjf')}>',
+					data: {fwcode:fwcode, checkcode:checkcode },
+					dataType: 'json',
+					timeout: 30000,
+					success: function (data) {
+						var stat=0;
+						stat=parseInt(data.stat);
+						
+						if (stat == 9) {
+						    $("#checkcode").val(""); 
+						    $("#verify").show();
+							$("#verifyImg").attr("src","<{:U('Angels/Member/verify')}>?"+ Math.random());
+							msg=data.msg;
+						}else if(stat == 1){
+						    $("#verify").hide();
+							msg=data.msg;
+						}else{
+							$("#verify").hide();
+							msg=data.msg;
+						}
+						$("#result").html(msg);
+						setTimeout(btnEnabled, 2000);
+					},
+					error: function (xhr, type) {
+						mpoptips("超时或服务错误","warn",2000);
+						$("#search").attr("disabled", null);
+						$("#result").html("");
+						$("#verify").hide();
+						return false; 
+					}
+				});
+
+			} catch (e) {
+				mpoptips(e,"warn",2000);
+				$("#search").attr("disabled", null);
+				$("#result").html(".");
+				$("#verify").hide();
+				return false; 
+			}
+	});
+	
+
+
+	
+})();
+
+function btnEnabled() {
+	$("#search").attr("disabled", null);
+}
+</script>
+
+</body>
+</html>

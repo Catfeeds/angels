@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>兑换详情</title>
+<include file="Com/head" />
+<style>
+
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Member/exchange')}>" ></i><h1>兑换详情</h1>
+</header>
+<section class="ui-container" >
+<div class="ui-whitespace">
+　
+</div>
+
+<ul class="ui-list ui-list-text  ui-border-tb">
+    <li class="ui-border-t">
+        <h4 class="ui-nowrap">联系人：<{$jfexchangeinfo.exch_contact}></h4>
+    </li>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">联系电话：<{$jfexchangeinfo.exch_tel}></h4>
+    </li>
+	<notempty name="jfexchangeinfo.exch_address">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">联系地址：<{$jfexchangeinfo.exch_address}></h4>
+    </li>
+	</notempty>
+	 <notempty name="jfexchangeinfo.exch_msg">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">留言：<{$jfexchangeinfo.exch_msg}></h4>
+    </li>
+	</notempty>
+	 <notempty name="jfexchangeinfo.exch_kuaidi">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">发货快递：<{$jfexchangeinfo.exch_kuaidi}></h4>
+    </li>
+	</notempty>
+	 <notempty name="jfexchangeinfo.exch_kdhao">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">快递单号：<{$jfexchangeinfo.exch_kdhao}></h4>
+    </li>
+	</notempty>
+
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">兑换时间：<{$jfexchangeinfo.exch_time|date='Y-m-d H:i:s',###}></h4>
+    </li>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">处理状态：<{$jfexchangeinfo.exch_state_str}></h4>
+    </li>
+	
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+<p>兑换清单：</p>
+</div>
+<table class="ui-table ui-border-tb">
+    <thead>
+    <tr><th>兑换礼品</th><th>消耗积分</th><th>兑换数量</th></tr>
+    </thead>
+    <tbody>
+	<foreach name='exchdetail' item='item'  key='key'>
+    <tr><td><{$item.detail_giftname_str}></td><td><{$item.detail_jf}></td><td><{$item.detail_qty}></td></tr>
+    <notempty name="item.detail_dexnpwd">
+	 <tr>
+         <td  colspan="3">卡号：<{$item.detail_xncardid}> 卡密：<{$item.detail_dexnpwd}></td>
+     </tr>
+    </notempty>
+    </foreach>
+	
+    <tr>
+         <td >总消耗积分：</td>
+		 <td ><{$jfexchangeinfo.exch_jf}></td>
+		 <td ></td>
+       </tr>
+    </tbody>
+</table>
+
+</section>
+
+<script>
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+	
+
+</script>	
+</body>
+</html>

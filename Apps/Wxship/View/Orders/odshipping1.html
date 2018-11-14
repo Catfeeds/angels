@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>确认出货</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wxship/css/font.css" />
+<style>
+.ui-form-item-r button {color: #FFFFFF;}
+.ui-icon-home{
+    position: absolute;
+    right: 10px;
+    top: 5%;
+}
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Wxship/Orders/odshipscanlist?od_id='.$od_id.'&odbl_id='.$odbl_id.'&oddt_id='.$oddt_id.'')}>" ></i><h1>确认出货</h1><i class="ui-icon-home" data-href="<{:U('./Wxship/Index/index')}>" ></i>
+</header>
+<section class="ui-container" >
+<div class="ui-tips ui-tips-info">
+    <i></i><span>请核对扫描记录和订单信息后确认出货</span>
+</div>
+<ul class="ui-list ui-list-text  ui-border-tb">
+
+<foreach name='list' item='item'  key='key'>
+    <li class="ui-border-t"  >
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap"><{$jishu++ }>、<{$key}></h4>
+        </div>
+		<div class="ui-badge-muted"><{$item}></div>
+    </li>
+</foreach>
+
+</ul>
+
+
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<ul class="ui-list ui-list-text ui-border-tb">
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">发货订单号：<{$ordersinfo.oddt_orderid}></h4>
+        </div>
+    </li>
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">发货产品：<{$ordersinfo.oddt_proname}> (<{$ordersinfo.oddt_pronumber}>)</h4>
+        </div>
+    </li>
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">订购数量：<{$ordersinfo.oddt_qty}><{$ordersinfo.oddt_prounits}><{$ordersinfo.oddt_totalqty}></h4>
+        </div>
+    </li>
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">已发数量：<{$ordersinfo.oddt_shipqty}></h4>
+        </div>
+    </li>
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">已扫产品数：<{$scanprocount}> </h4>
+        </div>
+    </li>
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">已扫条码数：<{$scancount}></h4>
+        </div>
+    </li>
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">经销商：<{$dlname}></h4>
+        </div>
+    </li>
+
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+<div class="ui-form ui-border-t">
+    <form action="<{:U('./Wxship/Orders/odshipping?step=1&od_id='.$od_id.'&odbl_id='.$odbl_id.'&oddt_id='.$oddt_id.'')}>"  id="fmm"  method="post" >
+	
+	 
+	 
+	 <div class="ui-form-item ui-border-b">
+            <label>出货仓库</label>
+            <div class="ui-select">
+               <select name="ship_whid" id="ship_whid"    >
+				<option value="0"   >选择仓库</option>
+				<volist name='warehouselist' id='vo' key='key' >
+				<option value="<{$vo.wh_id}>"  <if condition="$vo.wh_id eq $ship_whid" >selected</if> ><{$vo.wh_name}></option>
+				</volist>
+				</select>
+            </div>
+     </div>
+	  <if condition="$isshipprodate eq '1' ">
+	 <div class="ui-form-item ui-border-b">
+            <label>生产日期</label>
+            <input    type="text"  name="ship_prodate" id="ship_prodate"   value="<{$ship_prodate}>"   placeholder="格式:2017年10月10日" >
+     </div>
+	 </if>
+	 <if condition="$isshipbatchnum eq '1' ">
+	 <div class="ui-form-item ui-border-b">
+            <label>生产批号</label>
+                <input    type="text"  name="ship_batchnum" id="ship_batchnum"   value="<{$ship_batchnum}>"   >
+     </div>
+	 </if>
+	  <div class="ui-form-item ui-border-b">
+            <label>备注说明</label>
+                <input    type="text"  name="ship_remark" id="ship_remark"   value="<{$ship_remark}>"   >
+     </div>
+	 
+	 
+    </form>
+</div>
+
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary"  id="shiping2"   >确认出货</button>
+</div>
+
+
+</section>
+
+
+<script>
+(function (){
+
+		
+	$("#shiping2").click(function(){
+
+
+		if(parseInt($("#ship_whid").val()) == 0 ) { 
+			mpoptips("请选择仓库","warn",2000);
+			return false; 
+		} 
+		$("#fmm").submit();
+	});
+		
+		
+		
+		$('.ui-icon-return').click(function(){
+			if($(this).data('href')){
+				location.href= $(this).data('href');
+			}
+		});
+		
+	$('.ui-icon-home').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+
+	
+})();
+</script>
+
+</body>
+
+</html>

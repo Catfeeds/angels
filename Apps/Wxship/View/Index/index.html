@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>微信出货</title>
+<include file="Com/head" />
+<style>
+
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<h1>微信出货</h1>
+</header>
+<section class="ui-container">
+
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<if condition="$purview_arr.16004 eq '16004' ">
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+    <li class="ui-border-t" data-href="<{:U('./Wxship/Storage/storlist')}>" >
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">入库记录</h4>
+        </div>
+    </li>
+</ul>
+<div class="ui-whitespace">
+<p style="height:0.9em; line-height:0.9em"></p>
+</div>
+
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+    <li class="ui-border-t" data-href="<{:U('./Wxship/Storage/storinscanset')}>" >
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">入库扫描</h4>
+        </div>
+    </li>
+</ul>
+<div class="ui-whitespace">
+<p style="height:0.9em; line-height:0.9em"></p>
+</div>
+</if>
+
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+    <li class="ui-border-t" data-href="<{:U('./Wxship/Ship/shiplist')}>" >
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">出货记录</h4>
+        </div>
+    </li>
+</ul>
+
+<if condition="($purview_arr.30004 eq '30004') AND ($purview_arr.13001 neq '13001') ">
+<!--普通出货扫描-->
+<div class="ui-whitespace">
+<p style="height:0.9em; line-height:0.9em"></p>
+</div>
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+    <li class="ui-border-t" data-href="<{:U('./Wxship/Ship/shipscanset')}>" >
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">出货扫描</h4>
+        </div>
+    </li>
+</ul>
+
+</if>
+
+<if condition="($purview_arr.16004 eq '16004') AND ($purview_arr.13001 neq '13001')">
+<!--结合入库的出货扫描-->
+<div class="ui-whitespace">
+<p style="height:0.9em; line-height:0.9em"></p>
+</div>
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+    <li class="ui-border-t" data-href="<{:U('./Wxship/Storship/shipscanset')}>" >
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">出货扫描</h4>
+        </div>
+    </li>
+</ul>
+</if>
+
+<if condition="$purview_arr.13001 eq '13001' ">
+<div class="ui-whitespace">
+<p style="height:0.9em; line-height:0.9em"></p>
+</div>
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+    <li class="ui-border-t" data-href="<{:U('./Wxship/Orders/index')}>" >
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">我的订单</h4>
+        </div>
+    </li>
+</ul>
+</if>
+
+<div class="ui-whitespace">
+<p style="height:0.9em; line-height:0.9em"></p>
+</div>
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+    <li class="ui-border-t" data-href="<{:U('./Wxship/Ship/shipsearch')}>" >
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">条码查询</h4>
+        </div>
+    </li>
+</ul>
+<div class="ui-whitespace">
+<p style="height:0.9em; line-height:0.9em"></p>
+</div>
+<div class="ui-whitespace">
+<p style="height:0.6em; line-height:0.6em; text-align:center; color:#999999"><{$su_name}></p>
+</div>
+
+</section>
+<script>
+(function (){
+	$('.ui-list li').click(function(){
+		if($(this).data('href')){
+			if($(this).data('href')=='quit'){
+				$(".ui-dialog").css('display','-webkit-box');
+				$(".ui-dialog-cnt").css('display','block');
+			}else{
+				location.href= $(this).data('href');
+			}
+		}
+	});
+	
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+
+		
+})();
+</script>
+</body>
+</html>

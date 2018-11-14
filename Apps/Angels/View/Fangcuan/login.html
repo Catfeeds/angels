@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>请登录查询</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/angels/css/font.css" />
+<style>
+
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<h1>请登录查询</h1>
+</header>
+<section class="ui-container" >
+<div class="ui-whitespace">
+　
+</div>
+<div class="ui-form ui-border-t">
+<form action="<{:U('Angels/Fangcuan/Index')}>"   method="post" name="fwfm" id="fwfm"  style="padding:0; margin:0">
+        <div class="ui-form-item ui-border-b">
+			<label for="#">密　码</label>
+            <input type="password" placeholder="" name="pwd" id="pwd"  >
+        </div>
+        <div class="ui-form-item ui-border-b">
+	        <label for="#">验证码</label>
+            <input    type="text" size="4" maxlength="4"  name="checkcode"  id="checkcode"    >
+
+        </div>
+		 <div class="ui-whitespace" style="text-align:center">
+		 <img  alt="点击换另一个" title="点击换另一个"   style="vertical-align:middle; cursor:pointer"  id="verifyImg" src="<{:U('Angels/Fangcuan/verify')}>"  />
+		 </div>
+
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary"  >登录</button>
+</div>
+    </form>
+</div>
+
+	
+</section>
+<script>
+(function (){
+
+        $("#verifyImg").click(function(){
+				$("#verifyImg").attr("src","<{:U('Angels/Fangcuan/verify')}>?"+ Math.random());
+		});
+		
+})();
+</script>
+</body>
+
+</html>

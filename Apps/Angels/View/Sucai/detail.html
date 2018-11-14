@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title><{$Think.config.QY_COMPANY}>-素材详情</title>
+<include file="Com/head" />
+<style>
+iframe{ width:100%}
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" onClick="history.back()"></i>
+	<h1>素材详情</h1>
+</header>
+<section class="ui-container" >
+<div style="text-align:center">
+<{$newsinfo.news_pic_str}>
+</div>
+
+<ul class="ui-list ui-list-text  ui-border-tb" > 
+    <li class="ui-border-t">
+        <p class="ui-nowrap"><b><{$newsinfo.news_title}></b></p>
+    </li>
+</ul>
+<div class="ui-whitespace" style="background-color:#FFFFFF; padding:15px" id="newsdesc" >
+<{$newsinfo.news_content}>
+</div>
+
+</section>
+<script>
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+window.onload = window.onresize = function () {
+    resizeIframe();
+}
+var resizeIframe=function(){
+    var bodyw=document.body.clientWidth;
+    for(var ilength=0;ilength<=document.getElementsByTagName("iframe").length;ilength++){
+
+        document.getElementsByTagName("iframe")[ilength].height = bodyw*3/4;//设定高度
+
+    }
+}
+</script>
+
+<!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" language="javascript" >
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+  wx.config({
+    debug:false,
+    appId: '<{$signPackage.appId}>',
+    timestamp:<{$signPackage.timestamp}>,
+    nonceStr: '<{$newsinfo.news_content}>',
+    signature: '<{$signPackage.signature}>',
+    jsApiList: [
+        'checkJsApi',
+        'onMenuShareAppMessage',
+        'scanQRCode',
+        'hideMenuItems'
+      // 所有要调用的 API 都要加到这个列表中
+    ]
+  });
+  
+  wx.ready(function () {
+    // 在这里调用 API
+  // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+      wx.checkJsApi({
+      jsApiList: [
+        'scanQRCode',
+        'onMenuShareAppMessage',
+        'hideMenuItems'
+      ],
+      success: function (res) {
+
+      },
+      fail:function (res) {
+         alert("微信版本比较低，不支持该功能");
+      }
+    });
+
+    //隐藏右上角部分菜单
+    wx.hideMenuItems({
+        menuList: [
+                   'menuItem:share:timeline',
+                   'menuItem:share:qq',
+                   'menuItem:favorite',
+                   'menuItem:share:weiboApp',
+                   'menuItem:share:facebook',
+                   'menuItem:share:QZone',
+                   'menuItem:openWithQQBrowser',
+                   'menuItem:share:email',
+                   'menuItem:openWithSafari',
+                   'menuItem:copyUrl'
+                   ] 
+    });
+    
+   // 分享
+        wx.onMenuShareAppMessage({
+        title: '<{$shtitle}>', // 分享标题
+        desc: '<{$shdesc}>', // 分享描述
+        link: '<{$shlink}>', // 分享链接
+        imgUrl: '<{$shimgurl}>', // 分享图标
+        type: 'link', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () { 
+            // 用户确认分享后执行的回调函数
+            
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+        }
+
+        });
+
+  });
+    wx.error(function (res) {
+        alert(res.errMsg);
+    });
+    
+
+
+</script> -->
+</body>
+</html>

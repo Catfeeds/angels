@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>购物车</title>
+<include file="Com/head" />
+<style>
+.quantity-decrease{
+    height: 100%;
+	text-align:center;
+	font-size:1.4em;
+	color: #67738a;
+	outline: 0 none;
+    text-decoration: none;
+    border: 1px solid #cbcbcb;
+    margin: 0 0.3em;
+    padding: 0 0.1em;
+}
+.quantity-increase{
+    height: 100%;
+	text-align:center;
+	font-size:1.4em;
+	color: #67738a;
+	outline: 0 none;
+    text-decoration: none;
+    border: 1px solid #cbcbcb;
+    margin: 0 0.3em;
+    padding: 0 0.3em;
+}
+.quantity {
+    color: #232326;
+    text-align: center;
+    width: 60px;
+	height:30px;
+}
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return"  data-href="<{:U('./Angels/Orders/prolist')}>"   ></i><h1>购物车</h1>
+</header>
+<section class="ui-container" >
+
+
+<ul class="ui-list ui-list-text ui-list-text ui-border-tb">
+
+<foreach name='shopcartlist' item='item'  key='key'>
+<if condition="$item.pro_dlprice neq '' ">
+    <li class="ui-border-t"  >
+        <div class="ui-list-thumb">
+            <span style="background-image:url(__PUBLIC__/uploads/product/<{$item.pro_pic}>)"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap"><{$item.pro_name}></h4>
+			<p class="ui-nowrap"><if condition="($item.pro_price neq '') AND ($item.pro_price neq '0') ">零售价:<{$item.pro_price|number_format=2,'.',''}> 元　</if><if condition="($item.pro_dlprice neq '') AND ($item.pro_dlprice neq '0') ">代理价:<{$item.pro_dlprice|number_format=2,'.',''}> 元</if><if condition="($item.pri_minimum neq '') AND ($item.pri_minimum neq '0') ">　最低补货:<{$item.pri_minimum}></if></p>
+			
+			
+        <div class="customize-qua">
+			<a class="quantity-decrease" id="subnum<{$item.sc_id}>" href="javascript:subWareBybutton('#num<{$item.sc_id}>',<{$item.sc_id}>);" >﹣</a>
+			<input size="4" value="<{$item.sc_qty}>" name="num" id="num<{$item.sc_id}>" class="quantity"  onChange="modifyWare('#num<{$item.sc_id}>',<{$item.sc_id}>)" type="text" >
+			<a class="quantity-increase" id="addnum<{$item.sc_id}>" href="javascript:addWareBybutton('#num<{$item.sc_id}>',<{$item.sc_id}>);">+</a>
+		</div>
+        </div>
+		
+		<div class="ui-btn removecart" data-href="<{:U('./Angels/Orders/removecart?sc_id='.$item['sc_id'].'')}>" >移除</div>
+    </li>
+</if>
+</foreach>
+
+</ul>
+
+<div class="ui-whitespace" style="margin:5px 0 5px 0" >
+    <p  style="text-align:right">合计：<span id="total"><{$total}></span> 元</p>
+</div>
+
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary" id="checkshopcart" data-href="<{:U('./Angels/Orders/checkshopcart')}>"  >
+        去结算
+    </button>
+</div>
+
+</section>
+<script>
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-list li').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.removecart').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('#checkshopcart').click(function(){
+	if($(this).data('href')){
+	   location.href=$(this).data('href');
+	}
+});
+
+//减数量
+function subWareBybutton(num,scid){
+    var sc_qty=parseInt($(num).val());
+	var sc_id=parseInt(scid);
+	if(sc_qty<=1){
+	    sc_qty=1;
+	}else{
+	    sc_qty=sc_qty-1;
+	}
+	
+	try{
+		$.ajax({
+			type: 'POST',
+			url: '<{:U('./Angels/Orders/modifycart')}>',
+			data: { sc_id:sc_id, sc_qty:sc_qty },
+			dataType: 'json',
+			timeout: 30000,
+			success: function (data) {
+
+				var stat=0;
+				stat=parseInt(data.stat);
+				
+				if (stat == 1) {
+                     $(num).val(data.qty);
+					 $("#total").html(data.total);
+					 return false; 
+				}else{
+					 mpoptips(data.msg,"warn",2000);
+					 return false; 
+				}
+			},
+			error: function (xhr, type) {
+				mpoptips("超时或服务错误","warn",2000);
+				return false; 
+			}
+		});
+
+	} catch (e) {
+		mpoptips(e,"warn",2000);
+		return false; 
+	}
+}
+
+//加数量
+function addWareBybutton(num,scid){
+    var sc_qty=parseInt($(num).val());
+	var sc_id=parseInt(scid);
+	sc_qty=sc_qty+1;
+
+	try{
+		$.ajax({
+			type: 'POST',
+			url: '<{:U('./Angels/Orders/modifycart')}>',
+			data: { sc_id:sc_id, sc_qty:sc_qty },
+			dataType: 'json',
+			timeout: 30000,
+			success: function (data) {
+
+				var stat=0;
+				stat=parseInt(data.stat);
+				
+				if (stat == 1) {
+                     $(num).val(data.qty);
+					 $("#total").html(data.total);
+					 return false; 
+				}else{
+					 mpoptips(data.msg,"warn",2000);
+					 return false; 
+				}
+			},
+			error: function (xhr, type) {
+				mpoptips("超时或服务错误","warn",2000);
+				return false; 
+			}
+		});
+
+	} catch (e) {
+		mpoptips(e,"warn",2000);
+		return false; 
+	}
+}
+
+//改变数量
+function modifyWare(num,scid){
+    
+    var sc_qty=parseInt($(num).val());
+	var sc_id=parseInt(scid);
+	
+	if(sc_qty<=1){
+	    sc_qty=1;
+	}
+
+	try{
+		$.ajax({
+			type: 'POST',
+			url: '<{:U('./Angels/Orders/modifycart')}>',
+			data: { sc_id:sc_id, sc_qty:sc_qty },
+			dataType: 'json',
+			timeout: 30000,
+			success: function (data) {
+
+				var stat=0;
+				stat=parseInt(data.stat);
+				
+				if (stat == 1) {
+                     $(num).val(data.qty);
+					 $("#total").html(data.total);
+					 return false; 
+				}else{
+					 mpoptips(data.msg,"warn",2000);
+					 return false; 
+				}
+			},
+			error: function (xhr, type) {
+				//mpoptips("超时或服务错误","warn",2000);
+				return false; 
+			}
+		});
+
+	} catch (e) {
+		mpoptips(e,"warn",2000);
+		return false; 
+	}
+}
+
+</script>
+</body>
+</html>

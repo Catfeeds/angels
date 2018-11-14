@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>防伪码重置</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/sysadmin/js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/sysadmin/js/themes/icon.css">
+<script type="text/javascript" src="__PUBLIC__/sysadmin/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/sysadmin/js/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" >
+$(document).ready(function() {
+   $("#ssubmit").click(function() {
+		if($("#fwcode").val() == "") { 
+			alert("防伪码不能为空");
+			return false; 
+		}
+		if(confirm("确认删除查询记录吗？")){
+            return true; 
+		}else{
+			return false; 
+		}
+   });
+
+   $("#ssubmit2").click(function() {
+		if($("#qycode").val() == "") { 
+			alert("企业码不能为空");
+			return false; 
+		}
+		if(confirm("确认删除查询记录吗？")){
+            return true; 
+		}else{
+			return false; 
+		}
+   });
+
+   $("#begintime").datebox("setValue", "<{$begintime}>"); 
+   $("#endtime").datebox("setValue", "<{$endtime}>"); 
+  });
+</script>
+</head>
+<body>
+<include file="Com/header" />
+<div class="main" >
+<div class="bound" >
+<div class="leftmenu">
+<include file="Com/leftmenu" />
+</div>
+<div class="rightcontent">
+<div class="content_nav" >
+<div class="nav_l"><a href="<{:U('Sysadmin/Index/index')}>">首页</a>　&gt;　<A href="#">防伪码重置</A></div>
+<div class="nav_r"></div>
+</div>
+<div class="height20"></div>
+<div class="content">
+<form action="<{:U('Sysadmin/Fwcode/resetting')}>" id="fm" name="login" method="post" >
+<input  name="action" id="action" value="code1" type="hidden" />
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+             <tr>     
+                  <td height="40"   width="25%" class="txtright" ></td>
+				  <td width="75%" class="txtleft" ><b>删除查询记录：</b>(如果码已经积分，则不能删除记录)</td>
+			  </tr>
+			  <tr>     
+                  <td height="40"   class="txtright" >防伪码：</td>
+				  <td class="txtleft" ><input    type="text" size="25" maxlength="30"  name="fwcode" id="fwcode"  class="input"  value="<{$fwcode}>"    > </td>
+			  </tr>
+			   <tr>     
+                  <td height="40"   class="txtright" ></td>
+				  <td class="txtleft" ><input  type="submit" name="ssubmit" id="ssubmit"  value="提 交"  class="botton" ></td>
+			  </tr>
+			  <tr>  <td height="60"  ></td>
+                <td  class="txtleft"  >
+             　　　　            </td>
+			  </tr>
+			</table>
+</form>
+<!--
+<form action="<{:U('Sysadmin/Fwcode/resetting')}>" id="fm" name="login" method="post" >
+<input  name="action" id="action" value="code2" type="hidden" />
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+             <tr>     
+                  <td height="60"   width="25%" class="txtright" ></td>
+				  <td width="75%" class="txtleft" ><b>删除多个查询记录：</b>(如果码已经积分，则不能删除记录)</td>
+			  </tr>
+			  <tr>     
+                  <td height="40"   class="txtright" >企业码：</td>
+				  <td class="txtleft" ><input    type="text" size="4" maxlength="4"  name="qycode"  id="qycode"  class="input"  value="<{$qycode}>"    >  </td>
+			  </tr>
+			  <tr>     
+                  <td height="40"   class="txtright" >日期：</td>
+				  <td class="txtleft" ><input    type="text" size="15" maxlength="15"  name="begintime"  class="easyui-datebox"  value=""   id="begintime"    >　到　<input    type="text" size="15" maxlength="15"  name="endtime"  class="easyui-datebox"  value=""   id="endtime"    >　 </td>
+			  </tr>
+			 
+			  <tr>  <td height="60"  ></td>
+                    <td  class="txtleft"  >
+             <input type="submit" name="ssubmit2" id="ssubmit2"  value="提 交"  class="botton" >　　　　<input name="" type="reset" value="返 回"  onClick="javascript:window.history.go(-1);" class="botton" >
+            </td>
+			  </tr>
+			</table>
+</form>
+-->
+</div>
+<div class="height20"></div>
+</div>
+</div>
+</div>
+<include file="Com/foot" />
+</body>
+</html>

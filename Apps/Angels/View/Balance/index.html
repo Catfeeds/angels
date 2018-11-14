@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>我的余额</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/angels/css/font.css" />
+<style>
+.ui-border-t span.jicon {
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+    padding: 0;
+    position: inherit;
+}
+
+.ui-btn:before{
+	border:0;
+}
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b" style="background-image:none;">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Dealer/index')}>"></i>
+	<h1>我的余额</h1>
+	<button class="ui-btn" data-href="<{:U('./Angels/Balance/balancelist')}>" style='border:0;background:transparent;color:white'  id="balancels" >明细</button>
+</header>
+<section class="ui-container">
+	<div style='height:1.3rem;background:#18b4ed;color:white;display:flex;width:100%;flex-direction:column;'>
+		<span style="color: #fff;opacity:0.5;margin:15px 20px 10px 20px;line-height:40px;">余额帐号(元)</span>
+		<span style="color: #fff;line-height:50px;font-size:50px;margin:0 20px;"><{$dl_balance|number_format=2,'.',''}></span>
+	</div>
+<ul class="ui-list ui-list-link ui-border-tb" style="margin-top:8px;">
+    <li class="ui-border-t" data-href="<{:U('./Angels/Balance/rechargelist')}>" >
+        <div class="ui-list-thumb">
+            <span class="jicon drawer-2"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">充值</h4>
+        </div>
+    </li>
+</ul>
+</section>
+
+<script>
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+
+$('.ui-list li').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('#balancels').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+
+</script>
+</body>
+</html>

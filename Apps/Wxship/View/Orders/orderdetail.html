@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>订单详细</title>
+<include file="Com/head" />
+<style>
+.ui-icon-home{
+    position: absolute;
+    right: 10px;
+    top: 5%;
+}
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Wxship/Orders/orderslist/od_state/'.$od_state.'')}>" ></i>
+	<h1>订单详细</h1><i class="ui-icon-home" data-href="<{:U('./Wxship/Index/index')}>" ></i>
+</header>
+<section class="ui-container" >
+<ul class="ui-list ui-list-text ui-border-tb">
+    <li class="ui-border-t active">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">订单号：<{$ordersinfo.od_orderid}></h4>
+        </div>
+		<div class="ui-badge"><{$ordersinfo.od_state_str}></div>
+    </li>
+</ul>
+<ul class="ui-list  ui-list-text ui-border-tb address">
+ <li class="ui-border-t"   >
+   <div class="ui-list-info">
+   <h4 class="ui-nowrap">收货地址：</h4>
+   <p class="ui-nowrap"><{$ordersinfo.od_contact}>　　<{$ordersinfo.od_tel}></p>
+   <p class="ui-nowrap"><{$ordersinfo.od_address}></p>
+
+   </div>
+ </li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<ul class="ui-list ui-list-text ui-list-text ui-border-tb">
+
+<foreach name="ordersinfo['orderdetail']" item="item"  key="key">
+
+    <li class="ui-border-t"  >
+        <div class="ui-list-thumb">
+			<if condition="$item.oddt_propic eq '' ">
+			<span style="background-image:url(__PUBLIC__/wxship/static/nophoto.jpg)"></span>
+			<else/>
+            <span style="background-image:url(__PUBLIC__/uploads/product/<{$item.oddt_propic}>)"></span>
+			</if>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap"><{$item.oddt_proname}> (<{$item.oddt_pronumber}>)</h4>
+			<p class="ui-nowrap"><if condition="$item.oddt_dlprice neq '' ">单价:<{$item.oddt_dlprice|number_format=2,'.',''}> 元</if></p>
+			<p class="ui-nowrap">订购：<{$item.oddt_qty}><{$item.oddt_prounits}><{$item.oddt_totalqty}> 已发：<{$item.oddt_shipqty}> <if condition="$item.oddt_shipqty neq '0' "><a href="<{:U('./Wxship/Orders/odshiplist?od_id='.$item['oddt_odid'].'&odbl_id='.$item['oddt_odblid'].'&oddt_id='.$item['oddt_id'].'')}>" >已发记录</a></if></p>
+        </div>
+		<{$item.oddt_shipment}>
+    </li>
+
+</foreach>
+
+</ul>
+
+<div class="ui-whitespace" style="margin:5px 0 5px 0" >
+    <p  style="text-align:right">合计：<span id="total"><{$ordersinfo.odbl_total}></span> 元 <br>下单时间：<{$ordersinfo.od_addtime|date='Y-m-d H:i:s',###}></p>
+</div>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<ul class="ui-list ui-list-text ui-border-tb">
+<li class="ui-border-t">
+	    <h4 class="ui-nowrap">操作：</h4>
+	    <{$ordersinfo.caozuostr}>
+</li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+<ul class="ui-list  ui-list-text ui-border-tb">
+ <li class="ui-border-t"   >
+   <div class="ui-list-info">
+   <h4>订单留言：</h4>
+   <p><{$ordersinfo.odbl_remark}></p>
+   </div>
+ </li>
+  <li class="ui-border-t"   >
+  <div class="ui-list-info">
+   <h4>支付凭证：</h4>
+   <p><{$ordersinfo.odbl_paypic_str}></p>
+   </div>
+ </li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<ul class="ui-list  ui-list-text ui-border-tb">
+ <li class="ui-border-t"   >
+   <div class="ui-list-info">
+   <h4>下单代理：</h4>
+   <p>微信：<{$ordersinfo.od_dl_weixin}></p>
+   <p>名称：<{$ordersinfo.od_dl_name}></p>
+   <p>电话：<{$ordersinfo.od_dl_tel}></p>
+   </div>
+ </li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<ul class="ui-list  ui-list-text ui-border-tb">
+ <li class="ui-border-t"   >
+   <div class="ui-list-info">
+   <h4>物流信息：</h4>
+   <if condition="$ordersinfo.od_expressname neq '' "><p>快递：<{$ordersinfo.od_expressname}></p></if>
+   <if condition="$ordersinfo.od_expressnum neq '' "><p>单号：<{$ordersinfo.od_expressnum}></p></if>
+   <if condition="($ordersinfo.od_expressdate neq '') AND  ($ordersinfo.od_expressdate neq 0 )" ><p>时间：<{$ordersinfo.od_expressdate|date='Y-m-d H:i:s',###}></p></if>
+   <if condition="$ordersinfo.od_remark neq '' "><p>备注：<{$ordersinfo.od_remark}></p></if>
+   </div>
+ </li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<ul class="ui-list  ui-list-text ui-border-tb">
+ <li class="ui-border-t"   >
+   <div class="ui-list-info">
+   <h4>操作日志：</h4>
+   <foreach name="orderlogs" item="item"  key="key">
+   <p><b><{$item.odlg_action}></b>　<{$item.odlg_dlname}>　<{$item.odlg_addtime|date='Y-m-d H:i:s',###}></p>
+   </foreach>
+
+   </div>
+ </li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+</section>
+
+<div class="ui-dialog">
+    <div class="ui-dialog-cnt">
+        <div class="ui-dialog-bd">
+		    <h4>该订单还没完成出货，<br>点击[确认]将强行完成发货</h4>
+        </div>
+        <div class="ui-dialog-ft">
+            <button type="button" data-role="button" id="cancel"  style="z-index:9999" >取消发货</button>
+            <button type="button" data-role="button" id="confirm" style="z-index:9999"  >确认完成发货</button>
+        </div>
+    </div>        
+</div>
+
+<script>
+
+$("#cancel").click(function(){
+	$(".ui-dialog-cnt").css('display','none');
+	$(".ui-dialog").css('display','none');
+	return false; 
+});
+
+$("#confirm").click(function(){
+	$(".ui-dialog-cnt").css('display','none');
+	$(".ui-dialog").css('display','none');
+	location.href= "<{:U('./Wxship/Orders/odfinishship?od_id='.$od_id.'&odbl_id='.$odbl_id.'&od_state='.$od_state.'&isok=1')}>";
+	return false; 
+});
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-icon-home').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-list li').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.address li').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-btn-s').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-btn').click(function(){
+	if($(this).data('href')){
+	    if($(this).data('href')=='odfinishship1'){
+		
+			var od_id = <{$od_id}>;
+			var odbl_id = <{$odbl_id}>;
+			var od_state = <{$od_state}>;
+
+            try {
+				$.ajax({
+					type: 'GET',
+					url: '<{:U('./Wxship/Orders/odfinishship')}>',
+					data: {action:'', od_id:od_id, odbl_id:odbl_id, od_state:od_state},
+					dataType: 'json',
+					timeout: 30000,
+					success: function (data) {
+
+						var stat=0;
+						stat=parseInt(data.stat);
+						
+						if (stat == 1) {
+							 location.href= "<{:U('./Wxship/Orders/odfinishship?od_id='.$od_id.'&odbl_id='.$odbl_id.'&od_state='.$od_state.'&isok=1')}>";
+							 return false; 
+							 
+						}else if(stat == 2){
+							$(".ui-dialog").css('display','-webkit-box');
+							$(".ui-dialog-cnt").css('display','block');
+						}else{
+							 mpoptips(data.msg,"warn",2000);
+							 return false; 
+						}
+					},
+					error: function (xhr, type) {
+						mpoptips("超时或服务错误","warn",2000);
+						return false; 
+					}
+				});
+
+			} catch (e) {
+				mpoptips(e,"warn",2000);
+				return false; 
+			}
+		}else{
+		    location.href= $(this).data('href');
+		}
+	}
+});
+
+</script>
+</body>
+</html>

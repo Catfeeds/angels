@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>确认出货</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/mp/css/style-wx.css" />
+<script type="text/javascript" src="__PUBLIC__/mp/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/mp/js/jquery.form.min.js"></script>
+<script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+			$("#ssubmit").click(function() {
+			   if($("#ship_date").val()=="") { 
+					showTipsBox("请选择出货日期！");
+					return false; 
+			   }
+			   
+			   if($("#ship_number").val()=="") { 
+					showTipsBox("请填写出货单号！");
+					return false; 
+			   }
+			   if(parseFloat($("#ship_whid").val())<=0) { 
+							showTipsBox("请选择仓库！");
+							return false; 
+				}
+			   if(parseFloat($("#ship_dealer").val())<=0) { 
+							showTipsBox("请选择经销商！");
+							return false; 
+				}
+				 if(parseFloat($("#ship_pro").val())<=0) { 
+							showTipsBox("请选择产品！");
+							return false; 
+				}
+				return true;
+
+			
+			 }); 
+			 
+			 $("#button2").click(function() {
+			      self.location.href='http://www.cn315fw.com/mp/wxship/shipscanlist'; 
+			  });
+			 
+	   }); 
+	   
+	function showTipsBox(info) {
+		$("#tipsbox").css({"display":"block"});
+		$("#tipstitle").html(info);
+		setTimeout("tipsBox_clear()", 2000);
+	}
+	
+	function tipsBox_clear() {
+		$("#tipstitle").html("");
+		$("#tipsbox").css({"display":"none"});
+	}
+</script>
+
+<script type="text/javascript" language="javascript">
+function sub_dealer(nextselect,id){
+	id=parseInt(id);
+	if(id>0){
+	    if(nextselect=='#ship_dealer2'){
+		   $("#ship_dealer2").hide();
+		   $("#ship_dealer3").hide();
+	    }else if(nextselect=='#ship_dealer3'){
+		   $("#ship_dealer3").hide();
+	    }
+		$.post("<{:U('Mp/Wxship/subdealerarr')}>", {Action:"post",dl_id:id}, function (data, textStatus){
+		   if(data.length>0){
+		       var str="<option value='0'   >下级经销商</option>";
+			   for(var p in data){
+				  str = str+ "<option value='"+data[p]['dl_id']+"'   >"+data[p]['dl_number']+" "+data[p]['dl_name']+" "+data[p]['dl_contact']+"</option>" ;
+			   }
+			   $(nextselect).html(str);
+			   $(nextselect).show();
+		   }
+		}, "json");
+	}else{
+           if(nextselect=='#ship_dealer2'){
+		       $("#ship_dealer2").hide();
+			   $("#ship_dealer3").hide();
+		   }else if(nextselect=='#ship_dealer3'){
+		       $("#ship_dealer3").hide();
+		   }
+	}
+}
+</script>
+</head>
+<body>
+<div class="header">
+<div class="top"><div style="font-weight:bold; font-size:16px; line-height:30px"><{$title}></div></div>
+</div>
+<!-- header -->
+<div class="main">
+<div class="block">
+<form action="<{:U('Mp/Wxship/shipping/step/1')}>"   method="post" name="fmm" id="fmm"  style="padding:0; margin:0">
+<div  class="fmtitle">出货日期：</div>
+<select id="ship_date" name="ship_date"  class="input"  >
+<option value="">选择出货日期</option>
+<foreach name='day60' item='item'  key='key'>
+<option value="<{$item}>" <if condition="$item eq $nowday" >selected</if>  ><{$item|date='Y-m-d',###}></option>
+</foreach>
+</select>
+<div  class="fmtitle">出货单号：</div>
+<input    type="text"  name="ship_number" id="ship_number"  class="input"  value="<{$ship_number}>"   >
+<div  class="fmtitle">出货仓库：</div>
+<select name="ship_whid" id="ship_whid"  class="input"   >
+<option value="0"   >选择仓库</option>
+<volist name='warehouselist' id='vo' key='key' >
+<option value="<{$vo.wh_id}>"  <if condition="$vo.wh_id eq $ship_whid" >selected</if> ><{$vo.wh_name}></option>
+</volist>
+</select>
+<div  class="fmtitle">选择经销商：</div>
+<select id="ship_dealer" name="ship_dealer"  class="input"  onChange="javascript:sub_dealer('#ship_dealer2',this.value);"  >
+<option value="0">选择经销商</option>
+<foreach name='dealerlist' item='item'  key='key'>
+<option value="<{$item.dl_id}>" <if condition="$item.dl_id eq $ship_dealer" >selected</if> ><{$item.dl_number}> <{$item.dl_contact}> <{$item.dl_name}></option>
+</foreach>
+</select>
+<select name="ship_dealer2" id="ship_dealer2"   class="input"   onChange="javascript:sub_dealer('#ship_dealer3',this.value);"    style="display:none" >
+</select>
+
+<select name="ship_dealer3" id="ship_dealer3"   class="input"      style="display:none"  >
+</select>
+
+
+<div  class="fmtitle">选择产品：</div>
+<select name="ship_pro" id="ship_pro"  class="input"   >
+<option value="0"   >选择产品</option>
+<volist name='productlist' id='vo' key='key' >
+<option value="<{$vo.pro_id}>"   ><{$vo.pro_name}></option>
+</volist>
+</select>
+<div  class="fmtitle">备注：</div>		
+<textarea name="ship_remark" class="input" style="height:60px" ></textarea>	  
+<div  class="height20"></div>
+<div style="text-align:center;">
+<input  id="ssubmit"  value="确认出货" type="submit" class="ssubmit"  >　
+</div>
+<div  class="height10"></div>
+<div style="text-align:center;">
+<input  id="button2"  value="返回扫描记录" type="button" class="ssubmit">　
+</div>
+</form>
+</div>
+<div  class="height10"></div>
+</div>
+<!-- foot -->
+<div class="height60"></div>
+<div class="footer2">
+<div class="back"><div style="padding:10px 0 10px 8px; float:left; text-align:left" ><A  href="javascript:history.go(-1)"  ><img src="__PUBLIC__/mp/static/back.png"   /></A></div></div>
+<div class="title"><div style="padding:10px 0 10px 0; text-align:center" ><A  href="<{:U('./Mp/Wxship/index')}>"  ><img src="__PUBLIC__/mp/static/home.png"   /></A></div></div>
+<div class="menu"><div style="padding:10px 8px 10px 0; text-align:right" ><A   style="cursor:pointer"  id="popmenu" ><img src="__PUBLIC__/mp/static/menu.png" /></A></div></div>
+</div>
+
+<div id="overlay" style="display:none" ></div>
+<div id="window"  style="display:none" >
+<ul class="windowlist">
+<li><a href="<{:U('./Mp/Wxship/shiplist')}>"><span>出货记录</span></a></li>
+<li><a href="<{:U('./Mp/Wxship/index')}>"><span>出货扫描</span></a></li>
+<li><a href="<{:U('./Mp/Wxship/shipsearch')}>"><span>出货查询</span></a></li>
+<div class="clear"></div></ul></div>
+<div class="clear"></div>
+<script type="text/javascript">
+	$(document).ready(function() {
+        var oWin = document.getElementById("window");
+        var oLay = document.getElementById("overlay");	
+        var oBtn = document.getElementById("popmenu");
+
+        oBtn.onclick = function (){oLay.style.display = "block";oWin.style.display = "block"};
+        oLay.onclick = function (){oLay.style.display = "none";oWin.style.display = "none"	}
+    });
+</script>
+<div class="tipsbox dnone" id="tipsbox" >
+	<i class="tips_icon"   ><img  src="__PUBLIC__/mp/static/info-white.png" width="40" height="40"/></i>
+	<div class="tipstitle" id="tipstitle" ></div>
+</div>
+</body>
+</html>

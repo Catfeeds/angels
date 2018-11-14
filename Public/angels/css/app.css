@@ -1,0 +1,35 @@
+/*自定义样式 非UI框架自带*/
+.page{
+    border-radius: 5px;
+    margin: 0.8em 0;
+	width:auto;
+	float:right;
+
+}
+.page a{text-decoration:none;}
+.page td{padding: 0.7em;}
+.page .current{padding:0 0.3em; color:#027cff; border:solid 1px #ddd; margin:0 0.3em}
+.page a.num{padding:0 0.3em;border:solid 1px #fff; margin:0 0.3em;}
+.page a.num:hover{padding:0 0.3em;border:solid 1px #027cff; margin:0 0.3em}
+.btn-normal {
+  font-size: 14px;
+  line-height: 30px;
+  display: inline-block;
+  padding: 0 16px;
+  text-align: center;
+  border-radius: 2px;
+  background-color: red;
+}
+#prodesc img{width:100%}
+#newsdesc img{width:100%}
+.kl-layout-horizontally-between{
+  box-sizing:border-box;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-justify-content:space-between;
+  justify-content:space-between;
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  align-items:center;
+}

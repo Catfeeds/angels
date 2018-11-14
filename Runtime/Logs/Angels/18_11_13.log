@@ -1,0 +1,2318 @@
+[ 2018-11-13T17:50:19+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0130s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.039002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.039002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0660s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0140s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T17:50:25+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0120s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T17:50:31+08:00 ] 127.0.0.1 /Angels/Product
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 ORDER BY pro_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T17:50:33+08:00 ] 127.0.0.1 /Angels/Product/detail/proid/17
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022002s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 17 AND `pro_unitcode` = '3321' AND `pro_active` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T17:50:34+08:00 ] 127.0.0.1 /Angels/Product/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022001s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 ORDER BY pro_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T17:50:35+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0140s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T17:50:39+08:00 ] 127.0.0.1 /Angels/Xiu
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0140s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 2 ORDER BY news_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T17:50:40+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.025001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.025001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T17:51:39+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T17:51:49+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:01:28+08:00 ] 127.0.0.1 /Angels/About
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:01:52+08:00 ] 127.0.0.1 /Angels/About
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:02:03+08:00 ] 127.0.0.1 /Angels/About
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.025001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.025001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:02:07+08:00 ] 127.0.0.1 /Angels/Product
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.019001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.019001s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 ORDER BY pro_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:02:09+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0050s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.023002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.023002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:03:14+08:00 ] 127.0.0.1 /Angels/Product
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 ORDER BY pro_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:03:18+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.030002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.030002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0140s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:03:20+08:00 ] 127.0.0.1 /Angels/Xiu
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 2 ORDER BY news_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:03:22+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.033002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.033002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0140s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:07:07+08:00 ] 127.0.0.1 /Angels/Product
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 ORDER BY pro_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:07:09+08:00 ] 127.0.0.1 /Angels/Product/detail/proid/16
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022001s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 16 AND `pro_unitcode` = '3321' AND `pro_active` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:07:11+08:00 ] 127.0.0.1 /Angels/Product/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.029002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.029002s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0140s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_unitcode` = '3321' AND `pro_active` = 1 ORDER BY pro_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:07:42+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:10:01+08:00 ] 127.0.0.1 /Angels/Xiu
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 2 ORDER BY news_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:10:06+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0120s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:12:18+08:00 ] 127.0.0.1 /Angels/Query
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022001s ]
+NOTIC: [8] Undefined variable: hasQuery D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Apps\Angels\Controller\QueryController.class.php 第 200 行.
+NOTIC: [2] file_get_contents(Public/weixin/zxfwjsapi_ticket.json): failed to open stream: No such file or directory D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 51 行.
+NOTIC: [8] Trying to get property of non-object D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 52 行.
+NOTIC: [2] file_get_contents(Public/weixin/zxfwaccess_token.json): failed to open stream: No such file or directory D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 74 行.
+NOTIC: [8] Trying to get property of non-object D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 75 行.
+NOTIC: [2] Creating default object from empty value D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 82 行.
+NOTIC: [2] fopen(Public/weixin/zxfwaccess_token.json): failed to open stream: No such file or directory D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 84 行.
+NOTIC: [2] fwrite() expects parameter 1 to be resource, boolean given D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 85 行.
+NOTIC: [2] fclose() expects parameter 1 to be resource, boolean given D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 86 行.
+NOTIC: [2] Creating default object from empty value D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 60 行.
+NOTIC: [2] fopen(Public/weixin/zxfwjsapi_ticket.json): failed to open stream: No such file or directory D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 62 行.
+NOTIC: [2] fwrite() expects parameter 1 to be resource, boolean given D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 63 行.
+NOTIC: [2] fclose() expects parameter 1 to be resource, boolean given D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 64 行.
+NOTIC: [8] Undefined variable: prodata D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Apps\Angels\Controller\QueryController.class.php 第 207 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-11-13T18:12:19+08:00 ] 127.0.0.1 /Angels/Query/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.050002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.050002s ]
+
+[ 2018-11-13T18:12:24+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0140s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:12:28+08:00 ] 127.0.0.1 /Angels/Agent
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:12:30+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.029002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.029002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:12:32+08:00 ] 127.0.0.1 /Angels/Wechat
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:12:33+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:17:07+08:00 ] 127.0.0.1 /Angels/Feedback
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:17:07+08:00 ] 127.0.0.1 /Angels/Feedback/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.026001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.026001s ]
+
+[ 2018-11-13T18:17:11+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.029001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.029001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0120s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:17:15+08:00 ] 127.0.0.1 /Angels/News
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.030001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.030001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 1 ORDER BY news_addtime DESC LIMIT 0,20   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:17:16+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:17:23+08:00 ] 127.0.0.1 /Angels/apply
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.030002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.030002s ]
+SQL: SHOW COLUMNS FROM `fw_dltype` [ RunTime:0.0120s ]
+SQL: SELECT `dlt_id`,`dlt_name` FROM `fw_dltype` WHERE `dlt_unitcode` = '3321' ORDER BY dlt_level ASC,dlt_id ASC  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:17:32+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0150s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:18:53+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:19:16+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.019001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.019001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0100s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2018-11-13T18:19:47+08:00 ] 127.0.0.1 /Angels/Feedback
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.031002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.031002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:19:47+08:00 ] 127.0.0.1 /Angels/Feedback/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.026001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.026001s ]
+
+[ 2018-11-13T18:20:08+08:00 ] 127.0.0.1 /Angels/Feedback/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024001s ]
+SQL: SHOW COLUMNS FROM `fw_jffeedback` [ RunTime:0.0120s ]
+SQL: INSERT INTO `fw_jffeedback` (`fb_unitcode`,`fb_type`,`fb_userid`,`fb_username`,`fb_contact`,`fb_tel`,`fb_qq`,`fb_email`,`fb_content`,`fb_addtime`,`fb_ip`,`fb_state`) VALUES ('3321','1','66','test','wer','41251245125','522402295','','wsrthrthr','1542104408','127.0.0.1','0') [ RunTime:0.0180s ]
+
+[ 2018-11-13T18:20:09+08:00 ] 127.0.0.1 /Angels/Feedback/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.031002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.031002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:20:09+08:00 ] 127.0.0.1 /Angels/Feedback/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.083004s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.083004s ]
+
+[ 2018-11-13T18:21:14+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:24:49+08:00 ] 127.0.0.1 /Angels/About
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:25:22+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0140s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:25:23+08:00 ] 127.0.0.1 /Angels/About
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:25:42+08:00 ] 127.0.0.1 /Angels/News
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 1 ORDER BY news_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:25:43+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:26:23+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0140s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:26:24+08:00 ] 127.0.0.1 /Angels/Xiu
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 2 ORDER BY news_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:26:26+08:00 ] 127.0.0.1 /Angels/Xiu/detail/news_id/23
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.030002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.030002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_id` = 23 AND `news_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:26:30+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:26:33+08:00 ] 127.0.0.1 /Angels/Query
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022001s ]
+NOTIC: [8] Undefined variable: hasQuery D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Apps\Angels\Controller\QueryController.class.php 第 200 行.
+NOTIC: [2] file_get_contents(Public/weixin/zxfwjsapi_ticket.json): failed to open stream: No such file or directory D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 51 行.
+NOTIC: [8] Trying to get property of non-object D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 52 行.
+NOTIC: [2] file_get_contents(Public/weixin/zxfwaccess_token.json): failed to open stream: No such file or directory D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 74 行.
+NOTIC: [8] Trying to get property of non-object D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 75 行.
+NOTIC: [2] Creating default object from empty value D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 82 行.
+NOTIC: [2] fopen(Public/weixin/zxfwaccess_token.json): failed to open stream: No such file or directory D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 84 行.
+NOTIC: [2] fwrite() expects parameter 1 to be resource, boolean given D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 85 行.
+NOTIC: [2] fclose() expects parameter 1 to be resource, boolean given D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 86 行.
+NOTIC: [2] Creating default object from empty value D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 60 行.
+NOTIC: [2] fopen(Public/weixin/zxfwjsapi_ticket.json): failed to open stream: No such file or directory D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 62 行.
+NOTIC: [2] fwrite() expects parameter 1 to be resource, boolean given D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 63 行.
+NOTIC: [2] fclose() expects parameter 1 to be resource, boolean given D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Tp\Library\Org\Util\Jssdk.class.php 第 64 行.
+NOTIC: [8] Undefined variable: prodata D:\Aroot\myphp_www\PHPTutorial\WWW\angels\Apps\Angels\Controller\QueryController.class.php 第 207 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2018-11-13T18:26:33+08:00 ] 127.0.0.1 /Angels/Query/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.018001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.018001s ]
+
+[ 2018-11-13T18:26:36+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.023002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.023002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:26:37+08:00 ] 127.0.0.1 /Angels/Agent
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.019001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:26:40+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.019001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.019001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:26:41+08:00 ] 127.0.0.1 /Angels/Wechat
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.019001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.019001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:27:43+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0020s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0120s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:28:15+08:00 ] 127.0.0.1 /Angels/apply
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.025002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.025002s ]
+SQL: SHOW COLUMNS FROM `fw_dltype` [ RunTime:0.0110s ]
+SQL: SELECT `dlt_id`,`dlt_name` FROM `fw_dltype` WHERE `dlt_unitcode` = '3321' ORDER BY dlt_level ASC,dlt_id ASC  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:28:17+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:31:24+08:00 ] 127.0.0.1 /Angels/apply
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.023001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.023001s ]
+SQL: SHOW COLUMNS FROM `fw_dltype` [ RunTime:0.0130s ]
+SQL: SELECT `dlt_id`,`dlt_name` FROM `fw_dltype` WHERE `dlt_unitcode` = '3321' ORDER BY dlt_level ASC,dlt_id ASC  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:31:30+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.032002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.032002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0140s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:35:32+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0140s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:37:40+08:00 ] 127.0.0.1 /Angels/Xiu
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 2 ORDER BY news_addtime DESC LIMIT 0,20   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2018-11-13T18:37:41+08:00 ] 127.0.0.1 /Angels/Xiu/detail/news_id/23
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_id` = 23 AND `news_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:37:43+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:38:00+08:00 ] 127.0.0.1 /Angels/News
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_unitcode` = '3321' AND `news_type` = 1 ORDER BY news_addtime DESC LIMIT 0,20   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:38:01+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:38:37+08:00 ] 127.0.0.1 /Angels/About
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:38:45+08:00 ] 127.0.0.1 /Angels/Wechat
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:39:09+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_unitcode` = '3321' AND `dl_id` = 66 AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:39:11+08:00 ] 127.0.0.1 /Angels/Dealer
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SHOW COLUMNS FROM `fw_dltype` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `fw_dealer` WHERE `dl_id` = 66 AND `dl_unitcode` = '3321' AND `dl_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-11-13T18:39:12+08:00 ] 127.0.0.1 /Angels/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.022002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.022002s ]
+SQL: SHOW COLUMNS FROM `fw_jfmonews` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_jfmonews` WHERE `news_isgg` = 1 AND `news_unitcode` = '3321' ORDER BY news_addtime DESC LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_jfmobasic` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_jfmobasic` WHERE `bas_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_adinfo` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_adinfo` WHERE `ad_unitcode` = '3321' ORDER BY ad_addtime DESC LIMIT 5   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:39:13+08:00 ] 127.0.0.1 /Angels/Dealer
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+
+[ 2018-11-13T18:39:13+08:00 ] 127.0.0.1 /Angels/Dealer/login/ttamp/1542105553/sture/6f798d6427840eb9ed441ab1650210fc
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-11-13T18:39:14+08:00 ] 127.0.0.1 /Angels/Dealer/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020001s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_dealer` WHERE `dl_username` = 'test' AND `dl_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-13T18:39:21+08:00 ] 127.0.0.1 /Angels/Dealer/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_dealer` WHERE `dl_username` = 'test' AND `dl_unitcode` = '3321' LIMIT 1   [ RunTime:0.0010s ]
+

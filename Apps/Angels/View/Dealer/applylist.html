@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>代理申请审核</title>
+<include file="Com/head" />
+
+<style>
+
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b" style="background-color: white">
+	<i class="ui-icon-return" style="color:#E8E8E8" data-href="<{:U('./Angels/Dealer/index')}>"  ></i><h1 style="color: #0C0C0C">代理申请审核</h1>
+</header>
+<section class="ui-container" style="margin-top: 3px">
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+
+<foreach name='dllist' item='item'  key='key'>
+    <li class="ui-border-t" >
+        <div class="ui-list-info"   data-href="<{:U('./Angels/Dealer/applydetail?dlid='.$item['dl_id'].'')}>" >
+            <h4 class="ui-nowrap"><{$item.dl_name}> <if condition="$item.level_name neq '' ">(<{$item.level_name}>)</if><{$item.dlstt_name}></h4>
+			<p class="ui-nowrap">微信号:<{$item.dl_weixin}></p>
+			<p class="ui-nowrap">手机号:<{$item.dl_tel}></p>
+        </div>
+<!-- 		<div class="ui-btn-s ui-btn-primary disabled" data-href="<{:U('./Angels/Dealer/applyactive?dlid='.$item['dl_id'].'')}>" >通过</div>
+		<div class="ui-btn-s ui-btn-primary disabled" data-href="<{:U('./Angels/Dealer/applydelete?dlid='.$item['dl_id'].'')}>" >删除</div> -->
+    </li>
+</foreach>
+</ul>
+</section>
+<script>
+$('.ui-btn-s').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-list-info').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+</script>
+</body>
+</html>

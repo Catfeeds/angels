@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>核对订单</title>
+<include file="Com/head" />
+<script type="text/javascript" src="__PUBLIC__/angels/js/lrz.all.bundle.js"></script>
+<style>
+.kl-layout-horizontally-between{
+  box-sizing:border-box;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-justify-content:space-between;
+  justify-content:space-between;
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  align-items:center;
+}
+.lo-hr {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction:row-reverse;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.ui-radio input {
+	width:20px;
+	height:20px;
+}
+.ui-radio input:before {
+	width:16px;
+	height:16px;
+}
+.ui-radio input:checked:after{
+	width:10px;
+	height:10px;
+	left:4px;
+	top:4px;
+}
+.weui_uploader_input_wrp {
+    border: 1px solid #d9d9d9;
+    float: left;
+    height: 70px;
+    margin-bottom: 9px;
+    margin-right: 9px;
+    position: relative;
+    width: 70px;
+}
+.weui_uploader_input_wrp::after, .weui_uploader_input_wrp::before {
+    background-color: #fff;
+    content: "凭证";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.weui_uploader_input_wrp:active {
+    border-color: #999;
+}
+.weui_uploader_input_wrp:active::after, .weui_uploader_input_wrp:active::before {
+    background-color: #999;
+}
+.weui_uploader_input {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return"  data-href="<{:U('./Angels/Orders/shopcart')}>"  ></i><h1>核对订单</h1>
+</header>
+<section class="ui-container" >
+<ul class="ui-list ui-list-link  ui-border-tb address">
+ <li class="ui-border-t" data-href="<{:U('./Angels/Orders/orderaddress?dladd_id='.$dladd_id.'')}>"  >
+   <div class="ui-list-info">
+   <if condition="$dladd_id eq '0' ">
+   <h4 class="ui-nowrap">请选择收货地址</h4>
+   <else />
+   <h4 class="ui-nowrap"><{$dladd_address.dladd_contact}>　　<{$dladd_address.dladd_tel}></h4>
+   <p class="ui-nowrap"><{$dladd_address.dladd_address}></p>
+   </if>
+   </div>
+ </li>
+</ul>
+<div class="ui-whitespace">
+<p style="height: 8px;"></p>
+</div>
+<ul class="ui-list ui-list-text ui-list-text ui-border-tb">
+
+<foreach name='shopcartlist' item='item'  key='key'>
+<if condition="$item.pro_dlprice neq '' ">
+    <li class="ui-border-t"  >
+        <div class="ui-list-thumb">
+            <span style="background-image:url(__PUBLIC__/uploads/product/<{$item.pro_pic}>)" ></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap"><{$item.pro_name}></h4>
+			<p class="ui-nowrap"><if condition="($item.pro_price neq '') AND ($item.pro_price neq '0') ">零售价:<{$item.pro_price|number_format=2,'.',''}> 元　</if><if condition="($item.pro_dlprice neq '') AND ($item.pro_dlprice neq '0') ">代理价:<{$item.pro_dlprice|number_format=2,'.',''}> 元</if></p>
+        </div>
+		<div class="ui-badge-num"><{$item.sc_qty}></div>
+    </li>
+</if>
+</foreach>
+
+</ul>
+
+<div class="ui-whitespace" style="margin:5px 0 5px 0" >
+    <p  style="text-align:right">合计：<span id="total"><{$total|number_format=2,'.',''}></span> 元</p>
+</div>
+<div class="ui-form ui-border-t">
+	<input type="hidden"  id="ttamp" value="<{$ttamp}>">
+	<input type="hidden"  id="sture" value="<{$sture}>">	
+	<input type="hidden"  id="dladd_id" value="<{$dladd_id}>">
+	<input type="hidden" name="file_name" id="file_name"  value="" >
+	<div class="ui-form-item ui-border-b">
+		<label for="#">订单留言</label>
+		<input type="text" value=""  placeholder="请输入..." id="od_remark" >
+	</div>
+	<div class="ui-form-item ui-form-item-radio ui-border-b">
+		<label >支付方式</label>
+        <label class="ui-radio" for="radio" style="margin: 0 2px 0 80px;">
+            <input type="radio" checked="" name="radio" value="0">
+        </label>
+        <p style="font-size: 14px;">线下支付</p>
+        <!-- <label class="ui-radio" for="radio" style="margin: 0 2px 0 10px;">
+            <input type="radio" name="radio" value="1" <if condition='$hasBalance eq false'>disabled</if>>
+        </label>
+        <p <if condition='$hasBalance eq true'>style="color:red;font-size:14px;"<else/>style="color:#ccc;font-size: 14px;"</if>>余额(<{$my_balance|number_format=2,'.',''}>元)<{$hasBalance}></p> -->
+    </div>
+    <div class="ui-whitespace" id='od_paypic_label' style="margin:10px 0 20px 0;" >
+	    <h1>上传凭证<span style="color: red;font-size:20px;">*</span><span style="font-size:14px; font-weight:normal">(文件小于2M)</span></h1>
+		<div style="float:left;padding-right:5px;max-width:70px;display:none" id="img_div" >
+		<img id="img_file" style=" width:100%; border:none"  />
+	</div>
+	<div class="weui_uploader_input_wrp" id='od_paypic' style="background: #fff;"> 
+		<input id="pic_file" name="pic_file" class="weui_uploader_input js_file"  type="file"   accept="image/gif,image/jpeg,image/jpg,image/png" >
+	</div>
+</div>
+
+<!-- <div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary" id="submitorders"  >
+        确认提交订单
+    </button>
+</div> -->
+</section>
+<footer class="ui-footer" style="box-shadow:none;background-color:#FFF;height:50px;padding-top: 0">
+	<div class="kl-layout-horizontally-between" style="height:50px;line-height: 50px;">
+		<div id="pay_total" style="height:50px;padding:0 20px;color:red;font-weight:bold;">实付：<{$total|number_format=2,'.',''}>元</div>
+		<div id="submitorders" style="height:50px;padding:0 40px;background-color:#1FBAF3;color:#FFF;">提交</div>
+	</div>
+</footer>
+
+<script>
+	var total="<{$total|number_format=2,'.',''}>";
+	var my_balance="<{$my_balance|number_format=2,'.',''}>";
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+
+	$('.ui-list li').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+
+	$('.address li').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+
+	$("input[name='radio']").change(function(){  
+	    if($(this).is(":checked")&&$(this).val()==0){  
+	          // alert($(this).attr("autocomplete"));  
+	         $("#od_paypic_label").css('display','');
+	         $("#od_paypic").css('display','');
+	         $("#pay_total").html('实付：'+total+'元');
+	    }else if($(this).is(":checked")&&$(this).val()){
+	           $("#od_paypic_label").css('display','none');
+	           $("#od_paypic").css('display','none');
+	           $("#pay_total").html('实付：0.00元'); 
+	    }  
+	 });  
+
+	//点击提交
+	$("#submitorders").click(function(){
+		if($("#dladd_id").val() == "" || $("#dladd_id").val() == 0) { 
+			mpoptips("请选择收货地址","warn",2000);
+			return false; 
+		}
+		var pay_mode =$("input[name='radio']:checked").val();
+		// if (pay_mode==0)
+		// {
+		// 	if($("#file_name").val()== "") {
+		// 		mpoptips("请先上传凭证","warn",2000);
+		// 		return false;
+		// 	}
+		// }
+
+	    var od_remark = $("#od_remark").val();
+		var ttamp = $("#ttamp").val();
+		var sture = $("#sture").val();
+		var dladd_id = $("#dladd_id").val();
+		var file_name = $("#file_name").val();
+		try {
+			$.ajax({
+				type: 'POST',
+				url: '<{:U('./Angels/Orders/submitorders')}>',
+				data: {
+					ttamp:ttamp,
+					sture:sture,
+					dladd_id:dladd_id, 
+					od_remark:od_remark,
+					file_name: file_name,
+					pay_mode:pay_mode
+				},
+				dataType: 'json',
+				timeout: 30000,
+				success: function (data) {
+
+					var stat=0;
+					stat=parseInt(data.stat);
+					
+					if (stat == 1) {
+						alert(data.msg);
+						location.href = "<{:U('./Angels/Orders/index')}>";
+						return false; 
+					}else if(stat == 2){
+						 mpoptips(data.msg,"warn",2000);
+						 location.href = "<{:U('./Angels/Index/index')}>";
+						 return false; 
+					}else{
+						 mpoptips(data.msg,"warn",2000);
+						 return false; 
+					}
+				},
+				error: function (xhr, type) {
+					mpoptips("超时或服务错误","warn",2000);
+					return false; 
+				}
+			});
+		} catch (e) {
+			mpoptips(e,"warn",2000);
+			return false; 
+		}
+	});
+</script>
+
+<script>
+(function(){
+    $("#pic_file").change(function(){
+         lrz(this.files[0], {width: 800})
+            .then(function (rst) {
+                //console.log(rst);
+				 var el=$.loading({
+						content:'上传中...',
+				 });
+                $.ajax({
+                    url: '<{:U('./Angels/Dealer/uploadpic')}>',
+                    type: 'post',
+                    data: {"pic_file":rst.base64,"ttamp":"<{$ttamp}>","sture":"<{$sture}>"},
+                    dataType: 'json',
+                    timeout: 200000,
+                    success: function (response) {
+					    el.loading("hide");
+                        if (response.stat == '0') {
+							$("#file_name").val(response.filename);
+							$("#img_file").attr('src',"__PUBLIC__/uploads/temp/"+response.filename); 
+							$("#img_div").show();
+                             return true;
+                        } else {
+							alert('图片提交失败,请刷新后提交');
+							return false;
+                        }
+                    },
+
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        el.loading("hide");
+                        if (textStatus == 'timeout') {
+                            a_info_alert('请求超时');
+                            return false;
+                        }
+
+                        alert(jqXHR.responseText);
+                    }
+                });
+                    
+            })
+            .catch(function (err) {
+               el.loading("hide");
+            })
+            .always(function () {
+               el.loading("hide");
+            });
+    });
+})();
+</script>
+</body>
+</html>

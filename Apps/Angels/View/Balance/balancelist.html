@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title><{$Think.config.QY_COMPANY}>-余额明细</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/angels/css/font.css" />
+<style>
+.ui-border-t span.jicon {
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+    padding: 0;
+    position: inherit;
+}
+
+.ui-btn:before{
+	border:0;
+}
+.kl-layout-horizontally-between{
+  box-sizing:border-box;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-justify-content:space-between;
+  justify-content:space-between;
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  align-items:center;
+}
+.lo-hr {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction:row-reverse;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b" style="background-image:none;">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Balance/index')}>"></i>
+	<h1>余额明细</h1>
+</header>
+<section class="ui-container">
+<foreach name='list' item='item'  key='key'>
+<ul class="ui-list ui-list-text ui-border-tb">
+	<li class="ui-border-t" style="background-image:none;position:0;">
+		<div class="my_recharge_ls" style='width:100%;'>
+			<div class="kl-layout-horizontally-between">
+				<span style="font-size:14px;">
+					<!-- 1-公司手动增减 2-订单增减  3-提现增减 (对于收方则是增，对于发方则是减) 4-代理充值5-代理提现 -->
+					<switch name="item.bl_type">
+					    <case value="1">公司手动增减</case>
+					    <case value="2">订单增减</case>
+					    <case value="3">提现增减</case>
+					    <case value="4">
+					    	<if condition="$item.bl_receiveid eq $user_id">充值</if>
+					    	<if condition="$item.bl_sendid eq $user_id">下级充值</if>
+						</case>
+					    <case value="5">提现</case>
+					    <default />
+					    <span style="font-size:14px;font-weight:bold;">
+					</switch>
+				</span>
+				<span style="font-size:14px;"><{$item.bl_addtime|date='Y-m-d',###}></span>
+			</div>
+			<div class="kl-layout-horizontally-between">
+				<switch name="item.bl_state">
+				    <case value="1"><span style="font-size:14px;color:red;font-weight:bold;"></case>
+				    <case value="2"><span style="font-size:14px;color:#008800;font-weight:bold;"></case>
+				    <default /><span style="font-size:14px;font-weight:bold;">
+				</switch>
+					<if condition="$item.bl_receiveid eq $user_id">+</if>
+					<if condition="$item.bl_sendid eq $user_id">-</if><{$item.bl_money|number_format=2,'.',''}></span>
+				<span style="font-size:12px;color: #cacaca"><{$item.bl_state_str}></span>
+			</div>
+		<div>
+	</li>
+</ul>
+</foreach>
+<if condition="$page neq ''" >
+	<div style="margin:0 auto;" >
+	<table class="page" cellpadding="0" cellspacing="0" align="center"><tbody>
+	<tr>
+	<td><{$page}></td>
+	</tr></tbody></table>
+	</div>
+</if>
+</section>
+<script>
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	$('.ui-tab-nav li').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	$('#balancels').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+</script>
+</body>
+</html>

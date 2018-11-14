@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>授权证书</title>
+<include file="Com/head" />
+<style>
+
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b" style="background-color: white">
+	<i class="ui-icon-return" style="color:#E8E8E8" onClick="history.back()"></i><h1 style="color: #0C0C0C">授权证书</h1>
+</header>
+<section class="ui-container" >
+<div class="ui-whitespace" style="margin:5px 0 5px 0" >
+    <notempty name="dl_number"><p>名称：<{$dl_name}></p></notempty>
+	<notempty name="dl_number"><p>编号：<{$dl_number}></p></notempty>
+	<notempty name="dl_weixin"><p>微信：<{$dl_weixin}></p></notempty>
+	<notempty name="dl_tel"><p>手机：<{$dl_tel}></p></notempty>
+	<notempty name="dl_tel"><p>级别：<{$dlt_namestr}></p></notempty>
+<!-- 	<notempty name="dl_referee_str"><p>当前推荐人：<{$dl_referee_str}></p></notempty>
+	<notempty name="dl_belong_str"><p>当前上家：<{$dl_belong_str}></p></notempty> -->
+	<!-- <notempty name="shouquandate"><p>有效期：<{$shouquandate}></p></notempty> -->
+</div>
+<div class="ui-whitespace" style="margin:5px 0 5px 0; text-align:center" >
+<{$dl_picstr}>
+</div>
+</section>
+</body>
+</html>

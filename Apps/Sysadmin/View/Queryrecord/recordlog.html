@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查询日志</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/sysadmin/js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/sysadmin/js/themes/icon.css">
+<script type="text/javascript" src="__PUBLIC__/sysadmin/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/sysadmin/js/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" >
+$(document).ready(function() {
+   $("#begintime").datebox("setValue", "<{$begintime}>"); 
+   $("#endtime").datebox("setValue", "<{$endtime}>"); 
+  });
+</script>
+</head>
+<body>
+<include file="Com/header" />
+<div class="main" >
+<div class="bound" >
+<div class="leftmenu">
+<include file="Com/leftmenu" />
+</div>
+<div class="rightcontent">
+<div class="content_nav" >
+<div class="nav_l"><a href="<{:U('Sysadmin/Index/index')}>">首页</a>　&gt;　<A href="#">查询日志</A></div>
+<div class="nav_r"></div>
+</div>
+<div class="height10"></div>
+<div>
+<div style="float:left; width:54%">
+<form action="<{:U('Sysadmin/Queryrecord/recordlog')}>"   method="post" name="fmmm"  >
+企业码：<input    type="text" size="5" maxlength="5"  name="qycode"  class="input"  value="<{$qycode}>"   >　　日期：<input    type="text" size="15" maxlength="15"  name="begintime"  class="easyui-datebox"  value=""   id="begintime"    >　到　<input    type="text" size="15" maxlength="15"  name="endtime"  class="easyui-datebox"  value=""   id="endtime"    >　<input type="submit" name="Submit" value="查询1"  > <input type="submit" name="byip" value="查询2"  ></form>
+</div>
+<div style="float:left; width:20%; text-align:left">
+<form action="<{:U('Sysadmin/Queryrecord/recordlog')}>"   method="post" name="fmmm"  >
+防伪码：<input    type="text" size="12" maxlength="30"  name="fwcode"  class="input"  value="<{$fwcode}>"   >　<input type="submit" name="Submit" value="查 询"  ></form>
+</div>
+<div style="float:right; width:25%; text-align:right">
+<form action="<{:U('Sysadmin/Queryrecord/recordlog')}>"   method="post" name="fmmm"  >
+来源：<input    type="text" size="12" maxlength="50"  name="referer"  class="input"  value="<{$referer}>"   >　<input type="submit" name="Submit" value="查 询"  ></form>
+<form action="<{:U('Sysadmin/Queryrecord/recordlog')}>"   method="post" name="fmmm"  >
+ip：<input    type="text" size="12" maxlength="50"  name="fip"  class="input"  value="<{$fip}>"   >　<input type="submit" name="Submit" value="查 询"  ></form>
+</div>
+</div>
+<div class="height10"></div>
+<div class="content">
+<table class="table_results" >
+<thead><tr>
+<th  width="10%" ><span>防伪码</span></th>
+<th  width="5%" ><span>状态</span></th>
+<th  width="15%" ><span>查询时间</span></th>
+<th  width="35%"  style="text-align:left" ><span>返回内容</span></th>
+<th  width="35%" style="text-align:left" ><span>查询来源</span></th>
+
+
+</tr></thead>
+<tbody>
+<foreach name='list' item='item'  key='key'>
+<tr class="<{$key%2 == 0?'odd':'even'}>" >
+<td class="data"><span><{$item.tmp_code}></span></td>
+<td class="data"><span><{$item.tmp_state}></span></td>
+<td class="data"><span><{$item.tmp_addtime}></span></td>
+<td class="data" style="text-align:left" ><span><{$item.tmp_remark|htmlspecialchars}></span></td>
+<td class="data" style="text-align:left" ><span><{$item.tmp_ip|htmlspecialchars}> <{$item.tmp_referer|htmlspecialchars}></span></td>
+</tr>
+</foreach>
+</tbody>
+</table>
+<div class="height10"></div>
+<table class="page" cellpadding="0" cellspacing="0"><tbody>
+<tr>
+<td><{$page}></td>
+</tr></tbody></table>
+</div>
+<div class="height20"></div>
+</div>
+</div>
+</div>
+<include file="Com/foot" />
+</body>
+</html>

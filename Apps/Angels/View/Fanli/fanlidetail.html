@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>返利明细</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/angels/css/font.css" />
+<style>
+
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" onClick="history.back()"  ></i><h1>返利明细</h1>
+</header>
+<section class="ui-container" >
+<div class="ui-whitespace">
+　
+</div>
+<ul class="ui-list ui-list-text  ui-border-tb">
+    <li class="ui-border-t">
+        <h4 class="ui-nowrap">返利类型：<{$fanliinfo.fl_typestr}></h4>
+    </li>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">金额：<{$fanliinfo.fl_moneystr}> 元</h4>
+    </li>
+
+	 <notempty name="fanliinfo.fl_orderid">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">相关订单：<{$fanliinfo.fl_orderid}></h4>
+    </li>
+	</notempty>
+
+	
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">时间：<{$fanliinfo.fl_addtime|date='Y-m-d H:i:s',###}></h4>
+    </li>
+	<notempty name="fanliinfo.fl_remark">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">说明：<{$fanliinfo.fl_remark}></h4>
+    </li>
+	</notempty>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">收款方：<notempty name="fanliinfo.fl_rdl_name"><{$fanliinfo.fl_rdl_name }></notempty> <notempty name="fanliinfo.fl_rdl_username">(<{$fanliinfo.fl_rdl_username }>)</notempty></h4>
+    </li>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">付款方：<notempty name="fanliinfo.fl_sdl_name"><{$fanliinfo.fl_sdl_name }></notempty> <notempty name="fanliinfo.fl_sdl_username">(<{$fanliinfo.fl_sdl_username }>)</notempty></h4>
+    </li>
+	<li class="ui-border-t">
+        <h4 class="ui-nowrap">状态：<{$fanliinfo.fl_state_str}></h4>
+    </li>
+	
+</ul>
+
+     
+</section>
+
+
+<script>
+(function (){
+
+		$('.ui-icon-return').click(function(){
+			if($(this).data('href')){
+				location.href= $(this).data('href');
+			}
+		});	
+		
+		
+})();
+</script>
+</body>
+
+</html>

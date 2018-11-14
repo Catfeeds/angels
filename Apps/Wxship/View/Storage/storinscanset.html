@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>添加入库</title>
+<include file="Com/head" />
+<style>
+.ui-icon-home{
+    position: absolute;
+    right: 10px;
+    top: 5%;
+}
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return"   data-href="<{:U('./Wxship/Index/index')}>"  ></i><h1>添加入库</h1><i class="ui-icon-home" data-href="<{:U('./Wxship/Index/index')}>" ></i>
+</header>
+<section class="ui-container">
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+<div class="ui-form ui-border-t">
+    <form action="<{:U('./Wxship/Storage/storinscan')}>"  id="fmm"  method="post" >
+	 
+	 <div class="ui-form-item ui-border-b">
+            <label>入库单号</label>
+            <input    type="text"  name="stor_number" id="stor_number"   value="<{$stor_number}>"  placeholder="填写入库单号" >
+     </div>
+	 
+	 <div class="ui-form-item ui-border-b">
+            <label>入库仓库</label>
+            <div class="ui-select">
+               <select name="stor_whid" id="stor_whid"    >
+				<option value="0"   >选择仓库</option>
+				<volist name='warehouselist' id='vo' key='key' >
+				<option value="<{$vo.wh_id}>"  <if condition="$vo.wh_id eq $stor_whid" >selected</if> ><{$vo.wh_name}></option>
+				</volist>
+				</select>
+            </div>
+     </div>
+	 
+	  <div class="ui-form-item ui-border-b">
+            <label>入库产品</label>
+            <div class="ui-select">
+			<select name="stor_pro" id="stor_pro"   >
+			<option value="0"   >选择产品</option>
+			<volist name='productlist' id='vo' key='key' >
+			<option value="<{$vo.pro_id}>"  <if condition="$vo.pro_id eq $stor_pro" >selected</if>  ><{$vo.pro_name}></option>
+			</volist>
+			</select>
+            </div>
+     </div>
+	  <if condition="$isshipprodate eq '1' ">
+	 <div class="ui-form-item ui-border-b">
+            <label>生产日期</label>
+            <input    type="text"  name="stor_prodate" id="stor_prodate"   value="<{$stor_prodate}>"   placeholder="格式:2017年10月10日" >
+     </div>
+	 </if>
+	 <if condition="$isshipbatchnum eq '1' ">
+	 <div class="ui-form-item ui-border-b">
+            <label>生产批号</label>
+                <input    type="text"  name="stor_batchnum" id="stor_batchnum"   value="<{$stor_batchnum}>"   >
+     </div>
+	 </if>
+	  <div class="ui-form-item ui-border-b">
+            <label>备注说明</label>
+                <input    type="text"  name="stor_remark" id="stor_remark"   value="<{$stor_remark}>"   >
+     </div>
+	 
+	 
+    </form>
+</div>
+
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary"  id="storscan" >下一步扫码</button>
+</div>
+
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+</section>
+
+<script>
+(function (){
+	
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+
+	$('.ui-icon-home').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+	$("#storscan").click(function(){
+		
+		if($("#stor_number").val() == "") { 
+			mpoptips("请填写入库单号","warn",2000);
+			return false; 
+		} 
+
+		if(parseInt($("#stor_whid").val()) == 0 ) { 
+			mpoptips("请选择仓库","warn",2000);
+			return false; 
+		} 
+		
+		
+		if(parseInt($("#stor_pro").val()) == 0 ) { 
+			mpoptips("请选择产品","warn",2000);
+			return false; 
+		}
+		
+
+		$("#fmm").submit();
+	});
+	
+		
+})();
+</script>
+
+</body>
+</html>

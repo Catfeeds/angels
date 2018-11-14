@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>我的返利</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/angels/css/font.css" />
+<style>
+.ui-border-t span.jicon {
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+    padding: 0;
+    position: inherit;
+}
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Dealer/index')}>"  ></i><h1>我的返利</h1>
+</header>
+<section class="ui-container">
+<ul class="ui-row">
+<li class="ui-col ui-col-50">
+<div style="border:solid 1px #dcdcdc; padding:20px 0 20px 0; text-align:center"><if condition="$dl_name neq ''" ><{$dl_name}></if> <if condition="$dl_weixin neq ''" >(<{$dl_weixin}>)</if></div>
+</li>
+<li class="ui-col ui-col-50">
+<div style="border:solid 1px #dcdcdc; border-left:none; padding:20px 0 20px 0; text-align:center"><{$addfl|number_format=2,'.',''}>元</div>
+</li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<ul class="ui-list ui-list-link ui-border-tb">
+    <li class="ui-border-t" data-href="<{:U('./Angels/Fanli/fanlilist')}>" >
+        <div class="ui-list-thumb">
+            <span class="jicon list"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">返利明细</h4>
+        </div>
+    </li>
+	<li class="ui-border-t" data-href="<{:U('./Angels/Fanli/paylist')}>" >
+        <div class="ui-list-thumb">
+            <span class="jicon forward"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">我应付返利</h4>
+        </div>
+		
+    </li>
+	<li class="ui-border-t" data-href="<{:U('./Angels/Fanli/receivelist')}>" >
+        <div class="ui-list-thumb">
+            <span class="jicon reply"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">我应收返利</h4>
+        </div>
+		
+    </li>
+	<li class="ui-border-t" data-href="<{:U('./Angels/Fanli/recashlist')}>" >
+        <div class="ui-list-thumb">
+            <span class="jicon drawer-3"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">提现记录</h4>
+        </div>
+		
+    </li>
+	<if condition="$dl_level eq 1 ">
+	<li class="ui-border-t" data-href="<{:U('./Angels/Fanli/salemonthly')}>" >
+        <div class="ui-list-thumb">
+            <span class="jicon bars"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">按月业绩奖金</h4>
+        </div>
+		
+    </li>
+	</if>
+	<li class="ui-border-t" data-href="<{:U('./Angels/Dealer/referee')}>" >
+        <div class="ui-list-thumb">
+            <span  class="jicon users" ></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">推荐代理查看</h4>
+        </div>
+    </li>
+	
+	
+</ul>
+</section>
+
+<script>
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+
+$('.ui-list li').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+
+</script>
+</body>
+</html>

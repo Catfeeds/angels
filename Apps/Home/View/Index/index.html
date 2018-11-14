@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery.form.min.js"></script>
+<title>全国商品防伪查询中心</title>
+<script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+		
+			$("#btnquery").click(function() {
+				var options = {
+					url:"<{:U('Home/Index/ajaxres')}>",
+					type:"post",
+					dataType:"json", 
+					beforeSubmit:function (){
+						if($("#fwcode").val() == "") { 
+							$("#result").html("请输入防伪码！");
+							return false; 
+						} 
+						
+						var filter=/^\s*[0-9]{12,27}\s*$/; 
+						if  (!filter.test($("#fwcode").val())) { 
+							$("#result").html("防伪码只能填数字,不要有空格,长度不能少于12位！");
+							return false; 
+						}
+						$("#result").html("正在查询......");
+						$("#btnquery").attr("disabled", true);
+						return true;
+                    }, 
+					success:function (data){
+					    var msg="";
+						var stat=0;
+						stat=parseInt(data.stat);
+						if(stat==9){
+						    $("#checkcode").val(""); 
+						    $("#verify").show();
+							$("#verifyImg").attr("src","<{:U('Home/Index/verify')}>?"+ Math.random());
+							msg=data.msg;
+						}else{
+						    $("#verify").hide();
+							if(data.fwc==""){
+								msg=data.msg
+							}else{
+								msg="<b>您输入的防伪码：</b>"+data.fwc+"<br><b>查询结果：</b>"+data.msg
+							}
+							$("#fwcode").val(""); 
+						}
+						
+						$("#result").html(msg);
+						setTimeout(btnEnabled, 1000);
+                    }
+				};
+				$("#fwfm").ajaxForm(options);
+	 
+			 }); 
+			 
+			 function btnEnabled() {
+                $("#btnquery").attr("disabled", false);
+            }
+			
+            $("#verifyImg").click(function(){
+				$("#verifyImg").attr("src","<{:U('Home/Index/verify')}>?"+ Math.random());
+			});
+			
+
+	   }); 
+</script>
+</head>
+<body>
+<form action=""   method="post" name="fwfm" id="fwfm"  style="padding:0; margin:0">
+<div style="height:30px; line-height:30px; clear:both" ></div>
+<div style="text-align:center; padding-bottom:10px" ><img  src="__PUBLIC__/home/static/yz0.png" /></div>
+<div style="text-align:center" ><img  src="__PUBLIC__/home/static/yz2.png" /></div>
+<div  style="height:20px; line-height:20px; clear:both"></div>
+<div class="main" >
+
+<input type="hidden" name="referer" id="referer" value="<{$referer}>" />
+<div class="bound" >
+<div class="height22" ></div>
+<div class="height22" ></div>
+<input type="text" name="fwcode" id="fwcode" value="" class="input" size="32" />
+<input name="btnquery" id="btnquery" class="btnquery" value="查 询" type="submit">
+
+</div>
+
+
+</div>
+<div class="height50" id="verify"  style="display:none">
+验证码：<input    type="text" size="4" maxlength="4"  name="checkcode"  class="input"  value=""  id="checkcode"    > <img  alt="点击换另一个" title="点击换另一个"   style="vertical-align:middle; cursor:pointer"  id="verifyImg" src="<{:U('Home/Index/verify')}>"  />
+</div>
+<div id="result"  class="result"></div>
+<div class="height22"   style="padding-top:150px">Powered by：<a href="http://www.zxfw315.com/" target="_blank" >至信防伪科技</a></div>
+</form>
+</body>
+</html>

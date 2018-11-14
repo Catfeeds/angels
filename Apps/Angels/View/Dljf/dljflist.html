@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>积分记录</title>
+<include file="Com/head" />
+<style>
+
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Dljf/index')}>" ></i><h1>积分记录</h1>
+</header>
+<section class="ui-container">
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+<ul class="ui-list ui-list-text ui-list-link  ui-border-tb">
+
+<foreach name='list' item='item'  key='key'>
+    <li class="ui-border-t" data-href="<{:U('./Angels/Dljf/dljfdetail?dljf_id='.$item['dljf_id'].'')}>" >
+        <div class="ui-list-info">
+            <h1 class="ui-nowrap" ><{$item.dljf_jfstr}> <span style="font-size:0.7em; font-style:normal; color:#666666"><{$item.dljf_addtime|date='Y-m-d H:i:s',###}></span></h1>
+			<p class="ui-nowrap"><{$item.dljf_remark}></p>
+        </div>
+    </li>
+</foreach>
+
+</ul>
+
+<if condition="$page neq ''" >
+<div style="margin:0 auto;" >
+<table class="page" cellpadding="0" cellspacing="0" align="center"><tbody>
+<tr>
+<td><{$page}></td>
+</tr></tbody></table>
+</div>
+</if>
+
+</section>
+
+<script>
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+	
+$('.ui-list li').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+	
+</script>
+</body>
+</html>

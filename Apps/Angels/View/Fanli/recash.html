@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>返利提现</title>
+<include file="Com/head" />
+<style>
+
+</style>
+
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Fanli/receivelist')}>" ></i><h1>返利提现</h1>
+</header>
+<section class="ui-container" >
+<div class="ui-whitespace" style="margin:10px 0 10px 0" >
+    <p>付款代理：<notempty name="fl_sdl_name"><{$fl_sdl_name }></notempty> <notempty name="fl_sdl_username">(<{$fl_sdl_username}>)</notempty></p>
+</div>
+<div class="ui-whitespace" style="margin:10px 0 10px 0" >
+    <p>收款代理：<{$dl_name}> (<{$dl_username}>)</p>
+</div>
+<div class="ui-form ui-border-t">
+<form action="<{:U('./Angels/Fanli/recash_save')}>"  method="post" id="fmmm" name="fmmm" >
+<input type="hidden" name="ttamp" id="ttamp" value="<{$ttamp}>">	
+<input type="hidden" name="sture" id="sture" value="<{$sture}>">	
+<input type="hidden" name="fl_senddlid" id="fl_senddlid" value="<{$fl_senddlid}>" >	
+<input type="hidden" name="rc_money" id="rc_money" value="<{$dl_fanli2}>" >	
+<div class="ui-form-item ui-border-b">
+	<label for="#">待收金额 </label>
+	<input type="text" value="<{$dl_fanli|number_format=2,'.',''}> 元"  readonly >
+</div>
+<div class="ui-form-item ui-border-b">
+	<label for="#">可提金额 </label>
+	<input type="text" value="<{$dl_fanli2|number_format=2,'.',''}> 元"  readonly >
+</div>
+<div class="ui-form-item ui-border-b">
+	<label>开户银行</label>
+	<div class="ui-select">
+		<select name="rc_bank"  id="rc_bank"  >
+		    <option  value="0" >请选择开户银行</option>
+		    <foreach name='bankarr' item='item'  key='key'>
+			<option  value="<{$key}>" ><{$item}></option>
+			</foreach>
+		</select>
+	</div>
+</div>
+<div class="ui-form-item ui-border-b">
+	<label for="#">卡号/账号</label>
+	<input type="text" value=""  placeholder="卡号/账号必须与卡号姓名对应"  id="rc_bankcard" name="rc_bankcard" >
+</div>
+<div class="ui-form-item ui-border-b">
+	<label for="#">卡号姓名</label>
+	<input type="text" value="<{$dl_name}>"  placeholder=""  id="rc_name" name="rc_name" readonly >
+</div>
+
+<div class="ui-form-item ui-border-b">
+	<label for="#">账号登录密码</label>
+	<input type="password" value=""  placeholder="填写该账号的登录密码" id="rc_pwd" name="rc_pwd" >
+</div>
+</form>
+<ul class="ui-list ui-border-tb">
+<li class="ui-border-t">
+<div class="ui-list-info">
+            <h4 class="ui-nowrap">温馨提示</h4>
+			<p class="ui-nowrap">1、务必核对填写信息是否正确</p>
+            <p class="ui-nowrap">2、卡号和姓名必须一致</p>
+			<p class="ui-nowrap">3、只能提现到与收款代理姓名一致的卡号或账号</p>
+			<p class="ui-nowrap">4、只能提现<{$jiangetime}>天前的返利</p>
+			<p class="ui-nowrap">5、最低提现额度<{$edurecash}>元</p>
+</div>
+</li>		
+</ul>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary" id="recash" >
+        申请提现
+    </button>
+</div>
+
+</div>
+</section>
+<script>
+(function (){
+	
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+
+
+	//点击提交
+    $("#recash").click(function(){
+	
+            if(parseInt($("#rc_bank").val())<=0){
+				mpoptips("请选择开户银行","warn",2000);
+				return false; 
+			}
+			
+            if($("#rc_bankcard").val() == "") { 
+				mpoptips("请填写卡号或支付宝账号","warn",2000);
+				return false; 
+			} 
+			 
+
+			if($("#rc_pwd").val() == "") { 
+				mpoptips("请填写密码","warn",2000);
+				return false; 
+			}
+			
+			if($("#rc_money").val() == "") { 
+				mpoptips("可提现的金额为0,只能提现<{$jiangetime}>天前的返利","warn",2000);
+				return false; 
+			}
+			if(parseInt($("#rc_money").val())<=0){
+				mpoptips("可提现的金额为0,只能提现<{$jiangetime}>天前的返利","warn",2000);
+				return false; 
+			}
+			
+			
+			
+			var truthBeTold = window.confirm('请核实填写信息无误后确认提交!'); 
+			if(truthBeTold){
+				$("#fmmm").submit(); 
+			}else{
+			    return false; 
+			}
+			
+	});
+	
+		
+})();
+
+</script>
+</body>
+</html>

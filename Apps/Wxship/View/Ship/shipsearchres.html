@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>条码查询结果</title>
+<include file="Com/head" />
+<style>
+.ui-icon-home{
+    position: absolute;
+    right: 10px;
+    top: 5%;
+}
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return"   data-href="<{:U('./Wxship/Ship/shipsearch')}>"  ></i><h1>条码查询结果</h1><i class="ui-icon-home" data-href="<{:U('./Wxship/Index/index')}>" ></i>
+</header>
+<section class="ui-container">
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<if condition="$storinfo neq '' ">
+<div class="ui-whitespace">
+<p>入库详细</p>
+</div>
+<ul class="ui-list ui-list-text  ui-border-tb">
+    <li class="ui-border-t">
+        <h4 class="ui-nowrap">查询条码：<{$storinfo.brcode}></h4>
+    </li>
+	<notempty name="storinfo.dabiao">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">对应大标：<{$storinfo.dabiao}></h4>
+    </li>
+	</notempty>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">入库单号：<{$storinfo.stor_number}></h4>
+    </li>
+	<notempty name="storinfo.pro_name">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">对应产品：<{$storinfo.pro_name}></h4>
+    </li>
+	</notempty>
+	<notempty name="storinfo.wh_name">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">入库仓库：<{$storinfo.wh_name}></h4>
+    </li>
+	</notempty>
+	<notempty name="storinfo.stor_prodate">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">生产日期：<{$storinfo.stor_prodate}></h4>
+    </li>
+	</notempty>
+	<notempty name="storinfo.stor_batchnum">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">生产批号：<{$storinfo.stor_batchnum}></h4>
+    </li>
+	</notempty>
+     <li class="ui-border-t">
+        <h4 class="ui-nowrap">入库日期：<{$storinfo.stor_date|date='Y-m-d H:i:s',###}></h4>
+    </li>
+	<notempty name="storinfo.stor_remark">
+	 <li class="ui-border-t">
+      <h4 class="ui-nowrap">备注：<{$storinfo.stor_remark}></h4>
+    </li>
+	</notempty>
+</ul>
+
+<if condition="$isstordelete eq '1' ">
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+ <div class="ui-btn-wrap" style="text-align:center">
+    <button class="ui-btn ui-btn-primary" id="stordelete" data-href="<{:U('./Wxship/Storage/stordelete?stor_id='.$storinfo['stor_id'].'')}>"  >
+        删除入库
+    </button>
+</div>
+</if>
+
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+<div class="ui-whitespace">
+<p>出货详细</p>
+</div>
+</if>
+
+<if condition="$shipinfo eq '' ">
+<ul class="ui-list ui-list-text  ui-border-tb">
+    <li class="ui-border-t">
+        <h4 class="ui-nowrap">查询条码：<{$brcode}></h4>
+    </li>
+</ul>
+<div class="ui-whitespace">
+<p  style="text-align:center">暂无出货记录</p>
+</div>
+<else/>
+<ul class="ui-list ui-list-text  ui-border-tb">
+    <li class="ui-border-t">
+        <h4 class="ui-nowrap">查询条码：<{$brcode}></h4>
+    </li>
+	<notempty name="shipinfo.dabiao">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">对应大标：<{$shipinfo.dabiao}></h4>
+    </li>
+	</notempty>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">出货单号：<{$shipinfo.ship_number}></h4>
+    </li>
+	<notempty name="shipinfo.warehouse">
+	 <li class="ui-border-t">
+      <h4 class="ui-nowrap">出货仓库：<{$shipinfo.warehouse}></h4>
+    </li>
+	</notempty>
+	<notempty name="shipinfo.ship_pro_name">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">对应产品：<{$shipinfo.ship_pro_name}></h4>
+    </li>
+	</notempty>
+	 <notempty name="shipinfo.ship_proqty">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">对应数量：<{$shipinfo.ship_proqty}></h4>
+    </li>
+	</notempty>
+	<notempty name="shipinfo.ship_dealer_name">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">出货代理：<{$shipinfo.ship_dealer_name}></h4>
+    </li>
+	</notempty>
+	<notempty name="shipinfo.ship_prodate">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">生产日期：<{$shipinfo.ship_prodate}></h4>
+    </li>
+	</notempty>
+		<notempty name="shipinfo.ship_batchnum">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">生产批号：<{$shipinfo.ship_batchnum}></h4>
+    </li>
+	</notempty>
+	<li class="ui-border-t">
+      <h4 class="ui-nowrap">出货日期：<{$shipinfo.ship_date|date='Y-m-d H:i:s',###}></h4>
+    </li>
+	<notempty name="shipinfo.ship_remark">
+	 <li class="ui-border-t">
+      <h4 class="ui-nowrap">备注：<{$shipinfo.ship_remark}></h4>
+    </li>
+	</notempty>
+
+</ul>
+</if>
+
+<if condition="$isshipdelete eq '1' ">
+ <div class="ui-btn-wrap" style="text-align:center">
+    <button class="ui-btn ui-btn-primary" id="shdelete" data-href="<{:U('./Wxship/Ship/shipdelete?ship_id='.$shipinfo['ship_id'].'')}>"  >
+        删除出货
+    </button>
+</div>
+</if>
+
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+</section>
+
+<script>
+(function (){
+	
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+
+	$('.ui-icon-home').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+	$('#shdelete').click(function(){
+		var truthBeTold = window.confirm('该操作将彻底删除该记录,请谨慎操作!'); 
+		if(truthBeTold){
+			if($(this).data('href')){
+				location.href= $(this).data('href');
+			}
+		}
+	});	
+	
+	$('#stordelete').click(function(){
+		var truthBeTold = window.confirm('该操作将彻底删除该记录,请谨慎操作!'); 
+		if(truthBeTold){
+			if($(this).data('href')){
+				location.href= $(this).data('href');
+			}
+		}
+	});
+	
+		
+})();
+</script>
+
+</body>
+</html>

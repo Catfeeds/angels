@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>出货记录详细</title>
+<include file="Com/head" />
+<style>
+.ui-icon-home{
+    position: absolute;
+    right: 10px;
+    top: 5%;
+}
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return"   onclick="history.back()" ></i><h1>出货记录详细</h1><i class="ui-icon-home" data-href="<{:U('./Wxship/Index/index')}>" ></i>
+</header>
+<section class="ui-container">
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+<ul class="ui-list ui-list-text  ui-border-tb">
+    <li class="ui-border-t">
+        <h4 class="ui-nowrap">条码：<{$shipinfo.ship_barcode}></h4>
+    </li>
+	<notempty name="shipinfo.ship_ucode">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">大标：<{$shipinfo.ship_ucode}></h4>
+    </li>
+	</notempty>
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">单号：<{$shipinfo.ship_number}></h4>
+    </li>
+	<notempty name="shipinfo.pro_name">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">产品：<{$shipinfo.pro_name}></h4>
+    </li>
+	</notempty>
+	<notempty name="shipinfo.dl_name">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">代理：<{$shipinfo.dl_name}></h4>
+    </li>
+	</notempty>
+	 <notempty name="shipinfo.ship_proqty">
+	 <li class="ui-border-t">
+        <h4 class="ui-nowrap">数量：<{$shipinfo.ship_proqty}></h4>
+    </li>
+	</notempty>
+	<notempty name="shipinfo.warehouse">
+	 <li class="ui-border-t">
+      <h4 class="ui-nowrap">仓库：<{$shipinfo.warehouse}></h4>
+    </li>
+	</notempty>
+	<li class="ui-border-t">
+      <h4 class="ui-nowrap">日期：<{$shipinfo.ship_date|date='Y-m-d H:i:s',###}></h4>
+    </li>
+	<notempty name="shipinfo.ship_remark">
+	 <li class="ui-border-t">
+      <h4 class="ui-nowrap">备注：<{$shipinfo.ship_remark}></h4>
+    </li>
+	</notempty>
+
+</ul>
+<eq name="isshipdelete" value="1">
+ <div class="ui-btn-wrap" style="text-align:center">
+    <button class="ui-btn ui-btn-primary" id="shdelete" data-href="<{:U('./Wxship/Ship/shipdelete?ship_id='.$shipinfo['ship_id'].'')}>"  >
+        删除
+    </button>
+</div>
+<eq>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+</section>
+
+<script>
+(function (){
+	
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+
+	$('.ui-icon-home').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+	$('#shdelete').click(function(){
+		var truthBeTold = window.confirm('该操作将彻底删除该记录,请谨慎操作!'); 
+		if(truthBeTold){
+			if($(this).data('href')){
+				location.href= $(this).data('href');
+			}
+		}
+	});	
+	
+		
+})();
+</script>
+
+</body>
+</html>

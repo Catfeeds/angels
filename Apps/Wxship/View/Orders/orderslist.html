@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title><{$title}></title>
+<include file="Com/head" />
+<style>
+.ui-icon-home{
+    position: absolute;
+    right: 10px;
+    top: 5%;
+}
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return"   data-href="<{:U('./Wxship/Orders/index')}>"  ></i><h1><{$title}></h1><i class="ui-icon-home" data-href="<{:U('./Wxship/Index/index')}>" ></i>
+</header>
+<section class="ui-container" >
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+<foreach name='orderlist' item='item'  key='key'>
+<ul class="ui-list ui-list-text ui-border-tb">
+    <li class="ui-border-t active">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">订单号：<{$item.od_orderid}></h4>
+        </div>
+		<div class="ui-badge"><{$item.od_state_str}></div>
+    </li>
+	<foreach name="item['orderdetail']" item='item2'  key='key2'>
+    <li class="ui-border-t">
+        <div class="ui-list-icon">
+		    <if condition="$item2.oddt_propic eq '' ">
+			<span style="background-image:url(__PUBLIC__/wxship/static/nophoto.jpg)"></span>
+			<else/>
+            <span style="background-image:url(__PUBLIC__/uploads/product/<{$item2.oddt_propic}>)"></span>
+			</if>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap"><{$item2.oddt_proname}> (<{$item2.oddt_pronumber}>)</h4>
+			<p class="ui-nowrap">订购：<{$item2.oddt_qty}><{$item2.oddt_prounits}><{$item2.oddt_totalqty}> 已发：<{$item2.oddt_shipqty}> <if condition="$item2.oddt_shipqty neq '0' "><a href="<{:U('./Wxship/Orders/odshiplist?od_id='.$item2['oddt_odid'].'&odbl_id='.$item2['oddt_odblid'].'&oddt_id='.$item2['oddt_id'].'&od_state='.$od_state.'&back=1')}>" >已发记录</a></if></ </p>
+			
+        </div>
+		<{$item2.oddt_shipment}>
+    </li>
+   </foreach>
+
+	<li class="ui-border-t">
+	    <h4 class="ui-nowrap"><{$item.od_dl_name}> (<{$item.od_dl_tel}>)</h4>
+		<div class="ui-txt-info"><{$item.od_addtime|date='Y-m-d H:i:s',###}></div>
+	
+	</li>
+	<li class="ui-border-t">
+	    <h4 class="ui-nowrap">总额：<{$item.odbl_total|number_format=2,'.',''}> 元</h4>
+	    <{$item.caozuostr}>
+	</li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+</foreach>
+<if condition="$page neq ''" >
+<div style="margin:0 auto;" >
+<table class="page" cellpadding="0" cellspacing="0" align="center"><tbody>
+<tr>
+<td><{$page}></td>
+</tr></tbody></table>
+</div>
+</if>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+</section>
+<script>
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-icon-home').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-tab-nav li').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-btn').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+$('.ui-btn-s').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+
+
+</script>
+</body>
+</html>

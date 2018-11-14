@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>我的积分</title>
+<include file="Com/head" />
+<style>
+
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Index/index')}>" ></i><h1>我的积分</h1>
+</header>
+<section class="ui-container">
+
+<ul class="ui-row">
+<li class="ui-col ui-col-50">
+<div style="border:solid 1px #dcdcdc; padding:20px 0 20px 0; text-align:center">欢迎您, <if condition="$userinfo.jfuser_truename neq ''" > <{$userinfo.jfuser_truename}><else/><{$userinfo.jfuser_username}></if></div>
+</li>
+<li class="ui-col ui-col-50">
+<div style="border:solid 1px #dcdcdc; border-left:none; padding:20px 0 20px 0; text-align:center">我的积分：<{$userinfo.jfuser_jf}></div>
+</li>
+</ul>
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<ul class="ui-list ui-list-text ui-list-link ui-border-tb">
+    <li class="ui-border-t"  data-href="<{:U('./Angels//Member/addjf')}>" >
+        <div class="ui-list-thumb">
+            <span style="background-image:url(__PUBLIC__/demo3158/static/icon_73.png)"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">我要积分</h4>
+        </div>
+    </li>
+	
+	<li class="ui-border-t"  data-href="<{:U('./Angels/Member/jfrecord')}>" >
+        <div class="ui-list-thumb">
+            <span style="background-image:url(__PUBLIC__/demo3158/static/icon_73.png)"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">积分记录</h4>
+        </div>
+    </li>
+	
+    <li class="ui-border-t"  data-href="<{:U('./Angels//Member/exchange')}>" >
+        <div class="ui-list-thumb">
+            <span style="background-image:url(__PUBLIC__/demo3158/static/icon_73.png)"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">兑换记录</h4>
+        </div>
+    </li>
+	
+
+	
+	<li class="ui-border-t"  data-href="<{:U('./Angels/Member/profile')}>" >
+        <div class="ui-list-thumb">
+            <span style="background-image:url(__PUBLIC__/demo3158/static/icon_73.png)"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">个人资料</h4>
+        </div>
+    </li>
+	<li class="ui-border-t"  data-href="<{:U('./Angels/Member/updatepwd')}>" >
+        <div class="ui-list-thumb">
+            <span style="background-image:url(__PUBLIC__/demo3158/static/icon_73.png)"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">修改密码</h4>
+        </div>
+    </li>
+	<li class="ui-border-t"  data-href="<{:U('./Angels/Member/quit')}>" >
+        <div class="ui-list-thumb">
+            <span style="background-image:url(__PUBLIC__/demo3158/static/icon_73.png)"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">退出</h4>
+        </div>
+    </li>
+
+</ul>
+
+</section>
+
+<script>
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+	$('.ui-list li').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title><{$Think.config.QY_COMPANY}>-充值</title>
+<include file="Com/head" />
+<script type="text/javascript" src="__PUBLIC__/angels/js/lrz.all.bundle.js"></script>
+<style>
+.weui_uploader_input_wrp {
+    border: 1px solid #d9d9d9;
+    float: left;
+    height: 70px;
+    margin-bottom: 9px;
+    margin-right: 9px;
+    position: relative;
+    width: 70px;
+}
+.weui_uploader_input_wrp::after, .weui_uploader_input_wrp::before {
+    background-color: #fff;
+    content: "凭证";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.weui_uploader_input_wrp:active {
+    border-color: #999;
+}
+.weui_uploader_input_wrp:active::after, .weui_uploader_input_wrp:active::before {
+    background-color: #999;
+}
+.weui_uploader_input {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Balance/rechargelist')}>" ></i><h1>充值申请</h1>
+</header>
+<section class="ui-container" >
+<div class="ui-form ui-border-t">
+<form action="<{:U('./Angels/Balance/recharge_submit')}>" action="" enctype="multipart/form-data" method="post" id="fmmm" name="fmmm" >
+<input type="hidden" name="ttamp" id="ttamp" value="<{$ttamp}>">
+<input type="hidden" name="sture" id="sture" value="<{$sture}>">
+<input type="hidden" name="file_name" id="file_name"  value="" >
+
+<div class="ui-form-item ui-border-b">
+	<label>金额</label>
+	<input type="text" name="amount" id="amount" value="" placeholder="充值金额">
+</div>
+<div class="ui-whitespace" style="margin:10px 0 20px 0;width:100%" >
+    <h1>上传凭证<span style="font-size:0.8em; font-weight:normal">(文件小于2M)</span></h1>
+	<div style="float:left;padding-right:5px;max-width:70px;display:none" id="img_div" >
+		<img id="img_file" style=" width:100%; border:none"  />
+	</div>
+	<div class="weui_uploader_input_wrp"> 
+		<input id="pic_file" name="pic_file" class="weui_uploader_input js_file"  type="file"   accept="image/gif,image/jpeg,image/jpg,image/png" >
+	</div>
+</div>
+<div class="ui-form-item ui-border-tb" style="clear:both;">
+	<label for="#">备注</label>
+	<input type="text" value=""  placeholder="请输入..." id="remark" >
+</div>
+</form>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary" id="apply" >
+        提交申请
+    </button>
+</div>
+</div>
+</section>
+<script>
+(function (){
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+   
+	//点击提交
+    $("#apply").click(function(){
+			if($("#amount").val()==""||parseInt($("#amount").val())<0) { 
+				mpoptips("请填写充值金额","warn",2000);
+				return false; 
+			}	
+            if($("#file_name").val()=="") { 
+				mpoptips("请上传凭证","warn",2000);
+				return false; 
+			} 
+			$("#fmmm").submit();  		
+	});
+    
+	
+})();
+
+</script>
+<script>
+(function(){
+        $("#pic_file").change(function(){
+             lrz(this.files[0], {width: 800})
+                .then(function (rst) {
+                    //console.log(rst);
+					 var el=$.loading({
+							content:'上传中...',
+					 });
+                    $.ajax({
+                        url: '<{:U('./Angels/Dealer/uploadpic')}>',
+                        type: 'post',
+                        data: {"pic_file":rst.base64,"ttamp":"<{$ttamp}>","sture":"<{$sture}>"},
+                        dataType: 'json',
+                        timeout: 200000,
+                        success: function (response) {
+						    el.loading("hide");
+                            if (response.stat == '0') {
+								$("#file_name").val(response.filename);
+								$("#img_file").attr('src',"__PUBLIC__/uploads/temp/"+response.filename); 
+								$("#img_div").show();
+                                 return true;
+                            } else {
+								alert('图片提交失败,请刷新后提交');
+								return false;
+                            }
+                        },
+
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            el.loading("hide");
+                            if (textStatus == 'timeout') {
+                                a_info_alert('请求超时');
+                                return false;
+                            }
+
+                            alert(jqXHR.responseText);
+                        }
+                    });
+                        
+                })
+                .catch(function (err) {
+                   el.loading("hide");
+                })
+                .always(function () {
+                   el.loading("hide");
+                });
+        });
+		
+})();
+</script>
+</body>
+</html>

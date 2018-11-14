@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>产品详细</title>
+<include file="Com/head" />
+<style>
+
+</style>
+</head>
+<body ontouchstart >
+<header class="ui-header ui-header-positive ui-border-b" style="background-color: white">
+	<i class="ui-icon-return" style="color:#E8E8E8" data-href="<{:U('./Angels/Product/index')}>"  ></i><h1 style="color: #0C0C0C">产品详细</h1>
+</header>
+<section class="ui-container" >
+<div>
+<{$proinfo.pro_pic_str}>
+</div>
+
+<ul class="ui-list ui-list-text  ui-border-tb" > 
+    <li class="ui-border-t">
+        <p class="ui-nowrap">产品名称：<{$proinfo.pro_name}></p>
+    </li>
+	 <li class="ui-border-t">
+        <p class="ui-nowrap">产品编号：<{$proinfo.pro_number}></p>
+    </li>
+	<if condition="($proinfo.pro_price neq '') AND ($proinfo.pro_price neq '0') ">
+	 <li class="ui-border-t">
+        <p class="ui-nowrap">统一零售价：<{$proinfo.pro_price|number_format=2,'.',''}> 元</p>
+    </li>
+	</if>
+	<if condition="($proinfo.pro_link neq '') ">
+	<li class="ui-border-t">
+	<a href="<{$proinfo.pro_link}>" style="text-align:center" target="_blank" >点击购买</a>
+	</li>
+	</if>
+	
+	
+</ul>
+<div class="ui-whitespace" style="background-color:#FFFFFF; padding:15px"  id="prodesc">
+<{$proinfo.pro_desc}>
+</div>
+
+</section>
+<script>
+
+
+$('.ui-icon-return').click(function(){
+	if($(this).data('href')){
+		location.href= $(this).data('href');
+	}
+});
+</script>
+</body>
+</html>

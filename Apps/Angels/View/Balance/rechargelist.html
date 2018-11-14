@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title><{$Think.config.QY_COMPANY}>-充值</title>
+<include file="Com/head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/angels/css/font.css" />
+<style>
+.ui-border-t span.jicon {
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+    padding: 0;
+    position: inherit;
+}
+
+.ui-btn:before{
+	border:0;
+}
+.kl-layout-horizontally-between{
+  box-sizing:border-box;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-justify-content:space-between;
+  justify-content:space-between;
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  align-items:center;
+}
+.lo-hr {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction:row-reverse;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b" style="background-image:none;">
+	<i class="ui-icon-return" data-href="<{:U('./Angels/Balance/index')}>"></i>
+	<h1>充值</h1>
+	<button class="ui-btn" data-href="<{:U('./Angels/Balance/recharge')}>" style='border:0;background:transparent;color:white' id="recharge" >申请</button>
+</header>
+<section class="ui-container">
+<!-- <div class="ui-tab" id="tab1">
+    <ul class="ui-tab-nav ui-border-b">
+        <li <if condition="$ly_status eq '0' ">class="current"</if> data-href="<{:U('./Angels/Balance/rechargelist?ly_status=0')}>" >我的充值</li>
+        <li <if condition="$ly_status eq '1' ">class="current"</if>  data-href="<{:U('./Angels/Balance/rechargelist?ly_status=1')}>" >下级充值</li>
+    </ul>
+</div> -->
+<if condition="$ly_status eq 0">
+	<foreach name='mydata' item='item'  key='key'>
+	<ul class="ui-list ui-list-text ui-border-tb">
+		<li class="ui-border-t" style="background-image:none;position:0;">
+			<div class="my_recharge_ls" style='width:100%;'>
+				<div class="kl-layout-horizontally-between">
+					<span style="font-size:15px;">充值</span>
+					<span style="font-size:10px;"><{$item.pi_addtime|date='Y-m-d',###}></span>
+				</div>
+				<div class="kl-layout-horizontally-between">
+					<switch name="item.pi_state">
+					    <case value="1"><span style="font-size:14px;color:red;font-weight:bold;"></case>
+					    <case value="0"><span style="font-size:14px;color:#008800;font-weight:bold;"></case>
+					    <default /><span style="font-size:14px;font-weight:bold;">
+					</switch>
+						+<{$item.pi_money|number_format=2,'.',''}></span>
+					<span style="font-size:10px;color: #cacaca"><{$item.pi_state_str}></span>
+				</div>
+				<notempty name="item.pi_rcdl_str">
+				<div style="font-size:10px;"><{$item.pi_rcdl_str}></div>
+				</notempty>
+				<notempty name="item.pi_dealremark">
+				<div style="font-size:10px;color: #cacaca">处理备注：<{$item.pi_dealremark}></div>
+				</notempty>
+			<div>
+		</li>
+	</ul>
+	</foreach>
+</if>
+<if condition="$ly_status eq 1">
+	<foreach name='dldata' item='item'  key='key'>
+	<ul class="ui-list ui-list-text ui-border-tb">
+		<li class="ui-border-t" style="background-image:none;position:0px;">
+			<div class="dl_recharge_ls" style='width:100%;'>
+				<div class="kl-layout-horizontally-between">
+					<span style="font-size:15px;">充值</span>
+					<span style="font-size:10px;"><{$item.pi_addtime|date='Y-m-d',###}></span>
+				</div>
+				<div class="kl-layout-horizontally-between">
+					<span style="font-size:10px;"><{$item.pi_dl_str}></span>
+					<switch name="item.pi_state">
+					    <case value="1"><span style="font-size:14px;color:red;font-weight:bold;"></case>
+					    <case value="0"><span style="font-size:14px;color:#008800;font-weight:bold;"></case>
+					    <default /><span style="font-size:14px;font-weight:bold;">
+					</switch>
+						-<{$item.pi_money|number_format=2,'.',''}></span>
+				</div>
+				<notempty name="item.pi_remark">
+				<div style="font-size:10px;color: #cacaca">充值备注：<{$item.pi_remark}></div>
+				</notempty>
+				<notempty name="item.pi_dealremark">
+				<div style="font-size:10px;color: #cacaca">处理备注：<{$item.pi_dealremark}></div>
+				</notempty>
+				<if condition="$item.pi_state eq 0">
+					<div class="lo-hr" style="position:relative;">
+						<a href="#" class="ui-btn" id="pi_odcancel" style="color:#ccc;margin-left:10px;background:transparent;border:1px solid #ccc">取消</a>
+						<a href="#" class="ui-btn" id="pi_confirm" style="margin-left:10px;background:transparent;border:1px solid #18b4ed">确认</a>
+					</div>
+				</if>
+			<div>
+		</li>
+	</ul>
+	</foreach>
+</if>
+</div>
+</section>
+<script>
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	$('.ui-tab-nav li').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	$('#recharge').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	// var mybalanceArray = <{:json_encode($mydata)}>||[]; //注意，这里不要用双引号或单引号；
+	// var dlbalanceArray = <{:json_encode($dldata)}>||[]; //注意，这里不要用双引号或单引号；
+	// var ly_status = "<{$ly_status}>";
+
+	// $('.my_recharge_ls').each(function(index) {
+	// 			// console.log('li %d is:%o',index,this);
+	// 			if ($.isArray(mybalanceArray)&&mybalanceArray.length>index)
+	// 			{
+	// 				var odObject=mybalanceArray[index];
+	// 				$(this).click(function(){
+	// 					window.location.href="<{:U('./Angels/Balance/rechargedetail/pi_id')}>/"+odObject['pi_id']+"/ly_status/"+ly_status;
+	// 				});
+	// 			}	
+	// 		});
+
+	// $('.dl_recharge_ls').each(function(index) {
+	// 	// console.log('li %d is:%o',index,this);
+	// 	if ($.isArray(dlbalanceArray)&&dlbalanceArray.length>index)
+	// 	{
+	// 		var odObject=dlbalanceArray[index];
+	// 		$(this).click(function(){
+	// 			window.location.href="<{:U('./Angels/Balance/rechargedetail/pi_id')}>/"+odObject['pi_id']+"/ly_status/"+ly_status;
+	// 		});
+
+	// 		$(this).find("#pi_confirm").click(function(e){
+	// 			if($.isPlainObject(odObject))
+	// 			{
+	// 				// $.confirm('是否取消该充值记录?',function () {
+	// 				 	// $.toast("取消");
+	// 	               window.location.href="<{:U('./Angels/Balance/rechargedetail/pi_id')}>/"+odObject['pi_id']+"/ly_status/1/pi_state/1";
+	// 	            // });
+	// 			}
+	// 			e.stopPropagation();//终止事件冒泡  
+	// 		});
+	// 		$(this).find("#pi_odcancel").click(function(e){
+	// 			if($.isPlainObject(odObject))
+	// 			{
+	// 				// $.confirm('是否确认该订单?',function () {
+	// 				 	// $.toast("取消");
+	// 	                window.location.href="<{:U('./Angels/Balance/rechargedetail/pi_id')}>/"+odObject['pi_id']+"/ly_status/1/pi_state/2";
+	// 	            // });
+	// 			}
+	// 			e.stopPropagation();//终止事件冒泡  
+	// 		});
+	// 	}
+	// });
+</script>
+</body>
+</html>

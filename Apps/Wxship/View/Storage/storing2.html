@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no,adress=no">
+<title>入库结果</title>
+<include file="Com/head" />
+<style>
+.ui-icon-home{
+    position: absolute;
+    right: 10px;
+    top: 5%;
+}
+</style>
+</head>
+<body ontouchstart="" >
+<header class="ui-header ui-header-positive ui-border-b">
+	<i class="ui-icon-return" data-href="<{:U('./Wxship/Storage/storinscanset')}>" ></i><h1>入库结果</h1><i class="ui-icon-home" data-href="<{:U('./Wxship/Index/index')}>" ></i>
+</header>
+<section class="ui-container">
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+<ul class="ui-list ui-list-text ui-border-tb">
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">入库单号：<{$stor_number}></h4>
+        </div>
+    </li>
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">入库仓库：<{$whname}></h4>
+        </div>
+    </li>
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">入库产品：<{$proname}></h4>
+        </div>
+    </li>
+	<if condition="$stor_prodate neq '' ">
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">生产日期：<{$stor_prodate}></h4>
+        </div>
+    </li>
+	</if>
+	<if condition="$stor_batchnum neq '' ">
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">生产批号：<{$stor_batchnum}></h4>
+        </div>
+    </li>
+	</if>
+	<li class="ui-border-t">
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">备注说明：<{$stor_remark}></h4>
+        </div>
+    </li>
+</ul>
+<div class="ui-tips ui-tips-info">
+    <i></i><span>　成功：<{$success}>　　失败：<{$fail}></span>
+</div>
+
+<ul class="ui-list ui-list-text ui-border-tb">
+
+<foreach name='list' item='item'  key='key'>
+    <li class="ui-border-t"  >
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap"><{$key+1}>、<{$item.barcode}></h4>
+			<p class="ui-nowrap" ><{$item.error}></p>
+        </div>
+		<div class="ui-badge-muted"><{$item.qty}></div>
+    </li>
+</foreach>
+
+</ul>
+
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+
+<div class="ui-whitespace">
+<p>　</p>
+</div>
+
+<div class="ui-footer ui-footer-stable ui-btn-group ui-border-t">
+    <button class="ui-btn-lg"  id="storinscanset"  data-href="<{:U('./Wxship/Storage/storinscanset')}>" >
+        继续入库
+    </button>
+    <button class="ui-btn-lg"  id="storlist"  data-href="<{:U('./Wxship/Storage/storlist')}>" >
+        入库记录
+    </button>
+</div>
+</section>
+
+<script>
+(function (){
+	$('.ui-btn-s').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+	
+	$('.ui-icon-return').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+
+	$('.ui-icon-home').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+	
+	
+	$('#storinscanset').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+	$('#storlist').click(function(){
+		if($(this).data('href')){
+			location.href= $(this).data('href');
+		}
+	});
+	
+		
+})();
+</script>
+
+</body>
+</html>
