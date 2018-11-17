@@ -2,18 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>出货统计</title>
+<title>产品管理</title>
 <link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
 <script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/Public/mp/js/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="/Public/mp/js/themes/icon.css">
-<script type="text/javascript" src="/Public/mp/js/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="/Public/mp/js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" >
-$(document).ready(function() {
-   $("#begintime").datebox("setValue", "<?php echo ($begintime); ?>"); 
-   $("#endtime").datebox("setValue", "<?php echo ($endtime); ?>"); 
-  });
+        $(document).ready(function() {
+            $(".pro_jftype").click(function(){
+				if($(this).val()==1){
+				    $("#gudingjf").show();
+					$("#suijijf").hide();
+				}else{
+				    $("#gudingjf").hide();
+					$("#suijijf").show();
+				}
+			 });
+		 });
 </script>
 </head>
 <body>
@@ -176,68 +179,99 @@ function nemuclose(z,obj){
 </div>
 <div class="rightcontent">
 <div class="content_nav" >
-<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="#">出货统计</A></div>
-<div class="nav_r"> <a href="javascript:window.history.go(-1);" ><< 返 回</a></div>
-</div>
-<div class="height10"></div>
-<div>
-<div style="float:left; width:30%;">
-统计日期：从 <b  style="font-size:14px"><?php echo ($begintime); ?></b> 到 <b  style="font-size:14px"><?php echo ($endtime); ?></b>
-</div>
-<div style="float:right; width:65%; text-align:right">
-<form action="<?php echo U('Mp/Tongji/index');?>"   method="post" name="fmmm"  >
-日期：<input    type="text" size="15" maxlength="15"  name="begintime"  class="easyui-datebox"  value=""   id="begintime"    >　到　<input    type="text" size="15" maxlength="15"  name="endtime"  class="easyui-datebox"  value=""   id="endtime"    >　
-<select name="dlid"  ID="dlid" style="width:200px">
-<option value=0  >请选择出货方</option>	
-<?php if(($qypurview["90003"]) == "90003"): echo ($option_str); endif; ?>
-</select>　
-<input type="submit" name="Submit" value="查 询"  >
-</form>
-</div>
+<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="<?php echo U('Mp/Product/index');?>">产品管理</A>　&gt;　<A href="#"><?php echo ($atitle); ?></A></div>
+<div class="nav_r"></div>
 </div>
 <div class="height20"></div>
 <div class="content">
-<table class="table_results" >
-<thead><tr>
-<th  width="6%" ><span>序号</span></th>
-<th  width="28%"   style="text-align:left"><span>出货方</span></th>
-<th  width="28%"  style="text-align:left"><span>收货方</span></th>
-<?php if(($qypurview["90003"]) == "90003"): ?><th  width="12%"  ><span  >出货统计</span></th>
-<th  width="12%"  ><span  >出给下级统计</span></th>
-<th   ><span>操作</span></th>
-<?php else: ?>
-<th  width="12%"   ><span >统计</span></th>
-<th   ><span>操作</span></th><?php endif; ?>
+<form action="<?php echo U('Mp/Product/edit_save');?>"   method="post" name="fmmm"  enctype="multipart/form-data" >
+<input type="hidden" value="<?php echo ($proinfo["pro_id"]); ?>" name="pro_id" />
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+             <tr>     
+                  <td height="40"   width="25%" class="txtright" ></td>
+				  <td width="75%" class="txtleft" ></td>
+			  </tr>
+			  <tr>     
+                  <td height="40"   class="txtright" >产品名称：</td>
+				  <td class="txtleft" ><input    type="text" size="50" maxlength="50"  name="pro_name"  class="input"  value="<?php echo ($proinfo["pro_name"]); ?>"   >  * </td>
+			  </tr>
+			   <tr>     
+                  <td height="40"  class="txtright" > 产品编号：</td>
+				  <td  class="txtleft" ><input type="text" size="25" maxlength="25"  name="pro_number" class="input" value="<?php echo ($proinfo["pro_number"]); ?>" > *</td>
+			  </tr>
+			   <?php if($qypurview["20006"] == '20006' ): ?><tr>     
+                  <td height="40"  class="txtright" > 零售价：</td>
+				  <td  class="txtleft" ><input type="text" size="10" maxlength="10"  name="pro_price" class="input" value="<?php if(($proinfo["pro_price"] != '') AND ($proinfo["pro_price"] != '0') ): echo ($proinfo["pro_price"]); endif; ?>" > 元 *</td>
+			  </tr><?php endif; ?>
+			    <?php if($qypurview["20012"] == '20012' ): ?><tr>     
+                  <td height="40"  class="txtright" > 库存：</td>
+				  <td  class="txtleft" ><input type="text" size="10" maxlength="10"  name="pro_stock" class="input" value="<?php if(($proinfo["pro_stock"] != '') AND ($proinfo["pro_stock"] != '0') ): echo ($proinfo["pro_stock"]); endif; ?>" ></td>
+			  </tr><?php endif; ?>
+			   <tr>     
+                  <td height="40"  class="txtright" > 单位：</td>
+				  <td  class="txtleft" ><input type="text" size="10" maxlength="10"  name="pro_units" class="input" value="<?php echo ($proinfo["pro_units"]); ?>" > * 如：箱、盒</td>
+			  </tr>
+			   <?php if($qypurview["20007"] == '20007' ): ?><tr>     
+                  <td height="40"  class="txtright" > 产品包装比例：</td>
+				  <td  class="txtleft" >大标：<input type="text" size="4" maxlength="4"  name="pro_dbiao" class="input" value="<?php echo ($proinfo["pro_dbiao"]); ?>" >　小标：<input type="text" size="4" maxlength="5"  name="pro_xbiao" class="input" value="<?php echo ($proinfo["pro_xbiao"]); ?>" >　　(一个包装单位里面大标与小标比例，如没有则不用填或为0)</td>
+			  </tr><?php endif; ?>
+			   
+			   <tr>     
+                  <td height="40"  class="txtright" >产品类别：</td>
+				  <td  class="txtleft" >
+				  <select name="pro_typeid"   class="select" >
+					<option value="0"   >选择产品类别</option>
+					<?php if(is_array($typelist)): $key = 0; $__LIST__ = $typelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($key % 2 );++$key;?><option value="<?php echo ($vo["protype_id"]); ?>" style="font-weight:bold;" <?php echo ($vo["selected"]); ?> ><?php echo ($vo["protype_name"]); ?></option>
+					<?php if(is_array($vo['subarr'])): $i = 0; $__LIST__ = $vo['subarr'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub): $mod = ($i % 2 );++$i;?><option value="<?php echo ($sub["protype_id"]); ?>"  <?php echo ($sub["selected"]); ?> >　├<?php echo ($sub["protype_name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; endforeach; endif; else: echo "" ;endif; ?>
+				  </select> *
+				  </td>
+			  </tr>
+			  <tr>     
+                  <td height="40"  class="txtright" >产品图片：</td>
+				  <td  class="txtleft"  style="padding:5px 5px 10px 0" >
+				  <?php if(($proinfo["pro_pic_str"]) != ""): ?><a href="/Public/uploads/product/<?php echo ($proinfo["pro_pic"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic_str"]); ?></a><?php endif; ?> <input name="pic_file" type="file" /> (建议图片大小:300X300) <input type="hidden"  value="<?php echo ($proinfo["pro_pic"]); ?>" name="old_pro_pic" />
+				  </td>
+			  </tr>
+			   <tr>     
+                  <td height="40"  class="txtright" >产品详细图示：</td>
+				  <td  class="txtleft"  style="padding:5px 5px 10px 0" >
+				  <?php if(($proinfo["pro_pic2_str"]) != ""): ?><a href="/Public/uploads/product/<?php echo ($proinfo["pro_pic2"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic2_str"]); ?></a> <a href="<?php echo U('Mp/Product/delpic?proid='.$proinfo['pro_id'].'&pic=2');?>" >删</a><?php endif; ?> <input name="pic_file2" type="file" /> *竖版：建议图片大小:640X1000 (用于防伪结果显示) <input type="hidden"  value="<?php echo ($proinfo["pro_pic2"]); ?>" name="old_pro_pic2" />
+				  </td>
+			  </tr>
+			  <?php if($qypurview["20008"] == '20008' ): ?><tr>     
+                  <td height="40"  class="txtright" ></td>
+				  <td  class="txtleft" > <input name="pro_jftype" type="radio" value="1"  class="pro_jftype" <?php if(($proinfo["pro_jftype"]) == "1"): ?>checked<?php endif; ?>  />固定积分　　　<input name="pro_jftype" type="radio" value="2" class="pro_jftype" <?php if(($proinfo["pro_jftype"]) == "2"): ?>checked<?php endif; ?> />随机积分 </td>
+			  </tr>
+			  
+			   <tr id="gudingjf" <?php if(($proinfo["pro_jftype"]) == "2"): ?>style="display:none"<?php endif; ?>  >     
+                  <td height="40"  class="txtright" >固定积分：</td>
+				  <td  class="txtleft" ><input type="text" size="5" maxlength="8"  name="pro_jifen" class="input" value="<?php echo ($proinfo["pro_jifen"]); ?>" > *</td>
+			  </tr>
+			   <tr id="suijijf" <?php if(($proinfo["pro_jftype"]) == "1"): ?>style="display:none"<?php endif; ?>  >     
+                  <td height="40"  class="txtright" >随机积分范围：</td>
+				  <td  class="txtleft" ><input type="text" size="5" maxlength="8"  name="pro_jifen2" class="input" value="<?php echo ($proinfo["pro_jifen"]); ?>" >　<input type="text" size="5" maxlength="8"  name="pro_jfmax" class="input" value="<?php echo ($proinfo["pro_jfmax"]); ?>" > *</td>
+			  </tr><?php endif; ?>
+<!--		<?php if($qypurview["15001"] == '15001' ): ?><tr >     
+                  <td height="40"  class="txtright" >代理积分：</td>
+				  <td  class="txtleft" ><input type="text" size="5" maxlength="8"  name="pro_dljf" class="input" value="<?php echo ($proinfo["pro_dljf"]); ?>" ></td>
+			  </tr><?php endif; ?>
+-->
+			   <tr>     
+                  <td height="40"  class="txtright" >产品描述：</td>
+				  <td  class="txtleft" ><textarea cols="50" rows="10" name="pro_desc"  ><?php echo ($proinfo["pro_desc"]); ?></textarea><br /><br /></td>
+			  </tr>
+			   <tr>     
+                  <td height="40"  class="txtright" >备注：</td>
+			     <td  class="txtleft" ><textarea cols="50" rows="3" name="pro_remark"  ><?php echo ($proinfo["pro_remark"]); ?></textarea></td>
+			  </tr>
 
-</tr></thead>
-<tbody>
-<?php if(empty($list)): ?><tr class="odd" >
-<td class="data"  colspan="7"  style="text-align:center">没有下级经销商记录</td>
-</tr>
-<?php else: ?>
-<?php if(is_array($list)): $key = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($key % 2 );++$key;?><tr class="<?php echo ($key%2 == 0?'odd':'even'); ?>" >
-<td class="data" ><span><?php echo ($key); ?></span> </td>
-<td class="data" style="text-align:left"><span><?php echo ($dealer_chuhuo); ?></span></td>
-<td class="data" style="text-align:left"><span><?php echo ($vo["dl_name"]); ?>(<?php echo ($vo["dl_username"]); ?>)<?php echo ($vo["dl_type_str"]); ?></span></td>
-<?php if(($qypurview["90003"]) == "90003"): ?><td class="data" ><span><a href="<?php echo U('Mp/Tongji/detail?begintime='.$begintime.'&endtime='.$endtime.'&fdlid='.$dlid.'&sdlid='.$vo['dl_id']);?>" title="查看出货详细"  style="text-decoration:underline"  ><?php echo ($vo["count1"]); ?></a></span></td>
-<td class="data" ><span><?php echo ($vo["count2"]); ?></span></td>
-<td class="data" ><span><a href="<?php echo U('Mp/Tongji/index?begintime='.$begintime.'&endtime='.$endtime.'&dlid='.$vo['dl_id']);?>" title="查看收货方下级情况" >下级</a></span></td>
-<?php else: ?>
-<td class="data" ><span><a href="<?php echo U('Mp/Tongji/detail?begintime='.$begintime.'&endtime='.$endtime.'&fdlid='.$dlid.'&sdlid='.$vo['dl_id']);?>" title="查看出货详细" style="text-decoration:underline" ><?php echo ($vo["count1"]); ?></a></span></td>
-<td class="data" ><span><a href="<?php echo U('Mp/Tongji/detail?begintime='.$begintime.'&endtime='.$endtime.'&fdlid='.$dlid.'&sdlid='.$vo['dl_id']);?>" title="查看出货详细"  >详细</a></span></td><?php endif; ?>
-
-</tr><?php endforeach; endif; else: echo "" ;endif; endif; ?> 
-
-</tbody>
-</table>
-
-<?php if(($qypurview["90003"]) == "90003"): ?><div class="height20"  style="line-height:30px">注："出货统计"为"出货方"直接出货给"收货方"统计数量<br />　　"出给下级统计"为"收货方"出货给"直属下级"的统计数量</div><?php endif; ?>
-
-<div class="height10"></div>
-<table class="page" cellpadding="0" cellspacing="0"><tbody>
-<tr>
-<td><?php echo ($page); ?></td>
-</tr></tbody></table>
+			  <tr>  <td height="60" ></td>
+                    <td  class="txtleft"  >
+             <input type="submit" name="Submit" value="<?php echo ($atitle); ?>" class="botton" >　　　　<input name="" type="reset" value="返 回"  onClick="javascript:window.history.go(-1);" class="botton" >
+            </td>
+			  </tr>
+			</table>
+</form>
 </div>
 <div class="height20"></div>
 </div>

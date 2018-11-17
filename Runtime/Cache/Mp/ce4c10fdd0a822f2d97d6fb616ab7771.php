@@ -2,18 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>出货统计</title>
+<title>经销商管理</title>
 <link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
 <script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/Public/mp/js/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="/Public/mp/js/themes/icon.css">
-<script type="text/javascript" src="/Public/mp/js/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="/Public/mp/js/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" >
-$(document).ready(function() {
-   $("#begintime").datebox("setValue", "<?php echo ($begintime); ?>"); 
-   $("#endtime").datebox("setValue", "<?php echo ($endtime); ?>"); 
-  });
+<script language="JavaScript">
+<!--
+function toggleCollapse(z,obj){
+  $(z).toggle();
+  if($(z).css("display")=="none"){
+      $(obj).attr("src","/Public/cp/static/menu_plus.gif"); 
+  }else{
+      $(obj).attr("src","/Public/cp/static/menu_minus.gif"); 
+  }
+}
+//-->
 </script>
 </head>
 <body>
@@ -176,68 +178,31 @@ function nemuclose(z,obj){
 </div>
 <div class="rightcontent">
 <div class="content_nav" >
-<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="#">出货统计</A></div>
-<div class="nav_r"> <a href="javascript:window.history.go(-1);" ><< 返 回</a></div>
-</div>
-<div class="height10"></div>
-<div>
-<div style="float:left; width:30%;">
-统计日期：从 <b  style="font-size:14px"><?php echo ($begintime); ?></b> 到 <b  style="font-size:14px"><?php echo ($endtime); ?></b>
-</div>
-<div style="float:right; width:65%; text-align:right">
-<form action="<?php echo U('Mp/Tongji/index');?>"   method="post" name="fmmm"  >
-日期：<input    type="text" size="15" maxlength="15"  name="begintime"  class="easyui-datebox"  value=""   id="begintime"    >　到　<input    type="text" size="15" maxlength="15"  name="endtime"  class="easyui-datebox"  value=""   id="endtime"    >　
-<select name="dlid"  ID="dlid" style="width:200px">
-<option value=0  >请选择出货方</option>	
-<?php if(($qypurview["90003"]) == "90003"): echo ($option_str); endif; ?>
-</select>　
-<input type="submit" name="Submit" value="查 询"  >
-</form>
-</div>
+<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="<?php echo U('Mp/Dealer/index');?>">经销商管理</A>　&gt;　<A href="#">经销商架构树</A></div>
+<div class="nav_r"></div>
 </div>
 <div class="height20"></div>
 <div class="content">
-<table class="table_results" >
-<thead><tr>
-<th  width="6%" ><span>序号</span></th>
-<th  width="28%"   style="text-align:left"><span>出货方</span></th>
-<th  width="28%"  style="text-align:left"><span>收货方</span></th>
-<?php if(($qypurview["90003"]) == "90003"): ?><th  width="12%"  ><span  >出货统计</span></th>
-<th  width="12%"  ><span  >出给下级统计</span></th>
-<th   ><span>操作</span></th>
-<?php else: ?>
-<th  width="12%"   ><span >统计</span></th>
-<th   ><span>操作</span></th><?php endif; ?>
-
-</tr></thead>
-<tbody>
-<?php if(empty($list)): ?><tr class="odd" >
-<td class="data"  colspan="7"  style="text-align:center">没有下级经销商记录</td>
-</tr>
-<?php else: ?>
-<?php if(is_array($list)): $key = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($key % 2 );++$key;?><tr class="<?php echo ($key%2 == 0?'odd':'even'); ?>" >
-<td class="data" ><span><?php echo ($key); ?></span> </td>
-<td class="data" style="text-align:left"><span><?php echo ($dealer_chuhuo); ?></span></td>
-<td class="data" style="text-align:left"><span><?php echo ($vo["dl_name"]); ?>(<?php echo ($vo["dl_username"]); ?>)<?php echo ($vo["dl_type_str"]); ?></span></td>
-<?php if(($qypurview["90003"]) == "90003"): ?><td class="data" ><span><a href="<?php echo U('Mp/Tongji/detail?begintime='.$begintime.'&endtime='.$endtime.'&fdlid='.$dlid.'&sdlid='.$vo['dl_id']);?>" title="查看出货详细"  style="text-decoration:underline"  ><?php echo ($vo["count1"]); ?></a></span></td>
-<td class="data" ><span><?php echo ($vo["count2"]); ?></span></td>
-<td class="data" ><span><a href="<?php echo U('Mp/Tongji/index?begintime='.$begintime.'&endtime='.$endtime.'&dlid='.$vo['dl_id']);?>" title="查看收货方下级情况" >下级</a></span></td>
-<?php else: ?>
-<td class="data" ><span><a href="<?php echo U('Mp/Tongji/detail?begintime='.$begintime.'&endtime='.$endtime.'&fdlid='.$dlid.'&sdlid='.$vo['dl_id']);?>" title="查看出货详细" style="text-decoration:underline" ><?php echo ($vo["count1"]); ?></a></span></td>
-<td class="data" ><span><a href="<?php echo U('Mp/Tongji/detail?begintime='.$begintime.'&endtime='.$endtime.'&fdlid='.$dlid.'&sdlid='.$vo['dl_id']);?>" title="查看出货详细"  >详细</a></span></td><?php endif; ?>
-
-</tr><?php endforeach; endif; else: echo "" ;endif; endif; ?> 
-
-</tbody>
-</table>
-
-<?php if(($qypurview["90003"]) == "90003"): ?><div class="height20"  style="line-height:30px">注："出货统计"为"出货方"直接出货给"收货方"统计数量<br />　　"出给下级统计"为"收货方"出货给"直属下级"的统计数量</div><?php endif; ?>
-
+<div class="tree_l" >
+<div class="tree_t">结构树</div>
+<div style="padding:10px 10px 10px 0">
+<ul class="treelist" >
+<?php echo ($list_html); ?>
+</ul>
 <div class="height10"></div>
 <table class="page" cellpadding="0" cellspacing="0"><tbody>
 <tr>
 <td><?php echo ($page); ?></td>
 </tr></tbody></table>
+<div class="height10"></div>
+</div>
+</div>
+<div class="tree_r"  >
+<div class="tree_t"  >详细资料</div>
+<div style="padding:5px" >
+<iframe src="<?php echo U('Mp/Dealer/treedetail');?>" allowtransparency="true" style="background-color=transparent" title="test" frameborder="0" width="373" height="900"   scrolling="auto" name="dealerframe"></iframe>
+</div>
+</div>
 </div>
 <div class="height20"></div>
 </div>
