@@ -38,35 +38,49 @@
                   <td height="40"  class="txtright" >零售价：</td>
 				  <td  class="txtleft" ><{$proinfo.pro_price|number_format=2,'.',''}> 元</td>
 			  </tr>
-			  <foreach name='typelist' item='item'  key='key'>
+	
 			  <tr>     
-                  <td height="50"  class="txtright" valign="top"  style="padding-top:5px"><{$item.dlt_name}>：</td>
+                  <td height="50"  class="txtright" valign="top"  style="padding-top:5px">返利设置：</td>
 				  <td  class="txtleft"  style="padding-bottom:20px; line-height:26px">
-				  直推奖：<input    type="text"  size="6" maxlength="6"  name="pfl_fanli1<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_fanli1|number_format=2,'.',''}>"   >
-				   　间推奖：<input    type="text"  size="6" maxlength="6"  name="pfl_fanli2<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_fanli2|number_format=2,'.',''}>"   >
-				   　间推奖2：<input    type="text"  size="6" maxlength="6"  name="pfl_fanli3<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_fanli3|number_format=2,'.',''}>"   >
-				   　间推奖3：<input    type="text"  size="6" maxlength="6"  name="pfl_fanli4<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_fanli4|number_format=2,'.',''}>"   >
-				   　间推奖4：<input    type="text"  size="6" maxlength="6"  name="pfl_fanli5<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_fanli5|number_format=2,'.',''}>"   >
-				   　间推奖5：<input    type="text"  size="6" maxlength="6"  name="pfl_fanli6<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_fanli6|number_format=2,'.',''}>"   >
-				   　间推奖6：<input    type="text"  size="6" maxlength="6"  name="pfl_fanli7<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_fanli7|number_format=2,'.',''}>"   ><br />
-				  间推奖7：<input    type="text"  size="6" maxlength="6"  name="pfl_fanli8<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_fanli8|number_format=2,'.',''}>"   >
-				   　间推奖8：<input    type="text"  size="6" maxlength="6"  name="pfl_fanli9<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_fanli9|number_format=2,'.',''}>"   >
-				   　间推奖9：<input    type="text"  size="6" maxlength="6"  name="pfl_fanli10<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_fanli10|number_format=2,'.',''}>"   >
-				   　　买断返：<input    type="text"  size="6" maxlength="6"  name="pfl_maiduan<{$item.dlt_id}>"  class="input"  value="<{$item.pfl_maiduan|number_format=2,'.',''}>"   > 
+	<table class="table_results"   style="width:80%">
+	<thead><tr>
+	<th  width="20%" ><span>推荐级别</span></th>
+	<th  width="10%"  ><span></span></th>
+	<th  width="20%" ><span>被推荐级别</span></th>
+	<th  width="20%" ><span>直推返利</span></th>
+	<th  width="20%" ><span>间推返利</span></th>
+
+	</tr></thead>
+	<tbody>
+<foreach name='typelist' item='item'  key='key'>
+	<tr class="odd" >
+	<td class="data"  ><span><{$item.pfl_dltypename}></span></td>
+	<td class="data"  ><span>推荐</span></td>
+	<td class="data"><span><{$item.pfl_tjdltypename}></span></td>
+	<td class="data"><span><input    type="text"  size="6" maxlength="6"  name="pfl_fanli1_<{$item.pfl_dltype}>_<{$item.pfl_tjdltype}>"  class="input"  value="<{$item.pfl_fanli1|number_format=2,'.',''}>"   ></span></td>
+    <td class="data"><span><input    type="text"  size="6" maxlength="6"  name="pfl_fanli2_<{$item.pfl_dltype}>_<{$item.pfl_tjdltype}>"  class="input"  value="<{$item.pfl_fanli2|number_format=2,'.',''}>"   ></span></td>
+	</tr>
+ </foreach>
+	</tbody>
+	</table>
+
+					
+					
 					</td>
 			  </tr>
-              </foreach>
+  
 			  <tr>  <td height="60" ></td>
                     <td  class="txtleft"  >
-             <input type="submit" name="Submit" value="确认修改" class="botton" >　　　　<input name="" type="reset" value="返 回"  onClick="javascript:window.history.go(-1);" class="botton" >
+             <input type="submit" name="Submit" value="确认修改" class="botton" >　<input name="" type="reset" value="返 回"  onClick="javascript:window.history.go(-1);" class="botton" >
             </td>
 			  </tr>
 			   <tr>     
-                  <td height="40"  class="txtright" >说明：</td>
-				  <td  class="txtleft" >
+                  <td height="40"  class="txtright" ></td>
+				  <td  class="txtleft" ><!--
 				  直推奖-如：A总代 平级推荐 B总代 A获得B销售该产品的佣金<br />
 				  间推奖-如：A总代 平级推荐 B总代，B总代平级推荐C总代 A获得C销售该产品的佣金<br />
-				  佣金数字在1-0间，则以下单价的百分比计算，如0.03代表以下单价的3%计算，如果大于1，则以具体多少元计算<br />
+				  
+				  佣金数字在1-0间，则以下单价的百分比计算，如0.03代表以下单价的3%计算，如果大于1，则以具体多少元计算<br/>-->
 				  </td>
 			  </tr>
 			</table>

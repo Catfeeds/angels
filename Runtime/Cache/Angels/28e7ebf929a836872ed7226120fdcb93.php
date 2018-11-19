@@ -36,9 +36,9 @@
 <section class="ui-container" style="margin-top: 3px">
 <ul class="ui-list ui-list-text ui-list-link ui-border-tb">
 
-<?php if(is_array($list)): foreach($list as $key=>$item): ?><li class="ui-border-t"  data-href="<?php echo U('./Angels/Product/detail?proid='.$item['pro_id'].'');?>" >
+<?php if(is_array($list)): foreach($list as $key=>$item): ?><li class="ui-border-t"  data-href="<?php echo U('./Angels/Product/detail?pro_id='.$item['pro_id'].'');?>" >
         <div class="ui-list-thumb">
-            <span style="background-image:url(/Public/uploads/mobi/<?php echo ($item["pro_pic"]); ?>)"></span>
+            <span style="background-image:url(/Public/uploads/product/<?php echo ($item["pro_pic"]); ?>)"></span>
         </div>
         <div class="ui-list-info">
             <h4 class="ui-nowrap"><?php echo ($item["pro_name"]); ?></h4>

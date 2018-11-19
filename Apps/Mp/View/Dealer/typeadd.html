@@ -21,88 +21,112 @@
 <div class="content">
 <form action="<{:U('Mp/Dealer/type_save')}>"   method="post" name="fmmm" >
 <input type="hidden" value="<{$dltinfo.dlt_id}>" name="dlt_id" />
-<table width="100%" border="0" cellspacing="0" cellpadding="0" >
-             <tr>     
-                  <td height="40"   width="25%" class="txtright" ></td>
-				  <td width="75%" class="txtleft" ></td>
-			  </tr>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td height="40"   width="25%" class="txtright" ></td>
+			<td width="75%" class="txtleft" ></td>
+		</tr>
 
-			  <tr>     
-                  <td height="40"   class="txtright" >级别名称：</td>
-				  <td class="txtleft" ><input    type="text" size="25" maxlength="25"  name="dlt_name"  class="input"  value="<{$dltinfo.dlt_name}>"   >  * </td>
-			  </tr>
-			    <tr>     
-                  <td height="40"   class="txtright" >级别：</td>
-				  <td class="txtleft" >
-				  <select name="dlt_level"   class="select"  >
-				  <option  value="0" <eq name="dltinfo.dlt_level" value="0" >selected</eq> >选择级别</option>
-				  <option  value="1" <eq name="dltinfo.dlt_level" value="1" >selected</eq> >1　</option>
-				  <option  value="2" <eq name="dltinfo.dlt_level" value="2" >selected</eq> >2　</option>
-				  <option  value="3" <eq name="dltinfo.dlt_level" value="3" >selected</eq> >3　</option>
-				  <option  value="4" <eq name="dltinfo.dlt_level" value="4" >selected</eq> >4　</option>
-				  <option  value="5" <eq name="dltinfo.dlt_level" value="5" >selected</eq> >5　</option>
-				  <option  value="6" <eq name="dltinfo.dlt_level" value="6" >selected</eq> >6　</option>
-				  <option  value="7" <eq name="dltinfo.dlt_level" value="7" >selected</eq> >7　</option>
-				  <option  value="8" <eq name="dltinfo.dlt_level" value="8" >selected</eq> >8　</option>
-				  <option  value="9" <eq name="dltinfo.dlt_level" value="9" >selected</eq> >9　</option>
-				  </select>  </td>
-			  </tr>
-<!-- 			  <tr>     
-                  <td height="40"   class="txtright" >推荐返利1级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli1"  class="input"  value="<{$dltinfo.dlt_fanli1}>"   >   </td>
-			  </tr>
-			  <tr>     
-                  <td height="40"   class="txtright" >推荐返利2级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli2"  class="input"  value="<{$dltinfo.dlt_fanli2}>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利3级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli3"  class="input"  value="<{$dltinfo.dlt_fanli3}>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利4级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli4"  class="input"  value="<{$dltinfo.dlt_fanli4}>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利5级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli5"  class="input"  value="<{$dltinfo.dlt_fanli5}>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利6级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli6"  class="input"  value="<{$dltinfo.dlt_fanli6}>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利7级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli7"  class="input"  value="<{$dltinfo.dlt_fanli7}>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利8级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli8"  class="input"  value="<{$dltinfo.dlt_fanli8}>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利9级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli9"  class="input"  value="<{$dltinfo.dlt_fanli9}>"   >   </td>
-			  </tr>
-			  <tr>     
-                  <td height="40"   class="txtright" >推荐返利10级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli10"  class="input"  value="<{$dltinfo.dlt_fanli10}>"   >   </td>
-			  </tr> -->
-			   <tr>     
-                  <td height="40"   class="txtright" >首次下单额：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="10"  name="dlt_firstquota"  class="input"  value="<{$dltinfo.dlt_firstquota}>"   >   </td>
-			  </tr>
-			    <tr>     
-                  <td height="40"   class="txtright" >最低补货数量：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="10"  name="dlt_minnum"  class="input"  value="<{$dltinfo.dlt_minnum}>"   >   <br />(该级别代理每次下单时订单的最低拿货数，如产品也设置了最低拿货数，则先判断产品的，再判断订单的)</td>
-			  </tr>
+		<tr>
+			<td height="40"   class="txtright" >级别名称：</td>
+			<td class="txtleft" ><input    type="text" size="25" maxlength="25"  name="dlt_name"  class="input"  value="<{$dltinfo.dlt_name}>"   >  * </td>
+		</tr>
+		<tr>
+			<td height="40"   class="txtright" >级别：</td>
+			<td class="txtleft" >
+				<select name="dlt_level"   class="select"  >
 
 
-			  <tr>  <td height="60" ></td>
-                    <td  class="txtleft"  >
-             <input type="submit" name="Submit" value="<{$atitle}>" class="botton" >　　　　<input name="" type="reset" value="返 回"  onClick="javascript:window.history.go(-1);" class="botton" >
-            </td>
-			  </tr>
-			</table>
+					<if condition="$dltinfo.dlt_id gt '0' ">
+
+						<eq name="dltinfo.dlt_level" value="1" >
+							<option  value="1" selected >1　</option>
+						</eq>
+						<eq name="dltinfo.dlt_level" value="2" >
+							<option  value="2" selected >2　</option>
+						</eq>
+						<eq name="dltinfo.dlt_level" value="3" >
+							<option  value="3" selected >3　</option>
+						</eq>
+						<eq name="dltinfo.dlt_level" value="4" >
+							<option  value="4" selected >4　</option>
+						</eq>
+						<eq name="dltinfo.dlt_level" value="5" >
+							<option  value="5" selected >5　</option>
+						</eq>
+						<eq name="dltinfo.dlt_level" value="6" >
+							<option  value="6" selected  >6　</option>
+						</eq>
+						<eq name="dltinfo.dlt_level" value="7" >
+							<option  value="7"  selected >7　</option>
+						</eq>
+						<else/>
+						<option  value="0"  >选择级别</option>
+						<option  value="1"  >1　</option>
+						<option  value="2"  >2　</option>
+						<option  value="3"  >3　</option>
+						<option  value="4"  >4　</option>
+						<option  value="5"  >5　</option>
+						<option  value="6"  >6　</option>
+						<option  value="7"  >7　</option>
+					</if>
+
+				</select>  </td>
+		</tr>
+
+		<tr>
+			<td height="40"   class="txtright" >首次订单最低金额：</td>
+			<td class="txtleft" ><input    type="text" size="8" maxlength="10"  name="dlt_firstquota"  class="input"  value="<{$dltinfo.dlt_firstquota}>"   >   </td>
+		</tr>
+		<tr>
+			<td height="40"   class="txtright" >补货订单最低金额：</td>
+			<td class="txtleft" ><input    type="text" size="8" maxlength="10"  name="dlt_minnum"  class="input"  value="<{$dltinfo.dlt_minnum}>"   > </td>
+		</tr>
+
+		<if condition="$dltinfo.dlt_id gt '0' ">
+			<tr>
+				<td height="40"   class="txtright" >推荐返利设置：</td>
+				<td class="txtleft" >
+
+
+					<table class="table_results"   style="width:80%">
+						<thead><tr>
+							<th  width="20%" ><span>推荐级别</span></th>
+							<th  width="10%"  ><span></span></th>
+							<th  width="20%" ><span>被推荐级别</span></th>
+							<th  width="20%" ><span>直推返利</span></th>
+							<th  width="20%" ><span>间推返利</span></th>
+
+						</tr></thead>
+						<tbody>
+						<foreach name='typefanlilist' item='item'  key='key'>
+							<tr class="odd" >
+								<td class="data"  ><span><{$dltinfo.dlt_name}></span></td>
+								<td class="data"  ><span>推荐</span></td>
+								<td class="data"><span><{$item.dlt_name}></span></td>
+								<td class="data"><span><input    type="text"  size="6" maxlength="6"  name="tfl_fanli1<{$item.dlt_id}>"  class="input"  value="<{$item.tfl_fanli1|number_format=2,'.',''}>"   ></span></td>
+								<td class="data"><span><input    type="text"  size="6" maxlength="6"  name="tfl_fanli2<{$item.dlt_id}>"  class="input"  value="<{$item.tfl_fanli2|number_format=2,'.',''}>"   ></span></td>
+							</tr>
+						</foreach>
+						</tbody>
+					</table>
+
+
+
+
+
+				</td>
+			</tr>
+		</if>
+
+
+
+		<tr>  <td height="60" ></td>
+			<td  class="txtleft"  >
+				<input type="submit" name="Submit" value="<{$atitle}>" class="botton" >　　　　<input name="" type="reset" value="返 回"  onClick="javascript:window.history.go(-1);" class="botton" >
+			</td>
+		</tr>
+	</table>
 </form>
 </div>
 <div class="height20"></div>

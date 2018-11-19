@@ -55,7 +55,7 @@
 	</ul>
 </div><?php endif; ?>  
 
-<!-- <?php if(($qypurview["14000"]) == "14000"): ?><div class="menu_parent">
+ <?php if(($qypurview["14000"]) == "14000"): ?><div class="menu_parent">
 	<ul class="menu_sontitle" id="fu14" onClick="nemuclose('#zi14',this)" >返利管理</ul>
 	<ul class="menu_son" id="zi14">
 	<?php if(($qypurview["14001"]) == "14001"): ?><li><A href="<?php echo U('Mp/Fanli/index');?>" class="<?php echo ($curr =='fanlidllist' ?'curr':''); ?>" >代理返利</A></li><?php endif; ?>
@@ -66,7 +66,7 @@
 	<?php if(($qypurview["14005"]) == "14005"): ?><li><A href="<?php echo U('Mp/Fanli/salemonthly');?>" class="<?php echo ($curr =='salemonthly' ?'curr':''); ?>" >按月销售奖</A></li><?php endif; ?>
 
 	</ul>
-</div><?php endif; ?> -->
+</div><?php endif; ?>
 
 <?php if(($qypurview["18000"]) == "18000"): ?><div class="menu_parent">
 
@@ -173,88 +173,91 @@ function nemuclose(z,obj){
 <div class="content">
 <form action="<?php echo U('Mp/Dealer/type_save');?>"   method="post" name="fmmm" >
 <input type="hidden" value="<?php echo ($dltinfo["dlt_id"]); ?>" name="dlt_id" />
-<table width="100%" border="0" cellspacing="0" cellpadding="0" >
-             <tr>     
-                  <td height="40"   width="25%" class="txtright" ></td>
-				  <td width="75%" class="txtleft" ></td>
-			  </tr>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td height="40"   width="25%" class="txtright" ></td>
+			<td width="75%" class="txtleft" ></td>
+		</tr>
 
-			  <tr>     
-                  <td height="40"   class="txtright" >级别名称：</td>
-				  <td class="txtleft" ><input    type="text" size="25" maxlength="25"  name="dlt_name"  class="input"  value="<?php echo ($dltinfo["dlt_name"]); ?>"   >  * </td>
-			  </tr>
-			    <tr>     
-                  <td height="40"   class="txtright" >级别：</td>
-				  <td class="txtleft" >
-				  <select name="dlt_level"   class="select"  >
-				  <option  value="0" <?php if(($dltinfo["dlt_level"]) == "0"): ?>selected<?php endif; ?> >选择级别</option>
-				  <option  value="1" <?php if(($dltinfo["dlt_level"]) == "1"): ?>selected<?php endif; ?> >1　</option>
-				  <option  value="2" <?php if(($dltinfo["dlt_level"]) == "2"): ?>selected<?php endif; ?> >2　</option>
-				  <option  value="3" <?php if(($dltinfo["dlt_level"]) == "3"): ?>selected<?php endif; ?> >3　</option>
-				  <option  value="4" <?php if(($dltinfo["dlt_level"]) == "4"): ?>selected<?php endif; ?> >4　</option>
-				  <option  value="5" <?php if(($dltinfo["dlt_level"]) == "5"): ?>selected<?php endif; ?> >5　</option>
-				  <option  value="6" <?php if(($dltinfo["dlt_level"]) == "6"): ?>selected<?php endif; ?> >6　</option>
-				  <option  value="7" <?php if(($dltinfo["dlt_level"]) == "7"): ?>selected<?php endif; ?> >7　</option>
-				  <option  value="8" <?php if(($dltinfo["dlt_level"]) == "8"): ?>selected<?php endif; ?> >8　</option>
-				  <option  value="9" <?php if(($dltinfo["dlt_level"]) == "9"): ?>selected<?php endif; ?> >9　</option>
-				  </select>  </td>
-			  </tr>
-<!-- 			  <tr>     
-                  <td height="40"   class="txtright" >推荐返利1级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli1"  class="input"  value="<?php echo ($dltinfo["dlt_fanli1"]); ?>"   >   </td>
-			  </tr>
-			  <tr>     
-                  <td height="40"   class="txtright" >推荐返利2级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli2"  class="input"  value="<?php echo ($dltinfo["dlt_fanli2"]); ?>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利3级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli3"  class="input"  value="<?php echo ($dltinfo["dlt_fanli3"]); ?>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利4级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli4"  class="input"  value="<?php echo ($dltinfo["dlt_fanli4"]); ?>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利5级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli5"  class="input"  value="<?php echo ($dltinfo["dlt_fanli5"]); ?>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利6级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli6"  class="input"  value="<?php echo ($dltinfo["dlt_fanli6"]); ?>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利7级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli7"  class="input"  value="<?php echo ($dltinfo["dlt_fanli7"]); ?>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利8级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli8"  class="input"  value="<?php echo ($dltinfo["dlt_fanli8"]); ?>"   >   </td>
-			  </tr>
-			   <tr>     
-                  <td height="40"   class="txtright" >推荐返利9级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli9"  class="input"  value="<?php echo ($dltinfo["dlt_fanli9"]); ?>"   >   </td>
-			  </tr>
-			  <tr>     
-                  <td height="40"   class="txtright" >推荐返利10级：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="8"  name="dlt_fanli10"  class="input"  value="<?php echo ($dltinfo["dlt_fanli10"]); ?>"   >   </td>
-			  </tr> -->
-			   <tr>     
-                  <td height="40"   class="txtright" >首次下单额：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="10"  name="dlt_firstquota"  class="input"  value="<?php echo ($dltinfo["dlt_firstquota"]); ?>"   >   </td>
-			  </tr>
-			    <tr>     
-                  <td height="40"   class="txtright" >最低补货数量：</td>
-				  <td class="txtleft" ><input    type="text" size="8" maxlength="10"  name="dlt_minnum"  class="input"  value="<?php echo ($dltinfo["dlt_minnum"]); ?>"   >   <br />(该级别代理每次下单时订单的最低拿货数，如产品也设置了最低拿货数，则先判断产品的，再判断订单的)</td>
-			  </tr>
+		<tr>
+			<td height="40"   class="txtright" >级别名称：</td>
+			<td class="txtleft" ><input    type="text" size="25" maxlength="25"  name="dlt_name"  class="input"  value="<?php echo ($dltinfo["dlt_name"]); ?>"   >  * </td>
+		</tr>
+		<tr>
+			<td height="40"   class="txtright" >级别：</td>
+			<td class="txtleft" >
+				<select name="dlt_level"   class="select"  >
 
 
-			  <tr>  <td height="60" ></td>
-                    <td  class="txtleft"  >
-             <input type="submit" name="Submit" value="<?php echo ($atitle); ?>" class="botton" >　　　　<input name="" type="reset" value="返 回"  onClick="javascript:window.history.go(-1);" class="botton" >
-            </td>
-			  </tr>
-			</table>
+					<?php if($dltinfo["dlt_id"] > '0' ): if(($dltinfo["dlt_level"]) == "1"): ?><option  value="1" selected >1　</option><?php endif; ?>
+						<?php if(($dltinfo["dlt_level"]) == "2"): ?><option  value="2" selected >2　</option><?php endif; ?>
+						<?php if(($dltinfo["dlt_level"]) == "3"): ?><option  value="3" selected >3　</option><?php endif; ?>
+						<?php if(($dltinfo["dlt_level"]) == "4"): ?><option  value="4" selected >4　</option><?php endif; ?>
+						<?php if(($dltinfo["dlt_level"]) == "5"): ?><option  value="5" selected >5　</option><?php endif; ?>
+						<?php if(($dltinfo["dlt_level"]) == "6"): ?><option  value="6" selected  >6　</option><?php endif; ?>
+						<?php if(($dltinfo["dlt_level"]) == "7"): ?><option  value="7"  selected >7　</option><?php endif; ?>
+						<?php else: ?>
+						<option  value="0"  >选择级别</option>
+						<option  value="1"  >1　</option>
+						<option  value="2"  >2　</option>
+						<option  value="3"  >3　</option>
+						<option  value="4"  >4　</option>
+						<option  value="5"  >5　</option>
+						<option  value="6"  >6　</option>
+						<option  value="7"  >7　</option><?php endif; ?>
+
+				</select>  </td>
+		</tr>
+
+		<tr>
+			<td height="40"   class="txtright" >首次订单最低金额：</td>
+			<td class="txtleft" ><input    type="text" size="8" maxlength="10"  name="dlt_firstquota"  class="input"  value="<?php echo ($dltinfo["dlt_firstquota"]); ?>"   >   </td>
+		</tr>
+		<tr>
+			<td height="40"   class="txtright" >补货订单最低金额：</td>
+			<td class="txtleft" ><input    type="text" size="8" maxlength="10"  name="dlt_minnum"  class="input"  value="<?php echo ($dltinfo["dlt_minnum"]); ?>"   > </td>
+		</tr>
+
+		<?php if($dltinfo["dlt_id"] > '0' ): ?><tr>
+				<td height="40"   class="txtright" >推荐返利设置：</td>
+				<td class="txtleft" >
+
+
+					<table class="table_results"   style="width:80%">
+						<thead><tr>
+							<th  width="20%" ><span>推荐级别</span></th>
+							<th  width="10%"  ><span></span></th>
+							<th  width="20%" ><span>被推荐级别</span></th>
+							<th  width="20%" ><span>直推返利</span></th>
+							<th  width="20%" ><span>间推返利</span></th>
+
+						</tr></thead>
+						<tbody>
+						<?php if(is_array($typefanlilist)): foreach($typefanlilist as $key=>$item): ?><tr class="odd" >
+								<td class="data"  ><span><?php echo ($dltinfo["dlt_name"]); ?></span></td>
+								<td class="data"  ><span>推荐</span></td>
+								<td class="data"><span><?php echo ($item["dlt_name"]); ?></span></td>
+								<td class="data"><span><input    type="text"  size="6" maxlength="6"  name="tfl_fanli1<?php echo ($item["dlt_id"]); ?>"  class="input"  value="<?php echo (number_format($item["tfl_fanli1"],2,'.','')); ?>"   ></span></td>
+								<td class="data"><span><input    type="text"  size="6" maxlength="6"  name="tfl_fanli2<?php echo ($item["dlt_id"]); ?>"  class="input"  value="<?php echo (number_format($item["tfl_fanli2"],2,'.','')); ?>"   ></span></td>
+							</tr><?php endforeach; endif; ?>
+						</tbody>
+					</table>
+
+
+
+
+
+				</td>
+			</tr><?php endif; ?>
+
+
+
+		<tr>  <td height="60" ></td>
+			<td  class="txtleft"  >
+				<input type="submit" name="Submit" value="<?php echo ($atitle); ?>" class="botton" >　　　　<input name="" type="reset" value="返 回"  onClick="javascript:window.history.go(-1);" class="botton" >
+			</td>
+		</tr>
+	</table>
 </form>
 </div>
 <div class="height20"></div>

@@ -122,6 +122,30 @@
                 代理调级申请
             </p>
         </a>
+        <a href="<?php echo U('./Angels/Orders/index');?>" class="weui-grid js_grid">
+            <div class="weui-grid__icon">
+                <img src="/Public/angels/img/我的订单@3x.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                我的订单
+            </p>
+        </a>
+        <a href="<?php echo U('./Angels/Orders/dlorders');?>" class="weui-grid js_grid">
+            <div class="weui-grid__icon">
+                <img src="/Public/angels/img/下家订单@3x.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                下家的订单
+            </p>
+        </a>
+        <a href="<?php echo U('./Angels/Fanli/index');?>" class="weui-grid js_grid">
+            <div class="weui-grid__icon">
+                <img src="/Public/angels/img/我的返利@3x.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                我的返利
+            </p>
+        </a>
         <a href="<?php echo U('./Angels/Dealer/updatepwd');?>" class="weui-grid js_grid">
             <div class="weui-grid__icon">
                 <img src="/Public/angels/img/修改密码@3x.png" alt="">

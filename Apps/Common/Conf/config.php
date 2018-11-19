@@ -21,7 +21,8 @@ return array(
   'QY_FWDEKEY'   => 'ZdfgC567J3Dhuol08hE410gtpxyg9GrD', // 对企业fwkey机密的key
   'QY_FWSECRET'   =>'KdegCH87K7g5Fol0iPk4hrFtpxqD5GuK', // 通用fwsecret
   'PAGE_SIZE'  => 50, // 每页记录数
-  'URL_MODEL'  => 2, //
+  'URL_MODEL'  => 2,
+    'FANLI_SHOUXUFEI'=>0,
   'SEND_MESSAGE'=>array('msg01'=>'您查询的防伪码为正牌产品,请放心使用!',  //防伪码正确 第一次查询
     'msg02'=>'您所查询的防伪码已被查询过，首次查询时间：@rq@,请确认首次查询时间是否一致！',     //防伪正确 多次查询 此次是第@cs@次查询！
     'msg03'=>'没有这个防伪码，谨防假冒或者重新核对输入。Be cautious if no anti-fake code here, or please check again.',     //防伪码错误 不存在

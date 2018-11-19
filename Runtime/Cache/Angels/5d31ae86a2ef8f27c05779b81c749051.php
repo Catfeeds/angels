@@ -132,7 +132,7 @@
 				公司介绍
 			</p>
 		</a>
-		<a href="<?php echo U('./Angels/Product');?>" class="weui-grid js_grid">
+		<a href="<?php echo U('./Angels/Orders/prolist');?>" class="weui-grid js_grid">
 			<div class="weui-grid__icon" style="height: 50px;width: 50px">
 				<img src="/Public/angels/img/产品中心@3x.png" alt="">
 			</div>

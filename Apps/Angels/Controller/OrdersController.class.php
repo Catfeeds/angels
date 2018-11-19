@@ -364,7 +364,7 @@ class OrdersController extends CommController {
 		$this->display('uploadpaypic');
 	}
 	
-	//通过localResizeIMG4压缩上传 临时保存图片文件 统一为jpeg
+//	通过localResizeIMG4压缩上传 临时保存图片文件 统一为jpeg
 	public function uploadpic(){
         if(!$this->is_jxuser_login()){
 			$qy_fwkey=$this->qy_fwkey;
@@ -374,7 +374,7 @@ class OrdersController extends CommController {
 
 			$this->redirect('Angels/Dealer/login/ttamp/'.$ttamp2.'/sture/'.$sture2.'','' , 0, '');
         }
-		
+
 		$base64_image_content=$_POST['pic_file'];
 		$img='';
 		$type='jpeg'; //jpeg
@@ -400,7 +400,7 @@ class OrdersController extends CommController {
 			}else{
 				$msg=array('stat'=>'2','filename'=>'');
 				echo json_encode($msg);
-				exit;	
+				exit;
 			}
 		}else{
 			$msg=array('stat'=>'3','filename'=>'');
@@ -435,7 +435,6 @@ class OrdersController extends CommController {
 			if($data){
 				//保存文件 begin 
 				$file_name=I('post.file_name','');
-				
 				if($file_name==''){
 					$this->error('请上传图片','',2);
 				}else{
@@ -1232,6 +1231,9 @@ class OrdersController extends CommController {
 				$map['b.odbl_odid']=$od_id;
 				$map['b.odbl_rcdlid']=session('jxuser_id');
 				$data = $Model->table('fw_orders a,fw_orderbelong b')->where($map)->find();
+//                $msg=array('stat'=>0,'msg'=>$data);
+//                echo json_encode($msg);
+//                exit;
 				if($data){	
 					//检测是否能发货 //订购数 发货数
 					$Orderdetail = M('Orderdetail');
@@ -1332,9 +1334,222 @@ class OrdersController extends CommController {
 					$updata2['od_state']=3;
 					$Orders->where($map2)->save($updata2);
 				}
-				//返利begin
-				//
-				//返利end
+                //订单返利 begin
+                $fanli_dlid1=0; //返利给的代理商1
+                $fanli_dlid2=0; //返利给的代理商2
+                $fanli_dlid3=0; //返利给的代理商3
+                $ismaiduan=0;
+                $fanli_dlname1='';
+                $fanli_dlname2='';
+                $fanli_dlname3='';
+                $fanli_dlusername1='';
+                $fanli_dlusername2='';
+                $fanli_dlusername3='';
+                $fanli_dllevel1=0;
+                $fanli_dllevel2=0;
+                $fanli_dllevel3=0;
+                $Dealer = M('Dealer');
+                $Dltype = M('Dltype');
+                //下单人
+                $map11=array();
+                $orderdealer=array();
+                $map11['dl_unitcode'] = $this->qy_unitcode;
+                $map11['dl_id'] = $data['od_oddlid'];  //下单的代理
+                $orderdealer=$Dealer->where($map11)->find();
+                if($orderdealer) {
+
+                    $Fanlidetail = M('Fanlidetail');
+                    $odcount = 0; //是否首次下单
+
+                    ////=========================================推荐返利 一次性返利
+//                    if ($orderdealer['dl_level'] == 1 || $orderdealer['dl_level'] == 2 || $orderdealer['dl_level'] == 3 || $orderdealer['dl_level'] == 4) {
+
+                    //是不是首次下单
+                    $map51 = array();
+                    $map51['od_oddlid'] = $orderdealer['dl_id'];
+                    $map51['od_unitcode'] = $this->qy_unitcode;
+                    $map51['od_state'] = 8;
+                    $odcount51 = $Orders->where($map51)->count();
+                    if ($odcount51 == 0) {
+                        $map5 = array();
+                        $map5['od_oddlid'] = $orderdealer['dl_id'];
+                        $map5['od_unitcode'] = $this->qy_unitcode;
+                        $map5['od_state'] = 3;
+                        $odcount52 = $Orders->where($map5)->count();
+                        if ($odcount52 == 1) {
+                            $oddata5 = $Orders->where($map5)->find();
+                            if ($oddata5) {
+                                if ($oddata5['od_id'] == $data['od_id']) {
+                                    $odcount = 1;
+                                } else {
+                                    $odcount = 0;
+                                }
+                            } else {
+                                $odcount = 0;
+                            }
+                        }
+                    } else {
+                        $odcount = 0;//不是首次下单
+                    }
+
+
+                    //下单代理的推荐人
+                    $map4 = array();
+                    $data4 = array();
+                    $map4['dl_unitcode'] = $this->qy_unitcode;
+                    $map4['dl_id'] = $orderdealer['dl_referee'];  //推荐人
+
+                    $data4 = $Dealer->where($map4)->find();
+                    if ($data4) {
+                        //推荐人级别对应返利
+                        $Dltypefanli = M('Dltypefanli');
+                        $map2 = array();
+                        $map2['tfl_unitcode'] = $this->qy_unitcode;
+                        $map2['tfl_dltype'] = $data4['dl_type'];  //推荐人级别
+                        $map2['tfl_tjdltype'] = $orderdealer['dl_type'];  //被推荐人级别
+                        $dltflinfo = $Dltypefanli->where($map2)->find();
+                        if ($dltflinfo) {
+                            $dlt_fanli1 = $dltflinfo['tfl_fanli1'];
+                            if($dlt_fanli1>0 && $dlt_fanli1<1){
+                                $dlt_fanli1=$dlt_fanli1*$data['od_total'];
+                            }
+                        } else {
+                            $dlt_fanli1 = 0;
+                        }
+
+                        $Dltype = M('Dltype');
+                        $map2 = array();
+                        $map2['dlt_unitcode'] = $this->qy_unitcode;
+                        $map2['dlt_id'] = $orderdealer['dl_type'];
+                        $dltinfo = $Dltype->where($map2)->find();
+                        if ($dltinfo) {
+                        } else {
+                            $dlt_fanli1 = 0;
+                        }
+                        //CEO、董事平级推荐(平级返点（永久返点）)
+//                            if ($orderdealer['dl_level']==1 && $data4['dl_level']==1||$orderdealer['dl_level']==2 && $data4['dl_level']==2) {
+                        //如果有直推返利
+//                              去除买断的
+                        $Dlmaiduan = M('Dlmaiduan');
+                        $data12['maiduan_dlid']=$data4['dl_id'];
+                        $data12['maiduan_tjdlid']=$orderdealer['dl_id'];
+                        $data13 = $Dlmaiduan->where($data12)->find();
+                        if(!$data13){
+                            if ($dlt_fanli1 > 0 && $data4['dl_status'] == 1) {
+                                $shouxufei = $dlt_fanli1 * C('FANLI_SHOUXUFEI');
+                                $data5 = array();
+                                $data5['fl_unitcode'] = $this->qy_unitcode;
+                                $data5['fl_dlid'] = $data4['dl_id']; //获得返利的代理
+                                $data5['fl_senddlid'] =$orderdealer['dl_belong']; //发放返利的代理 0为公司发放
+                                $data5['fl_type'] = 1; // 返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+                                $data5['fl_money'] = $dlt_fanli1;
+                                $data5['fl_shouxufei'] = $shouxufei;
+                                $data5['fl_refedlid'] = $orderdealer['dl_id']; //推荐返利中被推荐的代理
+                                $data5['fl_oddlid'] = 0; //订单返利中 下单的代理
+                                $data5['fl_odid'] = 0;  //订单返利中 订单流水id
+                                $data5['fl_orderid'] = ''; //订单返利中 订单id
+                                $data5['fl_proid'] = 0;  //订单返利中 产品id
+                                $data5['fl_odblid'] = 0;  //订单返利中 订单关系id
+                                $data5['fl_qty'] = 0;  //订单返利中 产品数量
+                                $data5['fl_level'] = 1;  //返利的层次，1-第一层返利 2-第二层返利
+                                $data5['fl_addtime'] = time();
+                                $data5['fl_remark'] = '邀请代理 ' . $orderdealer['dl_name'] . '(' . $orderdealer['dl_username'] . ') 成为 ' . $dltinfo['dlt_name'];
+
+
+                                $map5 = array();
+                                $map5['fl_unitcode'] = $this->qy_unitcode;
+                                $map5['fl_dlid'] = $data4['dl_id'];
+                                $map5['fl_type'] = 1;
+                                $map5['fl_level'] = 1;
+                                $map5['fl_refedlid'] = $orderdealer['dl_id'];
+                                $data6 = $Fanlidetail->where($map5)->find();
+                                if (!$data6) {
+                                    $rs5 = $Fanlidetail->create($data5, 1);
+                                    if ($rs5) {
+                                        $Fanlidetail->add();
+                                    }
+                                }
+                            }
+
+                            //推荐人2级 间推返利
+                            if ($data4['dl_referee'] > 0) {
+                                $map6 = array();
+                                $data6 = array();
+                                $map6['dl_unitcode'] = $this->qy_unitcode;
+                                $map6['dl_id'] = $data4['dl_referee'];  //推荐人的推荐人
+                                $map6['dl_status'] = 1;
+                                $data6 = $Dealer->where($map6)->find();
+                                if ($data6) {
+                                    $map2 = array();
+                                    $map2['tfl_unitcode'] = $this->qy_unitcode;
+                                    $map2['tfl_dltype'] = $data6['dl_type'];  //推荐人级别
+                                    $map2['tfl_tjdltype'] = $orderdealer['dl_type'];  //被推荐人级别
+                                    $dltflinfo2 = $Dltypefanli->where($map2)->find();
+                                    if ($dltflinfo2) {
+                                        $dlt_fanli2 = $dltflinfo2['tfl_fanli2'];
+                                        if($dlt_fanli2>0 && $dlt_fanli2<1){
+                                            $dlt_fanli2=$dlt_fanli2*$data['od_total'];
+                                        }
+                                    } else {
+                                        $dlt_fanli2 = 0;
+                                    }
+
+                                    if ($dlt_fanli2 > 0) {
+                                        $shouxufei = $dlt_fanli2 * C('FANLI_SHOUXUFEI');
+                                        $data5 = array();
+                                        $data5['fl_unitcode'] = $this->qy_unitcode;
+                                        $data5['fl_dlid'] = $data6['dl_id']; //获得返利的代理
+                                        $data5['fl_senddlid'] =$orderdealer['dl_belong']; //发放返利的代理 0为公司发放
+                                        $data5['fl_type'] = 1; // 返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+                                        $data5['fl_money'] = $dlt_fanli2;
+                                        $data5['fl_shouxufei'] = $shouxufei;
+                                        $data5['fl_refedlid'] = $orderdealer['dl_id']; //推荐返利中被推荐的代理
+                                        $data5['fl_oddlid'] = 0; //订单返利中 下单的代理
+                                        $data5['fl_odid'] = 0;  //订单返利中 订单流水id
+                                        $data5['fl_orderid'] = ''; //订单返利中 订单id
+                                        $data5['fl_proid'] = 0;  //订单返利中 产品id
+                                        $data5['fl_odblid'] = 0;  //订单返利中 订单关系id
+                                        $data5['fl_qty'] = 0;  //订单返利中 产品数量
+                                        $data5['fl_level'] = 2;  //返利的层次，1-第一层返利 2-第二层返利
+                                        $data5['fl_addtime'] = time();
+                                        $data5['fl_remark'] = '代理 ' . $data4['dl_name'] . '(' . $data4['dl_username'] . ') 邀请代理 ' . $orderdealer['dl_name'] . '(' . $orderdealer['dl_username'] . ') 成为 ' . $dltinfo['dlt_name'];
+
+
+                                        $map5 = array();
+                                        $map5['fl_unitcode'] = $this->qy_unitcode;
+                                        $map5['fl_dlid'] = $data6['dl_id'];
+                                        $map5['fl_type'] = 1;
+                                        $map5['fl_level'] = 2;
+                                        $map5['fl_refedlid'] = $orderdealer['dl_id'];
+                                        $data6 = $Fanlidetail->where($map5)->find();
+                                        if (!$data6) {
+                                            $rs5 = $Fanlidetail->create($data5, 1);
+                                            if ($rs5) {
+                                                $Fanlidetail->add();
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                        // 记录低级别推荐高级别的一次买断
+                        if($data4['dl_level']>$orderdealer['dl_level']){
+                            $data10['maiduan_dlid']=$data4['dl_id'];
+                            $data10['maiduan_tjdlid']=$orderdealer['dl_id'];
+                            $data11 = $Dlmaiduan->where($data10)->find();
+                            if(!$data11){
+                                $rs10=$Dlmaiduan->create($data10, 1);
+                                if ($rs10) {
+                                    $Dlmaiduan->add();
+                                }
+                            }
+                        }
+
+                    }
+//                   }
+                }
+                //订单返利end
 
 				$msg=array('stat'=>1,'msg'=>'物流信息提交成功');
 				echo json_encode($msg);
@@ -3701,7 +3916,20 @@ class OrdersController extends CommController {
 			$this->error('授权已过期，请重新登录',U('Angels/Index/index'),1);
 			exit;
 		}
-		
+        $Dltype= M('Dltype');
+        $map3=array();
+        $map3['dlt_unitcode']=$this->qy_unitcode;
+        $map3['dlt_id']=$data['dl_type'];
+        $dltypeinfo = $Dltype->where($map3)->find();
+        if($dltypeinfo){
+            $dlt_firstquota=$dltypeinfo['dlt_firstquota'];  //首次下单额金额
+            $dlt_minnum=$dltypeinfo['dlt_minnum'];  //订单最低补货金额
+        }else{
+            session('jxuser_id',null);
+            session('jxuser_unitcode',null);
+            $this->error('授权已过期，请重新登录',U(C('MODULE_NAME').'/Index/index'),1);
+            exit;
+        }
         $Shopcart = M('Shopcart');
 		
 		//删除24小时前的没下单的购物车记录
@@ -3766,8 +3994,20 @@ class OrdersController extends CommController {
 				$data[$k]['pro_stock']='';
 			}
 		}
-		
-		//收货地址
+        //是否首次下单
+        $Orders = M('Orders');
+        $map5 = array();
+        $map5['od_oddlid'] = session('jxuser_id');
+        $map5['od_unitcode'] = $this->qy_unitcode;
+        $map5['od_state'] = array('NEQ',9);
+        $odcount = $Orders->where($map5)->count();
+        //首次最低订单金额
+        if($dlt_firstquota>0 && $dlt_firstquota>$total && $odcount==0){
+            $this->error('对不起，首次订单最低拿货金额为：'.$dlt_firstquota.'',U('Angels/Orders/shopcart',3));
+            exit;
+        }
+
+        //收货地址
 		$dladd_id=intval(I('get.dladd_id',0));
 		$Dladdress = M('Dladdress');
 		if($dladd_id<=0){

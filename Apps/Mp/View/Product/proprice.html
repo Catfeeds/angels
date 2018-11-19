@@ -43,7 +43,7 @@
 <td class="data"><span><{$item2|number_format=2,'.',''}> 元</span></td>
 </foreach>
 <td class="data"><span><img src="__PUBLIC__/mp/static/<{$item['pro_active'] == 0?'no':'yes'}>.gif" /></span></td>
-<td class="data"><span><a href="<{:U('Mp/Product/propricedetail?pro_id='.$item['pro_id'].'')}>" >详细</a> <eq name="qypurview.20002" value="20002"><a href="<{:U('Mp/Product/propriceedit?pro_id='.$item['pro_id'].'')}>">修改</a></eq> <!-- <eq name="qypurview.99999" value="99999"><a href="<{:U('Mp/Product/profanli?pro_id='.$item['pro_id'].'')}>">返利</a></eq> --></span></td>
+<td class="data"><span><a href="<{:U('Mp/Product/propricedetail?pro_id='.$item['pro_id'].'')}>" >详细</a> <eq name="qypurview.20002" value="20002"><a href="<{:U('Mp/Product/propriceedit?pro_id='.$item['pro_id'].'')}>">修改</a></eq> <eq name="qypurview.99999" value="99999"><a href="<{:U('Mp/Product/profanli?pro_id='.$item['pro_id'].'')}>">返利</a></eq> </span></td>
 
 </tr>
 </foreach>

@@ -55,7 +55,7 @@
 	</ul>
 </div><?php endif; ?>  
 
-<!-- <?php if(($qypurview["14000"]) == "14000"): ?><div class="menu_parent">
+ <?php if(($qypurview["14000"]) == "14000"): ?><div class="menu_parent">
 	<ul class="menu_sontitle" id="fu14" onClick="nemuclose('#zi14',this)" >返利管理</ul>
 	<ul class="menu_son" id="zi14">
 	<?php if(($qypurview["14001"]) == "14001"): ?><li><A href="<?php echo U('Mp/Fanli/index');?>" class="<?php echo ($curr =='fanlidllist' ?'curr':''); ?>" >代理返利</A></li><?php endif; ?>
@@ -66,7 +66,7 @@
 	<?php if(($qypurview["14005"]) == "14005"): ?><li><A href="<?php echo U('Mp/Fanli/salemonthly');?>" class="<?php echo ($curr =='salemonthly' ?'curr':''); ?>" >按月销售奖</A></li><?php endif; ?>
 
 	</ul>
-</div><?php endif; ?> -->
+</div><?php endif; ?>
 
 <?php if(($qypurview["18000"]) == "18000"): ?><div class="menu_parent">
 
@@ -167,7 +167,7 @@ function nemuclose(z,obj){
 <div class="rightcontent">
 <div class="content_nav" >
 <div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="<?php echo U('Mp/Dealer/index');?>">经销商管理</A>　&gt;　<A href="#">经销商级别</A></div>
-<div class="nav_r"><!-- <?php if(($qypurview["10011"]) == "10011"): ?><a href="<?php echo U('Mp/Dealer/sttypelist');?>">经销商级别2</a><?php endif; ?> --> <?php if(($qypurview["99999"]) == "99999"): ?><a href="<?php echo U('Mp/Dealer/typeadd');?>">添加级别</a><?php endif; ?></div>
+<!--<div class="nav_r">&lt;!&ndash; <?php if(($qypurview["10011"]) == "10011"): ?><a href="<?php echo U('Mp/Dealer/sttypelist');?>">经销商级别2</a><?php endif; ?> &ndash;&gt; <?php if(($qypurview["99999"]) == "99999"): ?><a href="<?php echo U('Mp/Dealer/typeadd');?>">添加级别</a><?php endif; ?></div>-->
 </div>
 <div class="height20"></div>
 <div class="content">

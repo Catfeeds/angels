@@ -38,7 +38,7 @@
 <?php echo ($proinfo["pro_pic_str"]); ?>
 </div>
 
-<ul class="ui-list ui-list-text  ui-border-tb" > 
+<ul class="ui-list ui-list-text  ui-border-tb" >
     <li class="ui-border-t">
         <p class="ui-nowrap">产品名称：<?php echo ($proinfo["pro_name"]); ?></p>
     </li>
@@ -51,8 +51,8 @@
 	<?php if(($proinfo["pro_link"] != '') ): ?><li class="ui-border-t">
 	<a href="<?php echo ($proinfo["pro_link"]); ?>" style="text-align:center" target="_blank" >点击购买</a>
 	</li><?php endif; ?>
-	
-	
+
+
 </ul>
 <div class="ui-whitespace" style="background-color:#FFFFFF; padding:15px"  id="prodesc">
 <?php echo ($proinfo["pro_desc"]); ?>

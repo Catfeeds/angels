@@ -751,9 +751,9 @@ class FanliController extends CommController {
 		$map3['fl_addtime']=array('lt',time()-3600*24*C('FANLI_JIANGETIME'));
 		$dl_fanli2=0;
 		$dl_fanli2 = $Fanlidetail->where($map3)->sum('fl_money');
-		//if($dl_fanli2<=0){
-		//	$this->error('可提现金额为0','',2);
-		//}
+		if($dl_fanli2<=0){
+			$this->error('可提现金额为0','',2);
+		}
 		
 		
 	

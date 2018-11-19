@@ -20,9 +20,9 @@
 <ul class="ui-list ui-list-text ui-list-link ui-border-tb">
 
 <foreach name='list' item='item'  key='key'>
-    <li class="ui-border-t"  data-href="<{:U('./Angels/Product/detail?proid='.$item['pro_id'].'')}>" >
+    <li class="ui-border-t"  data-href="<{:U('./Angels/Product/detail?pro_id='.$item['pro_id'].'')}>" >
         <div class="ui-list-thumb">
-            <span style="background-image:url(__PUBLIC__/uploads/mobi/<{$item.pro_pic}>)"></span>
+            <span style="background-image:url(__PUBLIC__/uploads/product/<{$item.pro_pic}>)"></span>
         </div>
         <div class="ui-list-info">
             <h4 class="ui-nowrap"><{$item.pro_name}></h4>

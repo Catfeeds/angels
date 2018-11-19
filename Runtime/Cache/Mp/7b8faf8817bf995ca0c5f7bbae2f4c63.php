@@ -71,7 +71,7 @@
 	</ul>
 </div><?php endif; ?>  
 
-<!-- <?php if(($qypurview["14000"]) == "14000"): ?><div class="menu_parent">
+ <?php if(($qypurview["14000"]) == "14000"): ?><div class="menu_parent">
 	<ul class="menu_sontitle" id="fu14" onClick="nemuclose('#zi14',this)" >返利管理</ul>
 	<ul class="menu_son" id="zi14">
 	<?php if(($qypurview["14001"]) == "14001"): ?><li><A href="<?php echo U('Mp/Fanli/index');?>" class="<?php echo ($curr =='fanlidllist' ?'curr':''); ?>" >代理返利</A></li><?php endif; ?>
@@ -82,7 +82,7 @@
 	<?php if(($qypurview["14005"]) == "14005"): ?><li><A href="<?php echo U('Mp/Fanli/salemonthly');?>" class="<?php echo ($curr =='salemonthly' ?'curr':''); ?>" >按月销售奖</A></li><?php endif; ?>
 
 	</ul>
-</div><?php endif; ?> -->
+</div><?php endif; ?>
 
 <?php if(($qypurview["18000"]) == "18000"): ?><div class="menu_parent">
 

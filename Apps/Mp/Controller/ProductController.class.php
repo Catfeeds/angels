@@ -1411,6 +1411,278 @@ class ProductController extends CommController {
         }
     }
 	
+//    //产品返利设置
+//    public function profanli(){
+//        $this->check_qypurview('20002',1);
+//
+//        $map['pro_id']=intval(I('get.pro_id',0));
+//        $map['pro_unitcode']=session('unitcode');
+//        $Product= M('Product');
+//        $data=$Product->where($map)->find();
+//
+//        $Dltype = M('Dltype');
+//        $Profanli = M('Profanli');
+//		$map3=array();
+//        $map3['dlt_unitcode']=session('unitcode');
+//        $list3 = $Dltype->where($map3)->order('dlt_level ASC,dlt_id ASC')->select();
+//
+//        if($data){
+//		    foreach($list3 as $kk=>$vv){
+//				$map2=array();
+//				$data2=array();
+//				$map2['pfl_unitcode'] = session('unitcode');
+//				$map2['pfl_proid'] = $data['pro_id'];
+//				$map2['pfl_dltype'] = $vv['dlt_id'];
+//				$data2=$Profanli->where($map2)->find();
+//				if($data2){
+//					$list3[$kk]['pfl_fanli1']=$data2['pfl_fanli1'];
+//					$list3[$kk]['pfl_fanli2']=$data2['pfl_fanli2'];
+//					$list3[$kk]['pfl_fanli3']=$data2['pfl_fanli3'];
+//					$list3[$kk]['pfl_fanli4']=$data2['pfl_fanli4'];
+//					$list3[$kk]['pfl_fanli5']=$data2['pfl_fanli5'];
+//					$list3[$kk]['pfl_fanli6']=$data2['pfl_fanli6'];
+//					$list3[$kk]['pfl_fanli7']=$data2['pfl_fanli7'];
+//					$list3[$kk]['pfl_fanli8']=$data2['pfl_fanli8'];
+//					$list3[$kk]['pfl_fanli9']=$data2['pfl_fanli9'];
+//					$list3[$kk]['pfl_fanli10']=$data2['pfl_fanli10'];
+//					$list3[$kk]['pfl_maiduan']=$data2['pfl_maiduan'];
+//				}else{
+//					$list3[$kk]['pfl_fanli1']=0;
+//					$list3[$kk]['pfl_fanli2']=0;
+//					$list3[$kk]['pfl_fanli3']=0;
+//					$list3[$kk]['pfl_fanli4']=0;
+//					$list3[$kk]['pfl_fanli5']=0;
+//					$list3[$kk]['pfl_fanli6']=0;
+//					$list3[$kk]['pfl_fanli7']=0;
+//					$list3[$kk]['pfl_fanli8']=0;
+//					$list3[$kk]['pfl_fanli9']=0;
+//					$list3[$kk]['pfl_fanli10']=0;
+//					$list3[$kk]['pfl_maiduan']=0;
+//				}
+//			}
+//        }else{
+//            $this->error('没有该记录');
+//        }
+//
+//
+//        $this->assign('typelist', $list3);
+//        $this->assign('proinfo', $data);
+//        $this->assign('curr', 'pro_price');
+//
+//        $this->display('profanli');
+//    }
+	
+	
+//    //产品返利设置——保存
+//    public function profanli_save(){
+//        $this->check_qypurview('20004',1);
+//
+//        if (!IS_POST) {
+//             header('HTTP/1.0 404 Not Found');
+//             echo'error:404';
+//             exit;
+//        }
+//        $map['pro_id']=intval(I('post.pro_id',0));
+//
+//        if($map['pro_id']>0){
+//			$map['pro_unitcode']=session('unitcode');
+//			$Product= M('Product');
+//			$data=$Product->where($map)->find();
+//
+//			if($data){
+//				$Dltype = M('Dltype');
+//				$Profanli = M('Profanli');
+//				$map3=array();
+//				$map3['dlt_unitcode']=session('unitcode');
+//				$list3 = $Dltype->where($map3)->order('dlt_level ASC,dlt_id ASC')->select();
+//
+//				foreach($list3 as $kk=>$vv){
+//					$var1='pfl_fanli1'.$vv['dlt_id'];
+//					$var2='pfl_fanli2'.$vv['dlt_id'];
+//					$var3='pfl_fanli3'.$vv['dlt_id'];
+//					$var4='pfl_fanli4'.$vv['dlt_id'];
+//					$var5='pfl_fanli5'.$vv['dlt_id'];
+//					$var6='pfl_fanli6'.$vv['dlt_id'];
+//					$var7='pfl_fanli7'.$vv['dlt_id'];
+//					$var8='pfl_fanli8'.$vv['dlt_id'];
+//					$var9='pfl_fanli9'.$vv['dlt_id'];
+//					$var10='pfl_fanli10'.$vv['dlt_id'];
+//
+//					$var44='pfl_maiduan'.$vv['dlt_id'];
+//
+//					$pfl_fanli1 = (isset($_POST[$var1]) && is_not_null($_POST[$var1])) ? trim($_POST[$var1]):0;
+//					$pfl_fanli2 = (isset($_POST[$var2]) && is_not_null($_POST[$var2])) ? trim($_POST[$var2]):0;
+//					$pfl_fanli3 = (isset($_POST[$var3]) && is_not_null($_POST[$var3])) ? trim($_POST[$var3]):0;
+//					$pfl_fanli4 = (isset($_POST[$var4]) && is_not_null($_POST[$var4])) ? trim($_POST[$var4]):0;
+//					$pfl_fanli5 = (isset($_POST[$var5]) && is_not_null($_POST[$var5])) ? trim($_POST[$var5]):0;
+//					$pfl_fanli6 = (isset($_POST[$var6]) && is_not_null($_POST[$var6])) ? trim($_POST[$var6]):0;
+//					$pfl_fanli7 = (isset($_POST[$var7]) && is_not_null($_POST[$var7])) ? trim($_POST[$var7]):0;
+//					$pfl_fanli8 = (isset($_POST[$var8]) && is_not_null($_POST[$var8])) ? trim($_POST[$var8]):0;
+//					$pfl_fanli9 = (isset($_POST[$var9]) && is_not_null($_POST[$var9])) ? trim($_POST[$var9]):0;
+//					$pfl_fanli10 = (isset($_POST[$var10]) && is_not_null($_POST[$var10])) ? trim($_POST[$var10]):0;
+//
+//					$pfl_maiduan = (isset($_POST[$var44]) && is_not_null($_POST[$var44])) ? trim($_POST[$var44]):0;
+//
+//
+//
+//
+//					if($pfl_fanli1!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli1)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//					if($pfl_fanli2!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli2)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//					if($pfl_fanli3!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli3)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//
+//					if($pfl_fanli4!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli4)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//					if($pfl_fanli5!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli5)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//					if($pfl_fanli6!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli6)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//					if($pfl_fanli7!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli7)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//					if($pfl_fanli8!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli8)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//					if($pfl_fanli9!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli9)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//					if($pfl_fanli10!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli10)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//
+//					if($pfl_maiduan!=0){
+//						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_maiduan)){
+//							$this->error('输入必须为数字','',1);
+//						}
+//					}
+//
+//
+//					$map2=array();
+//					$data2=array();
+//					$map2['pfl_unitcode'] = session('unitcode');
+//					$map2['pfl_proid'] = $data['pro_id'];
+//					$map2['pfl_dltype'] = $vv['dlt_id'];
+//					$data2=$Profanli->where($map2)->find();
+//					if($data2){
+//						$data4=array();
+//						$data4['pfl_fanli1']=$pfl_fanli1;
+//						$data4['pfl_fanli2']=$pfl_fanli2;
+//						$data4['pfl_fanli3']=$pfl_fanli3;
+//						$data4['pfl_fanli4']=$pfl_fanli4;
+//						$data4['pfl_fanli5']=$pfl_fanli5;
+//						$data4['pfl_fanli6']=$pfl_fanli6;
+//						$data4['pfl_fanli7']=$pfl_fanli7;
+//						$data4['pfl_fanli8']=$pfl_fanli8;
+//						$data4['pfl_fanli9']=$pfl_fanli9;
+//						$data4['pfl_fanli10']=$pfl_fanli10;
+//						$data4['pfl_maiduan']=$pfl_maiduan;
+//						$Profanli->where($map2)->data($data4)->save();
+//
+//						$list3[$kk]['pfl_fanli1']=$pfl_fanli1;
+//						$list3[$kk]['pfl_fanli2']=$pfl_fanli2;
+//						$list3[$kk]['pfl_fanli3']=$pfl_fanli3;
+//						$list3[$kk]['pfl_fanli4']=$pfl_fanli4;
+//						$list3[$kk]['pfl_fanli5']=$pfl_fanli5;
+//						$list3[$kk]['pfl_fanli6']=$pfl_fanli6;
+//						$list3[$kk]['pfl_fanli7']=$pfl_fanli7;
+//						$list3[$kk]['pfl_fanli8']=$pfl_fanli8;
+//						$list3[$kk]['pfl_fanli9']=$pfl_fanli9;
+//						$list3[$kk]['pfl_fanli10']=$pfl_fanli10;
+//						$list3[$kk]['pfl_maiduan']=$pfl_maiduan;
+//					}else{
+//						if($pfl_fanli1>0 || $pfl_fanli2>0 || $pfl_maiduan>0){
+//							$data4=array();
+//							$data4['pfl_unitcode']= session('unitcode');
+//							$data4['pfl_proid'] = $data['pro_id'];
+//							$data4['pfl_dltype'] = $vv['dlt_id'];
+//							$data4['pfl_fanli1']=$pfl_fanli1;
+//							$data4['pfl_fanli2']=$pfl_fanli2;
+//							$data4['pfl_fanli3']=$pfl_fanli3;
+//							$data4['pfl_fanli4']=$pfl_fanli4;
+//							$data4['pfl_fanli5']=$pfl_fanli5;
+//							$data4['pfl_fanli6']=$pfl_fanli6;
+//							$data4['pfl_fanli7']=$pfl_fanli7;
+//							$data4['pfl_fanli8']=$pfl_fanli8;
+//							$data4['pfl_fanli9']=$pfl_fanli9;
+//							$data4['pfl_fanli10']=$pfl_fanli10;
+//							$data4['pfl_maiduan']=$pfl_maiduan;
+//
+//							$rs=$Profanli->create($data4,1);
+//							if($rs){
+//							   $Profanli->add();
+//							}
+//
+//							$list3[$kk]['pfl_fanli1']=$pfl_fanli1;
+//							$list3[$kk]['pfl_fanli2']=$pfl_fanli2;
+//							$list3[$kk]['pfl_fanli3']=$pfl_fanli3;
+//							$list3[$kk]['pfl_fanli4']=$pfl_fanli4;
+//							$list3[$kk]['pfl_fanli5']=$pfl_fanli5;
+//							$list3[$kk]['pfl_fanli6']=$pfl_fanli6;
+//							$list3[$kk]['pfl_fanli7']=$pfl_fanli7;
+//							$list3[$kk]['pfl_fanli8']=$pfl_fanli8;
+//							$list3[$kk]['pfl_fanli9']=$pfl_fanli9;
+//							$list3[$kk]['pfl_fanli10']=$pfl_fanli10;
+//							$list3[$kk]['pfl_maiduan']=$pfl_maiduan;
+//						}else{
+//							$list3[$kk]['pfl_fanli1']=0;
+//							$list3[$kk]['pfl_fanli2']=0;
+//						}
+//					}
+//				    $list3[$kk]['pro_id']=$data['pro_id'];
+//				}
+//
+//				//记录日志 begin
+//				$log_arr=array(
+//							'log_qyid'=>session('qyid'),
+//							'log_user'=>session('qyuser'),
+//							'log_qycode'=>session('unitcode'),
+//							'log_action'=>'产品返利设置',
+//							'log_type'=>1, //0-系统 1-企业 2-经销商 3-消费者
+//							'log_addtime'=>time(),
+//							'log_ip'=>real_ip(),
+//							'log_link'=>__SELF__,
+//							'log_remark'=>json_encode($list3)
+//							);
+//				save_log($log_arr);
+//				//记录日志 end
+//
+//				$this->success('修改成功',U('Mp/Product/proprice'),'',2);
+//
+//			}else{
+//				$this->error('没有该记录','',2);
+//			}
+//        }else{
+//            $this->error('没有该记录','',2);
+//        }
+//    }
     //产品返利设置
     public function profanli(){
         $this->check_qypurview('20002',1);
@@ -1419,271 +1691,182 @@ class ProductController extends CommController {
         $map['pro_unitcode']=session('unitcode');
         $Product= M('Product');
         $data=$Product->where($map)->find();
-		
+
         $Dltype = M('Dltype');
         $Profanli = M('Profanli');
-		$map3=array();
+        $map3=array();
         $map3['dlt_unitcode']=session('unitcode');
         $list3 = $Dltype->where($map3)->order('dlt_level ASC,dlt_id ASC')->select();
-		
+        $list4=$list3;
+        $list5=array();
+        $ii=0;
         if($data){
-		    foreach($list3 as $kk=>$vv){
-				$map2=array();
-				$data2=array();
-				$map2['pfl_unitcode'] = session('unitcode');
-				$map2['pfl_proid'] = $data['pro_id'];
-				$map2['pfl_dltype'] = $vv['dlt_id'];
-				$data2=$Profanli->where($map2)->find();
-				if($data2){
-					$list3[$kk]['pfl_fanli1']=$data2['pfl_fanli1'];
-					$list3[$kk]['pfl_fanli2']=$data2['pfl_fanli2'];
-					$list3[$kk]['pfl_fanli3']=$data2['pfl_fanli3'];
-					$list3[$kk]['pfl_fanli4']=$data2['pfl_fanli4'];
-					$list3[$kk]['pfl_fanli5']=$data2['pfl_fanli5'];
-					$list3[$kk]['pfl_fanli6']=$data2['pfl_fanli6'];
-					$list3[$kk]['pfl_fanli7']=$data2['pfl_fanli7'];
-					$list3[$kk]['pfl_fanli8']=$data2['pfl_fanli8'];
-					$list3[$kk]['pfl_fanli9']=$data2['pfl_fanli9'];
-					$list3[$kk]['pfl_fanli10']=$data2['pfl_fanli10'];
-					$list3[$kk]['pfl_maiduan']=$data2['pfl_maiduan'];
-				}else{
-					$list3[$kk]['pfl_fanli1']=0;
-					$list3[$kk]['pfl_fanli2']=0;
-					$list3[$kk]['pfl_fanli3']=0;
-					$list3[$kk]['pfl_fanli4']=0;
-					$list3[$kk]['pfl_fanli5']=0;
-					$list3[$kk]['pfl_fanli6']=0;
-					$list3[$kk]['pfl_fanli7']=0;
-					$list3[$kk]['pfl_fanli8']=0;
-					$list3[$kk]['pfl_fanli9']=0;
-					$list3[$kk]['pfl_fanli10']=0;
-					$list3[$kk]['pfl_maiduan']=0;
-				}
-			}
+            foreach($list3 as $kk=>$vv){
+
+                foreach($list4 as $kkk=>$vvv){
+                    $map2=array();
+                    $data2=array();
+                    $map2['pfl_unitcode'] = session('unitcode');
+                    $map2['pfl_proid'] = $data['pro_id'];
+                    $map2['pfl_dltype'] = $vv['dlt_id'];
+                    $map2['pfl_tjdltype'] = $vvv['dlt_id'];
+                    $data2=$Profanli->where($map2)->find();
+                    if($data2){
+                        $list5[$ii]['pfl_dltypename']= $vv['dlt_name'];
+                        $list5[$ii]['pfl_tjdltypename']= $vvv['dlt_name'];
+                        $list5[$ii]['pfl_dltype']= $vv['dlt_id'];
+                        $list5[$ii]['pfl_tjdltype']= $vvv['dlt_id'];
+                        $list5[$ii]['pfl_fanli1']=$data2['pfl_fanli1'];
+                        $list5[$ii]['pfl_fanli2']=$data2['pfl_fanli2'];
+                    }else{
+                        $list5[$ii]['pfl_dltypename']= $vv['dlt_name'];
+                        $list5[$ii]['pfl_tjdltypename']= $vvv['dlt_name'];
+                        $list5[$ii]['pfl_dltype']= $vv['dlt_id'];
+                        $list5[$ii]['pfl_tjdltype']= $vvv['dlt_id'];
+                        $list5[$ii]['pfl_fanli1']=0;
+                        $list5[$ii]['pfl_fanli2']=0;
+
+                    }
+                    $ii=$ii+1;
+                }
+            }
         }else{
             $this->error('没有该记录');
         }
 
 
-        $this->assign('typelist', $list3);
+        $this->assign('typelist', $list5);
         $this->assign('proinfo', $data);
         $this->assign('curr', 'pro_price');
 
         $this->display('profanli');
     }
-	
-	
+
+
     //产品返利设置——保存
     public function profanli_save(){
         $this->check_qypurview('20004',1);
 
         if (!IS_POST) {
-             header('HTTP/1.0 404 Not Found');
-             echo'error:404';
-             exit;
+            header('HTTP/1.0 404 Not Found');
+            echo'error:404';
+            exit;
         }
         $map['pro_id']=intval(I('post.pro_id',0));
-        
+
         if($map['pro_id']>0){
-			$map['pro_unitcode']=session('unitcode');
-			$Product= M('Product');
-			$data=$Product->where($map)->find();
-			
-			if($data){
-				$Dltype = M('Dltype');
-				$Profanli = M('Profanli');
-				$map3=array();
-				$map3['dlt_unitcode']=session('unitcode');
-				$list3 = $Dltype->where($map3)->order('dlt_level ASC,dlt_id ASC')->select();
-				
-				foreach($list3 as $kk=>$vv){
-					$var1='pfl_fanli1'.$vv['dlt_id'];
-					$var2='pfl_fanli2'.$vv['dlt_id'];
-					$var3='pfl_fanli3'.$vv['dlt_id'];
-					$var4='pfl_fanli4'.$vv['dlt_id'];
-					$var5='pfl_fanli5'.$vv['dlt_id'];
-					$var6='pfl_fanli6'.$vv['dlt_id'];
-					$var7='pfl_fanli7'.$vv['dlt_id'];
-					$var8='pfl_fanli8'.$vv['dlt_id'];
-					$var9='pfl_fanli9'.$vv['dlt_id'];
-					$var10='pfl_fanli10'.$vv['dlt_id'];
+            $map['pro_unitcode']=session('unitcode');
+            $Product= M('Product');
+            $data=$Product->where($map)->find();
 
-					$var44='pfl_maiduan'.$vv['dlt_id'];
-					
-					$pfl_fanli1 = (isset($_POST[$var1]) && is_not_null($_POST[$var1])) ? trim($_POST[$var1]):0;
-					$pfl_fanli2 = (isset($_POST[$var2]) && is_not_null($_POST[$var2])) ? trim($_POST[$var2]):0;
-					$pfl_fanli3 = (isset($_POST[$var3]) && is_not_null($_POST[$var3])) ? trim($_POST[$var3]):0;
-					$pfl_fanli4 = (isset($_POST[$var4]) && is_not_null($_POST[$var4])) ? trim($_POST[$var4]):0;
-					$pfl_fanli5 = (isset($_POST[$var5]) && is_not_null($_POST[$var5])) ? trim($_POST[$var5]):0;
-					$pfl_fanli6 = (isset($_POST[$var6]) && is_not_null($_POST[$var6])) ? trim($_POST[$var6]):0;
-					$pfl_fanli7 = (isset($_POST[$var7]) && is_not_null($_POST[$var7])) ? trim($_POST[$var7]):0;
-					$pfl_fanli8 = (isset($_POST[$var8]) && is_not_null($_POST[$var8])) ? trim($_POST[$var8]):0;
-					$pfl_fanli9 = (isset($_POST[$var9]) && is_not_null($_POST[$var9])) ? trim($_POST[$var9]):0;
-					$pfl_fanli10 = (isset($_POST[$var10]) && is_not_null($_POST[$var10])) ? trim($_POST[$var10]):0;
-					
-					$pfl_maiduan = (isset($_POST[$var44]) && is_not_null($_POST[$var44])) ? trim($_POST[$var44]):0;
-					
-					
+            if($data){
+                $Dltype = M('Dltype');
+                $Profanli = M('Profanli');
+                $map3=array();
+                $map3['dlt_unitcode']=session('unitcode');
+                $list3 = $Dltype->where($map3)->order('dlt_level ASC,dlt_id ASC')->select();
+                $list4=$list3;
+                $list5=array();
+                $ii=0;
 
-					
-					if($pfl_fanli1!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli1)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-					if($pfl_fanli2!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli2)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-					if($pfl_fanli3!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli3)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-					
-					if($pfl_fanli4!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli4)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-					if($pfl_fanli5!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli5)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-					if($pfl_fanli6!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli6)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-					if($pfl_fanli7!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli7)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-					if($pfl_fanli8!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli8)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-					if($pfl_fanli9!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli9)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-					if($pfl_fanli10!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli10)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-					
-					if($pfl_maiduan!=0){
-						if(!preg_match("/^[0-9.]{1,10}$/",$pfl_maiduan)){
-							$this->error('输入必须为数字','',1);
-						}
-					}
-				
-					
-					$map2=array();
-					$data2=array();
-					$map2['pfl_unitcode'] = session('unitcode');
-					$map2['pfl_proid'] = $data['pro_id'];
-					$map2['pfl_dltype'] = $vv['dlt_id'];
-					$data2=$Profanli->where($map2)->find();
-					if($data2){
-						$data4=array();
-						$data4['pfl_fanli1']=$pfl_fanli1;
-						$data4['pfl_fanli2']=$pfl_fanli2;
-						$data4['pfl_fanli3']=$pfl_fanli3;
-						$data4['pfl_fanli4']=$pfl_fanli4;
-						$data4['pfl_fanli5']=$pfl_fanli5;
-						$data4['pfl_fanli6']=$pfl_fanli6;
-						$data4['pfl_fanli7']=$pfl_fanli7;
-						$data4['pfl_fanli8']=$pfl_fanli8;
-						$data4['pfl_fanli9']=$pfl_fanli9;
-						$data4['pfl_fanli10']=$pfl_fanli10;
-						$data4['pfl_maiduan']=$pfl_maiduan;
-						$Profanli->where($map2)->data($data4)->save();
-						
-						$list3[$kk]['pfl_fanli1']=$pfl_fanli1;
-						$list3[$kk]['pfl_fanli2']=$pfl_fanli2;
-						$list3[$kk]['pfl_fanli3']=$pfl_fanli3;
-						$list3[$kk]['pfl_fanli4']=$pfl_fanli4;
-						$list3[$kk]['pfl_fanli5']=$pfl_fanli5;
-						$list3[$kk]['pfl_fanli6']=$pfl_fanli6;
-						$list3[$kk]['pfl_fanli7']=$pfl_fanli7;
-						$list3[$kk]['pfl_fanli8']=$pfl_fanli8;
-						$list3[$kk]['pfl_fanli9']=$pfl_fanli9;
-						$list3[$kk]['pfl_fanli10']=$pfl_fanli10;
-						$list3[$kk]['pfl_maiduan']=$pfl_maiduan;
-					}else{
-						if($pfl_fanli1>0 || $pfl_fanli2>0 || $pfl_maiduan>0){
-							$data4=array();
-							$data4['pfl_unitcode']= session('unitcode');
-							$data4['pfl_proid'] = $data['pro_id'];
-							$data4['pfl_dltype'] = $vv['dlt_id'];
-							$data4['pfl_fanli1']=$pfl_fanli1;
-							$data4['pfl_fanli2']=$pfl_fanli2;
-							$data4['pfl_fanli3']=$pfl_fanli3;
-							$data4['pfl_fanli4']=$pfl_fanli4;
-							$data4['pfl_fanli5']=$pfl_fanli5;
-							$data4['pfl_fanli6']=$pfl_fanli6;
-							$data4['pfl_fanli7']=$pfl_fanli7;
-							$data4['pfl_fanli8']=$pfl_fanli8;
-							$data4['pfl_fanli9']=$pfl_fanli9;
-							$data4['pfl_fanli10']=$pfl_fanli10;
-							$data4['pfl_maiduan']=$pfl_maiduan;
-							
-							$rs=$Profanli->create($data4,1);
-							if($rs){
-							   $Profanli->add(); 
-							}
-							
-							$list3[$kk]['pfl_fanli1']=$pfl_fanli1;
-							$list3[$kk]['pfl_fanli2']=$pfl_fanli2;
-							$list3[$kk]['pfl_fanli3']=$pfl_fanli3;
-							$list3[$kk]['pfl_fanli4']=$pfl_fanli4;
-							$list3[$kk]['pfl_fanli5']=$pfl_fanli5;
-							$list3[$kk]['pfl_fanli6']=$pfl_fanli6;
-							$list3[$kk]['pfl_fanli7']=$pfl_fanli7;
-							$list3[$kk]['pfl_fanli8']=$pfl_fanli8;
-							$list3[$kk]['pfl_fanli9']=$pfl_fanli9;
-							$list3[$kk]['pfl_fanli10']=$pfl_fanli10;
-							$list3[$kk]['pfl_maiduan']=$pfl_maiduan;
-						}else{
-							$list3[$kk]['pfl_fanli1']=0;
-							$list3[$kk]['pfl_fanli2']=0;
-						}
-					}
-				    $list3[$kk]['pro_id']=$data['pro_id'];
-				}
-				
-				//记录日志 begin
-				$log_arr=array(
-							'log_qyid'=>session('qyid'),
-							'log_user'=>session('qyuser'),
-							'log_qycode'=>session('unitcode'),
-							'log_action'=>'产品返利设置',
-							'log_type'=>1, //0-系统 1-企业 2-经销商 3-消费者
-							'log_addtime'=>time(),
-							'log_ip'=>real_ip(),
-							'log_link'=>__SELF__,
-							'log_remark'=>json_encode($list3)
-							);
-				save_log($log_arr);
-				//记录日志 end
-				
-				$this->success('修改成功',U('Mp/Product/proprice'),'',2);
-				
-			}else{
-				$this->error('没有该记录','',2);
-			}
-        }else{  
+                foreach($list3 as $kk=>$vv){
+                    foreach($list4 as $kkk=>$vvv){
+                        $var1='pfl_fanli1_'.$vv['dlt_id'].'_'.$vvv['dlt_id'];
+                        $var2='pfl_fanli2_'.$vv['dlt_id'].'_'.$vvv['dlt_id'];
+
+
+                        $pfl_fanli1 = (isset($_POST[$var1]) && is_not_null($_POST[$var1])) ? trim($_POST[$var1]):0;
+                        $pfl_fanli2 = (isset($_POST[$var2]) && is_not_null($_POST[$var2])) ? trim($_POST[$var2]):0;
+
+
+                        if($pfl_fanli1!=0){
+                            if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli1)){
+                                $this->error('输入必须为数字','',1);
+                            }
+                        }
+                        if($pfl_fanli2!=0){
+                            if(!preg_match("/^[0-9.]{1,10}$/",$pfl_fanli2)){
+                                $this->error('输入必须为数字','',1);
+                            }
+                        }
+
+
+
+                        $map2=array();
+                        $data2=array();
+                        $map2['pfl_unitcode'] = session('unitcode');
+                        $map2['pfl_proid'] = $data['pro_id'];
+                        $map2['pfl_dltype'] = $vv['dlt_id'];
+                        $map2['pfl_tjdltype'] = $vvv['dlt_id'];
+                        $data2=$Profanli->where($map2)->find();
+                        if($data2){
+                            $data4=array();
+                            $data4['pfl_fanli1']=$pfl_fanli1;
+                            $data4['pfl_fanli2']=$pfl_fanli2;
+                            $Profanli->where($map2)->data($data4)->save();
+
+                            $list5[$ii]['pfl_unitcode']= session('unitcode');
+                            $list5[$ii]['pfl_proid']=$data['pro_id'];
+                            $list5[$ii]['pfl_dltype']=$vv['dlt_id'];
+                            $list5[$ii]['pfl_tjdltype']=$vvv['dlt_id'];
+                            $list5[$ii]['pfl_fanli1']=$pfl_fanli1;
+                            $list5[$ii]['pfl_fanli2']=$pfl_fanli2;
+
+                        }else{
+                            if($pfl_fanli1>0 || $pfl_fanli2>0){
+                                $data4=array();
+                                $data4['pfl_unitcode']= session('unitcode');
+                                $data4['pfl_proid'] = $data['pro_id'];
+                                $data4['pfl_dltype'] = $vv['dlt_id'];
+                                $data4['pfl_tjdltype'] = $vvv['dlt_id'];
+                                $data4['pfl_fanli1']=$pfl_fanli1;
+                                $data4['pfl_fanli2']=$pfl_fanli2;
+
+
+                                $rs=$Profanli->create($data4,1);
+                                if($rs){
+                                    $Profanli->add();
+                                }
+
+
+                                $list5[$ii]['pfl_unitcode']= session('unitcode');
+                                $list5[$ii]['pfl_proid']=$data['pro_id'];
+                                $list5[$ii]['pfl_dltype']=$vv['dlt_id'];
+                                $list5[$ii]['pfl_tjdltype']=$vvv['dlt_id'];
+                                $list5[$ii]['pfl_fanli1']=$pfl_fanli1;
+                                $list5[$ii]['pfl_fanli2']=$pfl_fanli2;
+                            }
+                        }
+                        $ii=$ii+1;
+
+                    }
+                }
+
+                //记录日志 begin
+                $log_arr=array(
+                    'log_qyid'=>session('qyid'),
+                    'log_user'=>session('qyuser'),
+                    'log_qycode'=>session('unitcode'),
+                    'log_action'=>'产品返利设置',
+                    'log_type'=>1, //0-系统 1-企业 2-经销商 3-消费者
+                    'log_addtime'=>time(),
+                    'log_ip'=>real_ip(),
+                    'log_link'=>__SELF__,
+                    'log_remark'=>json_encode($list5)
+                );
+                save_log($log_arr);
+                //记录日志 end
+
+                $this->success('修改成功',U('Mp/Product/proprice'),'',2);
+
+            }else{
+                $this->error('没有该记录','',2);
+            }
+        }else{
             $this->error('没有该记录','',2);
         }
     }
-	
+
     //产品价格体系 详细
     public function propricedetail(){
         $this->check_qypurview('20002',1);

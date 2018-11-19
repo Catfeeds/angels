@@ -2545,11 +2545,32 @@ class DealerController extends CommController {
         $this->display('typeadd');
     }
 	
-    //修改经销商分类
+//    //修改经销商分类
+//    public function typeedit(){
+//        $this->check_qypurview('10005',1);
+//        $this->check_qypurview('99999',1);
+//
+//        $map['dlt_id']=intval(I('get.dlt_id',0));
+//        $map['dlt_unitcode']=session('unitcode');
+//        $Dltype= M('Dltype');
+//        $data=$Dltype->where($map)->find();
+//        if($data){
+//
+//        }else{
+//            $this->error('没有该记录');
+//        }
+//
+//        $this->assign('dltinfo', $data);
+//        $this->assign('curr', 'dealer_list');
+//        $this->assign('atitle', '修改级别');
+//
+//        $this->display('typeadd');
+//    }
+//修改经销商分类
     public function typeedit(){
         $this->check_qypurview('10005',1);
         $this->check_qypurview('99999',1);
-		
+        $map=array();
         $map['dlt_id']=intval(I('get.dlt_id',0));
         $map['dlt_unitcode']=session('unitcode');
         $Dltype= M('Dltype');
@@ -2559,7 +2580,33 @@ class DealerController extends CommController {
         }else{
             $this->error('没有该记录');
         }
-    
+
+        $Dltypefanli = M('Dltypefanli');
+
+        $map2=array();
+        $map2['dlt_unitcode']=session('unitcode');
+        $list2 = $Dltype->where($map2)->order('dlt_level ASC,dlt_id ASC')->select();
+//        dump($list2);die();
+        foreach($list2 as $kk=>$vv){
+
+            $map3=array();
+            $data3=array();
+            $map3['tfl_unitcode'] = session('unitcode');
+            $map3['tfl_dltype'] = $data['dlt_id'];
+            $map3['tfl_tjdltype'] = $vv['dlt_id'];
+            $data3=$Dltypefanli->where($map3)->find();
+            if($data3){
+                $list2[$kk]['tfl_fanli1']=$data3['tfl_fanli1'];
+                $list2[$kk]['tfl_fanli2']=$data3['tfl_fanli2'];
+                $list2[$kk]['tfl_fanli3']=$data3['tfl_fanli3'];
+            }else{
+                $list2[$kk]['tfl_fanli1']=0;
+                $list2[$kk]['tfl_fanli2']=0;
+                $list2[$kk]['tfl_fanli3']=0;
+            }
+        }
+//        dump($list2);die();
+        $this->assign('typefanlilist', $list2);
         $this->assign('dltinfo', $data);
         $this->assign('curr', 'dealer_list');
         $this->assign('atitle', '修改级别');
@@ -2588,313 +2635,752 @@ class DealerController extends CommController {
         $this->display('typeview');
     }
 	
+//    //保存经销商分类
+//    public function type_save(){
+//        $this->check_qypurview('10005',1);
+//		$this->check_qypurview('99999',1);
+//
+//        if (!IS_POST) {
+//             header('HTTP/1.0 404 Not Found');
+//             echo'error:404';
+//             exit;
+//        }
+//
+//
+//        if(intval(I('post.dlt_id',0))>0){
+//            //修改保存
+//
+//			$map['dlt_id']=intval(I('post.dlt_id',0));
+//			$data=array();
+//            $data['dlt_name']=I('post.dlt_name','');
+//			$data['dlt_level']=intval(I('post.dlt_level',0));
+//			$data['dlt_fanli1']=I('post.dlt_fanli1','');
+//			$data['dlt_fanli2']=I('post.dlt_fanli2','');
+//			$data['dlt_fanli3']=I('post.dlt_fanli3','');
+//			$data['dlt_fanli4']=I('post.dlt_fanli4','');
+//			$data['dlt_fanli5']=I('post.dlt_fanli5','');
+//			$data['dlt_fanli6']=I('post.dlt_fanli6','');
+//			$data['dlt_fanli7']=I('post.dlt_fanli7','');
+//			$data['dlt_fanli8']=I('post.dlt_fanli8','');
+//			$data['dlt_fanli9']=I('post.dlt_fanli9','');
+//			$data['dlt_fanli10']=I('post.dlt_fanli10','');
+//			$data['dlt_firstquota']=I('post.dlt_firstquota','');
+//			$data['dlt_minnum']=I('post.dlt_minnum','');
+//
+//            if($data['dlt_name']==''){
+//                $this->error('级别名称不能为空');
+//            }
+//
+//			if($data['dlt_level']<=0){
+//                $this->error('请选择级别');
+//            }
+//
+//			if($data['dlt_fanli1']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli1'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli1']=0;
+//			}
+//
+//			if($data['dlt_fanli2']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli2'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli2']=0;
+//			}
+//
+//			if($data['dlt_fanli3']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli3'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli3']=0;
+//			}
+//
+//			if($data['dlt_fanli4']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli4'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli4']=0;
+//			}
+//
+//			if($data['dlt_fanli5']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli5'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli5']=0;
+//			}
+//
+//			if($data['dlt_fanli6']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli6'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli6']=0;
+//			}
+//
+//			if($data['dlt_fanli7']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli7'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli7']=0;
+//			}
+//
+//			if($data['dlt_fanli8']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli8'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli8']=0;
+//			}
+//
+//			if($data['dlt_fanli9']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli9'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli9']=0;
+//			}
+//
+//			if($data['dlt_fanli10']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli10'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli10']=0;
+//			}
+//
+//			if($data['dlt_firstquota']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_firstquota'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_firstquota']=0;
+//			}
+//			if($data['dlt_minnum']!=''){
+//				if(!preg_match("/^[0-9]{1,10}$/",$data['dlt_minnum'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_minnum']=0;
+//			}
+//
+//
+//
+//            $map2=array();
+//            $map2['dlt_name']=$data['dlt_name'];
+//            $map2['dlt_unitcode']=session('unitcode');
+//            $map2['dlt_id'] = array('NEQ',$map['dlt_id']);
+//
+//            $Dltype= M('Dltype');
+//            $data2=$Dltype->where($map2)->find();
+//
+//            if($data2){
+//                $this->error('该级别名称已存在');
+//            }
+//
+//			$map2=array();
+//            $map2['dlt_level']=$data['dlt_level'];
+//            $map2['dlt_unitcode']=session('unitcode');
+//            $map2['dlt_id'] = array('NEQ',$map['dlt_id']);
+//            $data2=$Dltype->where($map2)->find();
+//            if($data2){
+//                $this->error('该级别已存在');
+//            }
+//
+//            $map['dlt_unitcode']=session('unitcode');
+//            $rs=$Dltype->where($map)->data($data)->save();
+//
+//            if($rs){
+//				//记录日志 begin
+//				$log_arr=array(
+//							'log_qyid'=>session('qyid'),
+//							'log_user'=>session('qyuser'),
+//							'log_qycode'=>session('unitcode'),
+//							'log_action'=>'修改经销商级别',
+//							'log_type'=>1, //0-系统 1-企业 2-经销商 3-消费者
+//							'log_addtime'=>time(),
+//							'log_ip'=>real_ip(),
+//							'log_link'=>__SELF__,
+//							'log_remark'=>json_encode($data)
+//							);
+//				save_log($log_arr);
+//				//记录日志 end
+//
+//                $this->success('修改成功',U('Mp/Dealer/typelist'),'',2);
+//            }elseif($rs===0){
+//                $this->error('提交数据未改变','',1);
+//			}else{
+//                $this->error('修改失败','',1);
+//            }
+//        }else{
+//            //添加保存
+//			$data=array();
+//			$data['dlt_unitcode']=session('unitcode');
+//            $data['dlt_name']=I('post.dlt_name','');
+//			$data['dlt_level']=intval(I('post.dlt_level',0));
+//			$data['dlt_fanli1']=I('post.dlt_fanli1','');
+//			$data['dlt_fanli2']=I('post.dlt_fanli2','');
+//			$data['dlt_fanli3']=I('post.dlt_fanli3','');
+//			$data['dlt_fanli4']=I('post.dlt_fanli4','');
+//			$data['dlt_fanli5']=I('post.dlt_fanli5','');
+//			$data['dlt_fanli6']=I('post.dlt_fanli6','');
+//			$data['dlt_fanli7']=I('post.dlt_fanli7','');
+//			$data['dlt_fanli8']=I('post.dlt_fanli8','');
+//			$data['dlt_fanli9']=I('post.dlt_fanli9','');
+//			$data['dlt_fanli10']=I('post.dlt_fanli10','');
+//			$data['dlt_firstquota']=I('post.dlt_firstquota','');
+//			$data['dlt_minnum']=I('post.dlt_minnum','');
+//
+//
+//            if($data['dlt_name']==''){
+//                $this->error('级别名称不能为空');
+//            }
+//
+//			if($data['dlt_level']<=0){
+//                $this->error('请选择级别');
+//            }
+//
+//			if($data['dlt_fanli1']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli1'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli1']=0;
+//			}
+//
+//			if($data['dlt_fanli2']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli2'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli2']=0;
+//			}
+//
+//			if($data['dlt_fanli3']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli3'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli3']=0;
+//			}
+//
+//            if($data['dlt_fanli4']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli4'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli4']=0;
+//			}
+//
+//			if($data['dlt_fanli5']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli5'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli5']=0;
+//			}
+//
+//			if($data['dlt_fanli6']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli6'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli6']=0;
+//			}
+//
+//			if($data['dlt_fanli7']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli7'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli7']=0;
+//			}
+//
+//			if($data['dlt_fanli8']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli8'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli8']=0;
+//			}
+//
+//			if($data['dlt_fanli9']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli9'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli9']=0;
+//			}
+//
+//			if($data['dlt_fanli10']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli10'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_fanli10']=0;
+//			}
+//
+//			if($data['dlt_firstquota']!=''){
+//				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_firstquota'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_firstquota']=0;
+//			}
+//
+//			if($data['dlt_minnum']!=''){
+//				if(!preg_match("/^[0-9]{1,10}$/",$data['dlt_minnum'])){
+//					$this->error('返利必须为数字','',1);
+//				}
+//			}else{
+//				$data['dlt_minnum']=0;
+//			}
+//
+//            $map=array();
+//            $map['dlt_name']=$data['dlt_name'];
+//            $map['dlt_unitcode']=session('unitcode');
+//
+//            $Dltype= M('Dltype');
+//            $data2=$Dltype->where($map)->find();
+//            if($data2){
+//                $this->error('该级别名称已存在');
+//            }
+//
+//			$map=array();
+//            $map['dlt_level']=$data['dlt_level'];
+//            $map['dlt_unitcode']=session('unitcode');
+//
+//            $data2=$Dltype->where($map)->find();
+//            if($data2){
+//                $this->error('该级别已存在');
+//            }
+//
+//            $rs=$Dltype->create($data,1);
+//            if($rs){
+//                $result = $Dltype->add();
+//                if($result){
+//					//记录日志 begin
+//					$log_arr=array(
+//								'log_qyid'=>session('qyid'),
+//								'log_user'=>session('qyuser'),
+//								'log_qycode'=>session('unitcode'),
+//								'log_action'=>'添加经销商级别',
+//								'log_type'=>1, //0-系统 1-企业 2-经销商 3-消费者
+//								'log_addtime'=>time(),
+//								'log_ip'=>real_ip(),
+//								'log_link'=>__SELF__,
+//								'log_remark'=>json_encode($data)
+//								);
+//					save_log($log_arr);
+//					//记录日志 end
+//
+//                   $this->success('添加成功',U('Mp/Dealer/typelist'),'',2);
+//                }else{
+//                   $this->error('添加失败','',1);
+//                }
+//            }else{
+//                $this->error('添加失败','',1);
+//            }
+//        }
+//    }
     //保存经销商分类
     public function type_save(){
         $this->check_qypurview('10005',1);
-		$this->check_qypurview('99999',1);
+        $this->check_qypurview('99999',1);
 
         if (!IS_POST) {
-             header('HTTP/1.0 404 Not Found');
-             echo'error:404';
-             exit;
+            header('HTTP/1.0 404 Not Found');
+            echo'error:404';
+            exit;
         }
-        
-        
+
+
         if(intval(I('post.dlt_id',0))>0){
             //修改保存
-            
-			$map['dlt_id']=intval(I('post.dlt_id',0));
-			$data=array();
+
+            $dlt_id=intval(I('post.dlt_id',0));
+            $data=array();
             $data['dlt_name']=I('post.dlt_name','');
-			$data['dlt_level']=intval(I('post.dlt_level',0));
-			$data['dlt_fanli1']=I('post.dlt_fanli1','');
-			$data['dlt_fanli2']=I('post.dlt_fanli2','');
-			$data['dlt_fanli3']=I('post.dlt_fanli3','');
-			$data['dlt_fanli4']=I('post.dlt_fanli4','');
-			$data['dlt_fanli5']=I('post.dlt_fanli5','');
-			$data['dlt_fanli6']=I('post.dlt_fanli6','');
-			$data['dlt_fanli7']=I('post.dlt_fanli7','');
-			$data['dlt_fanli8']=I('post.dlt_fanli8','');
-			$data['dlt_fanli9']=I('post.dlt_fanli9','');
-			$data['dlt_fanli10']=I('post.dlt_fanli10','');
-			$data['dlt_firstquota']=I('post.dlt_firstquota','');
-			$data['dlt_minnum']=I('post.dlt_minnum','');
+            $data['dlt_level']=intval(I('post.dlt_level',0));
+            $data['dlt_fanli1']=I('post.dlt_fanli1','');
+            $data['dlt_fanli2']=I('post.dlt_fanli2','');
+            $data['dlt_fanli3']=I('post.dlt_fanli3','');
+            $data['dlt_fanli4']=I('post.dlt_fanli4','');
+            $data['dlt_fanli5']=I('post.dlt_fanli5','');
+            $data['dlt_fanli6']=I('post.dlt_fanli6','');
+            $data['dlt_fanli7']=I('post.dlt_fanli7','');
+            $data['dlt_fanli8']=I('post.dlt_fanli8','');
+            $data['dlt_fanli9']=I('post.dlt_fanli9','');
+            $data['dlt_fanli10']=I('post.dlt_fanli10','');
+            $data['dlt_firstquota']=I('post.dlt_firstquota','');
+            $data['dlt_minnum']=I('post.dlt_minnum','');
+            $data['dlt_butie']=I('post.dlt_butie','');
+
+
 
             if($data['dlt_name']==''){
                 $this->error('级别名称不能为空');
             }
-			
-			if($data['dlt_level']<=0){
+
+            if($data['dlt_level']<=0){
                 $this->error('请选择级别');
             }
-			
-			if($data['dlt_fanli1']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli1'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli1']=0;
-			}
-			
-			if($data['dlt_fanli2']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli2'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli2']=0;
-			}
-			
-			if($data['dlt_fanli3']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli3'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli3']=0;
-			}
-			
-			if($data['dlt_fanli4']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli4'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli4']=0;
-			}
-			
-			if($data['dlt_fanli5']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli5'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli5']=0;
-			}
-			
-			if($data['dlt_fanli6']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli6'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli6']=0;
-			}
-			
-			if($data['dlt_fanli7']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli7'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli7']=0;
-			}
-			
-			if($data['dlt_fanli8']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli8'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli8']=0;
-			}
-			
-			if($data['dlt_fanli9']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli9'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli9']=0;
-			}
-			
-			if($data['dlt_fanli10']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli10'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli10']=0;
-			}
-			
-			if($data['dlt_firstquota']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_firstquota'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_firstquota']=0;
-			}
-			if($data['dlt_minnum']!=''){
-				if(!preg_match("/^[0-9]{1,10}$/",$data['dlt_minnum'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_minnum']=0;
-			}
-			
-			
-			
+
+            if($data['dlt_fanli1']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli1'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli1']=0;
+            }
+
+            if($data['dlt_fanli2']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli2'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli2']=0;
+            }
+
+            if($data['dlt_fanli3']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli3'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli3']=0;
+            }
+
+            if($data['dlt_fanli4']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli4'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli4']=0;
+            }
+
+            if($data['dlt_fanli5']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli5'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli5']=0;
+            }
+
+            if($data['dlt_fanli6']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli6'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli6']=0;
+            }
+
+            if($data['dlt_fanli7']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli7'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli7']=0;
+            }
+
+            if($data['dlt_fanli8']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli8'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli8']=0;
+            }
+
+            if($data['dlt_fanli9']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli9'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli9']=0;
+            }
+
+            if($data['dlt_fanli10']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli10'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli10']=0;
+            }
+
+            if($data['dlt_firstquota']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_firstquota'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_firstquota']=0;
+            }
+            if($data['dlt_minnum']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_minnum'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_minnum']=0;
+            }
+
+            if($data['dlt_butie']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_butie'])){
+                    $this->error('公司补贴必须为数字','',1);
+                }
+            }else{
+                $data['dlt_butie']=0;
+            }
+
+
+
             $map2=array();
             $map2['dlt_name']=$data['dlt_name'];
             $map2['dlt_unitcode']=session('unitcode');
-            $map2['dlt_id'] = array('NEQ',$map['dlt_id']);
-	
+            $map2['dlt_id'] = array('NEQ',$dlt_id);
+
             $Dltype= M('Dltype');
             $data2=$Dltype->where($map2)->find();
-			
+
             if($data2){
                 $this->error('该级别名称已存在');
             }
-			
-			$map2=array();
+
+            $map2=array();
             $map2['dlt_level']=$data['dlt_level'];
             $map2['dlt_unitcode']=session('unitcode');
-            $map2['dlt_id'] = array('NEQ',$map['dlt_id']);
+            $map2['dlt_id'] = array('NEQ',$dlt_id);
             $data2=$Dltype->where($map2)->find();
             if($data2){
                 $this->error('该级别已存在');
             }
-			
+
+            //返利设置
+            $map3=array();
+            $map3['dlt_unitcode']=session('unitcode');
+            $list3 = $Dltype->where($map3)->order('dlt_level ASC,dlt_id ASC')->select();
+
+            $Dltypefanli= M('Dltypefanli');
+            foreach($list3 as $kk=>$vv){
+                $var1='tfl_fanli1'.$vv['dlt_id'];
+                $var2='tfl_fanli2'.$vv['dlt_id'];
+                $tfl_fanli1 = (isset($_POST[$var1]) && is_not_null($_POST[$var1])) ? trim($_POST[$var1]):0;
+                $tfl_fanli2 = (isset($_POST[$var2]) && is_not_null($_POST[$var2])) ? trim($_POST[$var2]):0;
+                if($tfl_fanli1!=0){
+                    if(!preg_match("/^[0-9.]{1,10}$/",$tfl_fanli1)){
+                        $this->error('返利输入必须为数字','',1);
+                    }
+                }
+                if($tfl_fanli2!=0){
+                    if(!preg_match("/^[0-9.]{1,10}$/",$tfl_fanli2)){
+                        $this->error('返利输入必须为数字','',1);
+                    }
+                }
+
+                $map4=array();
+                $data4=array();
+                $map4['tfl_unitcode'] = session('unitcode');
+                $map4['tfl_dltype'] = $dlt_id;
+                $map4['tfl_tjdltype'] = $vv['dlt_id'];
+                $data4=$Dltypefanli->where($map4)->find();
+                if($data4){
+                    $data5=array();
+                    $data5['tfl_fanli1']=$tfl_fanli1;
+                    $data5['tfl_fanli2']=$tfl_fanli2;
+                    $Dltypefanli->where($map4)->data($data5)->save();
+
+
+                    $list3[$kk]['tfl_fanli1']=$tfl_fanli1;
+                    $list3[$kk]['tfl_fanli2']=$tfl_fanli2;
+                }else{
+                    $data5=array();
+                    $data5['tfl_unitcode']= session('unitcode');
+                    $data5['tfl_dltype'] = $dlt_id;
+                    $data5['tfl_tjdltype'] = $vv['dlt_id'];
+                    $data5['tfl_fanli1']=$tfl_fanli1;
+                    $data5['tfl_fanli2']=$tfl_fanli2;
+
+                    $rs5=$Dltypefanli->create($data5,1);
+                    if($rs5){
+                        $Dltypefanli->add();
+                    }
+
+                    $list3[$kk]['tfl_unitcode']=session('unitcode');
+                    $list3[$kk]['tfl_dltype']=$dlt_id;
+                    $list3[$kk]['tfl_tjdltype']=$vv['dlt_id'];
+                    $list3[$kk]['tfl_fanli1']=$tfl_fanli1;
+                    $list3[$kk]['tfl_fanli2']=$tfl_fanli2;
+
+
+                }
+            }
+
+
+
+
+            $map=array();
+            $map['dlt_id']=intval(I('post.dlt_id',0));
             $map['dlt_unitcode']=session('unitcode');
             $rs=$Dltype->where($map)->data($data)->save();
 
             if($rs){
-				//记录日志 begin
-				$log_arr=array(
-							'log_qyid'=>session('qyid'),
-							'log_user'=>session('qyuser'),
-							'log_qycode'=>session('unitcode'),
-							'log_action'=>'修改经销商级别',
-							'log_type'=>1, //0-系统 1-企业 2-经销商 3-消费者
-							'log_addtime'=>time(),
-							'log_ip'=>real_ip(),
-							'log_link'=>__SELF__,
-							'log_remark'=>json_encode($data)
-							);
-				save_log($log_arr);
-				//记录日志 end
-				
+                $data['dltypefanli']=$list3;
+                //记录日志 begin
+                $log_arr=array(
+                    'log_qyid'=>session('qyid'),
+                    'log_user'=>session('qyuser'),
+                    'log_qycode'=>session('unitcode'),
+                    'log_action'=>'修改经销商级别',
+                    'log_type'=>1, //0-系统 1-企业 2-经销商 3-消费者
+                    'log_addtime'=>time(),
+                    'log_ip'=>real_ip(),
+                    'log_link'=>__SELF__,
+                    'log_remark'=>json_encode($data)
+                );
+                save_log($log_arr);
+                //记录日志 end
+
                 $this->success('修改成功',U('Mp/Dealer/typelist'),'',2);
             }elseif($rs===0){
-                $this->error('提交数据未改变','',1);
-			}else{	
+                $this->success('修改成功',U('Mp/Dealer/typelist'),'',2);
+            }else{
                 $this->error('修改失败','',1);
             }
-        }else{  
+        }else{
             //添加保存
-			$data=array();
-			$data['dlt_unitcode']=session('unitcode');
+            $data=array();
+            $data['dlt_unitcode']=session('unitcode');
             $data['dlt_name']=I('post.dlt_name','');
-			$data['dlt_level']=intval(I('post.dlt_level',0));
-			$data['dlt_fanli1']=I('post.dlt_fanli1','');
-			$data['dlt_fanli2']=I('post.dlt_fanli2','');
-			$data['dlt_fanli3']=I('post.dlt_fanli3','');
-			$data['dlt_fanli4']=I('post.dlt_fanli4','');
-			$data['dlt_fanli5']=I('post.dlt_fanli5','');
-			$data['dlt_fanli6']=I('post.dlt_fanli6','');
-			$data['dlt_fanli7']=I('post.dlt_fanli7','');
-			$data['dlt_fanli8']=I('post.dlt_fanli8','');
-			$data['dlt_fanli9']=I('post.dlt_fanli9','');
-			$data['dlt_fanli10']=I('post.dlt_fanli10','');
-			$data['dlt_firstquota']=I('post.dlt_firstquota','');
-			$data['dlt_minnum']=I('post.dlt_minnum','');
+            $data['dlt_level']=intval(I('post.dlt_level',0));
+            $data['dlt_fanli1']=I('post.dlt_fanli1','');
+            $data['dlt_fanli2']=I('post.dlt_fanli2','');
+            $data['dlt_fanli3']=I('post.dlt_fanli3','');
+            $data['dlt_fanli4']=I('post.dlt_fanli4','');
+            $data['dlt_fanli5']=I('post.dlt_fanli5','');
+            $data['dlt_fanli6']=I('post.dlt_fanli6','');
+            $data['dlt_fanli7']=I('post.dlt_fanli7','');
+            $data['dlt_fanli8']=I('post.dlt_fanli8','');
+            $data['dlt_fanli9']=I('post.dlt_fanli9','');
+            $data['dlt_fanli10']=I('post.dlt_fanli10','');
+            $data['dlt_firstquota']=I('post.dlt_firstquota','');
+            $data['dlt_minnum']=I('post.dlt_minnum','');
+            $data['dlt_butie']=I('post.dlt_butie','');
 
-            
             if($data['dlt_name']==''){
                 $this->error('级别名称不能为空');
             }
-			
-			if($data['dlt_level']<=0){
+
+            if($data['dlt_level']<=0){
                 $this->error('请选择级别');
             }
-			
-			if($data['dlt_fanli1']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli1'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli1']=0;
-			}
-			
-			if($data['dlt_fanli2']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli2'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli2']=0;
-			}
-			
-			if($data['dlt_fanli3']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli3'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli3']=0;
-			}
-			
+
+            if($data['dlt_fanli1']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli1'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli1']=0;
+            }
+
+            if($data['dlt_fanli2']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli2'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli2']=0;
+            }
+
+            if($data['dlt_fanli3']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli3'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli3']=0;
+            }
+
             if($data['dlt_fanli4']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli4'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli4']=0;
-			}
-			
-			if($data['dlt_fanli5']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli5'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli5']=0;
-			}
-			
-			if($data['dlt_fanli6']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli6'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli6']=0;
-			}
-			
-			if($data['dlt_fanli7']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli7'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli7']=0;
-			}
-			
-			if($data['dlt_fanli8']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli8'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli8']=0;
-			}
-			
-			if($data['dlt_fanli9']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli9'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli9']=0;
-			}
-			
-			if($data['dlt_fanli10']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli10'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_fanli10']=0;
-			}
-			
-			if($data['dlt_firstquota']!=''){
-				if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_firstquota'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_firstquota']=0;
-			}
-			
-			if($data['dlt_minnum']!=''){
-				if(!preg_match("/^[0-9]{1,10}$/",$data['dlt_minnum'])){
-					$this->error('返利必须为数字','',1);
-				}
-			}else{
-				$data['dlt_minnum']=0;
-			}
-		
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli4'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli4']=0;
+            }
+
+            if($data['dlt_fanli5']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli5'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli5']=0;
+            }
+
+            if($data['dlt_fanli6']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli6'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli6']=0;
+            }
+
+            if($data['dlt_fanli7']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli7'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli7']=0;
+            }
+
+            if($data['dlt_fanli8']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli8'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli8']=0;
+            }
+
+            if($data['dlt_fanli9']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli9'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli9']=0;
+            }
+
+            if($data['dlt_fanli10']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_fanli10'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_fanli10']=0;
+            }
+
+            if($data['dlt_firstquota']!=''){
+                if(!preg_match("/^[0-9.]{1,10}$/",$data['dlt_firstquota'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_firstquota']=0;
+            }
+
+            if($data['dlt_minnum']!=''){
+                if(!preg_match("/^[0-9]{1,10}$/",$data['dlt_minnum'])){
+                    $this->error('返利必须为数字','',1);
+                }
+            }else{
+                $data['dlt_minnum']=0;
+            }
+            if($data['dlt_butie']!=''){
+                if(!preg_match("/^[0-9]{1,10}$/",$data['dlt_butie'])){
+                    $this->error('公司补贴必须为数字','',1);
+                }
+            }else{
+                $data['dlt_butie']=0;
+            }
+
+
             $map=array();
             $map['dlt_name']=$data['dlt_name'];
             $map['dlt_unitcode']=session('unitcode');
@@ -2904,8 +3390,8 @@ class DealerController extends CommController {
             if($data2){
                 $this->error('该级别名称已存在');
             }
-			
-			$map=array();
+
+            $map=array();
             $map['dlt_level']=$data['dlt_level'];
             $map['dlt_unitcode']=session('unitcode');
 
@@ -2913,36 +3399,35 @@ class DealerController extends CommController {
             if($data2){
                 $this->error('该级别已存在');
             }
-		
+
             $rs=$Dltype->create($data,1);
             if($rs){
-                $result = $Dltype->add(); 
+                $result = $Dltype->add();
                 if($result){
-					//记录日志 begin
-					$log_arr=array(
-								'log_qyid'=>session('qyid'),
-								'log_user'=>session('qyuser'),
-								'log_qycode'=>session('unitcode'),
-								'log_action'=>'添加经销商级别',
-								'log_type'=>1, //0-系统 1-企业 2-经销商 3-消费者
-								'log_addtime'=>time(),
-								'log_ip'=>real_ip(),
-								'log_link'=>__SELF__,
-								'log_remark'=>json_encode($data)
-								);
-					save_log($log_arr);
-					//记录日志 end
-					
-                   $this->success('添加成功',U('Mp/Dealer/typelist'),'',2);
+                    //记录日志 begin
+                    $log_arr=array(
+                        'log_qyid'=>session('qyid'),
+                        'log_user'=>session('qyuser'),
+                        'log_qycode'=>session('unitcode'),
+                        'log_action'=>'添加经销商级别',
+                        'log_type'=>1, //0-系统 1-企业 2-经销商 3-消费者
+                        'log_addtime'=>time(),
+                        'log_ip'=>real_ip(),
+                        'log_link'=>__SELF__,
+                        'log_remark'=>json_encode($data)
+                    );
+                    save_log($log_arr);
+                    //记录日志 end
+
+                    $this->success('添加成功',U('Mp/Dealer/typelist'),'',2);
                 }else{
-                   $this->error('添加失败','',1);
+                    $this->error('添加失败','',1);
                 }
             }else{
                 $this->error('添加失败','',1);
             }
         }
     }
-	
     //删除经销商分类
     public function dltdel(){
         $this->check_qypurview('10005',1);
