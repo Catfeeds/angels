@@ -2,25 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>微商控价系统</title>
+<title>防窜货查询</title>
 <link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
 <script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
-<style>
-.follow {
-    border: 1px solid #eee;
-	float:left;
-	width:25%;
-	margin:0 30px 30px 0
-}
-.follow_t {
-    background-color: #fcfcfc;
-    border-bottom: 1px solid #eee;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 5px;
-	line-height:36px;
-}
-</style>
 </head>
 <body>
 <div class="header">
@@ -186,71 +170,67 @@ function nemuclose(z,obj){
 </div>
 <div class="rightcontent">
 <div class="content_nav" >
-<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a></div>
+<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="#">防窜货查询</A></div>
 <div class="nav_r"></div>
 </div>
 <div class="height20"></div>
-
 <div class="content">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+             <tr>     
+                  <td height="40"   width="25%" class="txtright" ></td>
+				  <td width="75%" class="txtleft" ></td>
+			  </tr>
+			  <tr>     
+                  <td height="40"   class="txtright" >输入条码：</td>
+				  <td class="txtleft" ><b><?php echo ($barcode["code"]); ?></b></td>
+			  </tr>
+			    <tr>     
+                  <td height="40"  class="txtright" >出货仓库：</td>
+				  <td  class="txtleft" ><?php echo ($shipmentinfo["warehouse"]); ?></td>
+			  </tr>
+			   <tr>     
+                  <td height="40"  class="txtright" >对应产品：</td>
+				  <td  class="txtleft" ><?php echo ($shipmentinfo["pro_name"]); ?> (<?php echo ($shipmentinfo["pro_number"]); ?>)</td>
+			  </tr>
+			  <tr>     
+                  <td height="40"  class="txtright" >包装数量：</td>
+				  <td  class="txtleft" ><?php echo ($barcode["qty"]); ?></td>
+			  </tr>
+			  
+			  <?php if(($barcode["dabiao"]) != ""): ?><tr>     
+                  <td height="40"  class="txtright" > 大标条码：</td>
+				  <td  class="txtleft" ><?php echo ($barcode["dabiao"]); ?></td>
+			  </tr><?php endif; ?>
+			 
+			   <tr>     
+                  <td height="40"  class="txtright"  valign="top" style="padding-top:5px;line-height:24px;">流向：</td>
+				  <td  class="txtleft"  style="line-height:24px;padding-top:5px"  valign="top" >
 
+				 <b><?php echo (date('Y-m-d',$shipmentinfo["ship_date"])); ?></b>   由 <b>总公司</b>  发向  <b><?php echo ($shipmentinfo["dl_name"]); ?></b> <br/>
 
-<?php if(($daishenjxs) !== ""): ?><div class="follow">
-<div class="follow_t" style="padding:0 0 0 10px">待审经销商</div>
-<div style="padding:10px; font-size:14px; line-height:36px">
-待审经销商 <b style="color:#FF0000"><?php echo ($daishenjxs); ?></b>　<a  href="<?php echo U('Mp/Dealer/index?dl_status=0');?>" >[进入]</a>
+				 <?php if(!empty($shipmentinfo["sub"])): ?><b><?php echo (date('Y-m-d',$shipmentinfo["sub"]["ship_date"])); ?></b>   由 <b><?php echo ($shipmentinfo["dl_name"]); ?></b>  发向  <b><?php echo ($shipmentinfo["sub"]["dl_name"]); ?></b> <br/><?php endif; ?>
+				 
+				  <?php if(!empty($shipmentinfo["sub"]["sub"])): ?><b><?php echo (date('Y-m-d',$shipmentinfo["sub"]["sub"]["ship_date"])); ?></b>   由 <b><?php echo ($shipmentinfo["sub"]["dl_name"]); ?></b>  发向  <b><?php echo ($shipmentinfo["sub"]["sub"]["dl_name"]); ?></b> <br/><?php endif; ?>
+				 
+				  <?php if(!empty($shipmentinfo["sub"]["sub"]["sub"])): ?><b><?php echo (date('Y-m-d',$shipmentinfo["sub"]["sub"]["sub"]["ship_date"])); ?></b>   由 <b><?php echo ($shipmentinfo["sub"]["sub"]["dl_name"]); ?></b>  发向  <b><?php echo ($shipmentinfo["sub"]["sub"]["sub"]["dl_name"]); ?></b> <br/><?php endif; ?>
+				 
+				  <?php if(!empty($shipmentinfo["sub"]["sub"]["sub"]["sub"])): ?><b><?php echo (date('Y-m-d',$shipmentinfo["sub"]["sub"]["sub"]["sub"]["ship_date"])); ?></b>   由 <b><?php echo ($shipmentinfo["sub"]["sub"]["sub"]["dl_name"]); ?></b>  发向  <b><?php echo ($shipmentinfo["sub"]["sub"]["sub"]["sub"]["dl_name"]); ?></b> <br/><?php endif; ?>
+		 
+			
+				  </td>
+			  </tr>
+			 
+			
+			   
+			  <tr>  <td height="60" ></td>
+                    <td  class="txtleft"  >
+             <input name="" type="reset" value="返 回"  onClick="javascript:window.history.go(-1);" class="botton" >
+            </td>
+			  </tr>
+			</table>
+
 </div>
-</div><?php endif; ?>
-
-<?php if(($daichuliorders) !== ""): ?><div class="follow">
-<div class="follow_t" style="padding:0 0 0 10px">待处理订单</div>
-<div style="padding:10px; font-size:14px;line-height:36px">
-待处理订单 <b style="color:#FF0000"><?php echo ($daichuliorders); ?></b>　<a  href="<?php echo U('Mp/Orders/cporders');?>" >[进入]</a>
-</div>
-</div><?php endif; ?>
-
-<!-- <?php if(($daichulifanli) !== ""): ?><div class="follow">
-<div class="follow_t" style="padding:0 0 0 10px">待处理返利</div>
-<div style="padding:10px; font-size:14px;line-height:36px">
-待处理返利 <b style="color:#FF0000"><?php echo ($daichulifanli); ?></b>　<a  href="<?php echo U('Mp/Fanli/paylist');?>" >[进入]</a>
-</div>
-</div> -->
-
-<!--<?php endif; ?>
-
-<?php if(($daichulitixian) !== ""): ?><div class="follow">
-<div class="follow_t" style="padding:0 0 0 10px">待处理提现</div>
-<div style="padding:10px; font-size:14px;line-height:36px">
-待处理提现 <b style="color:#FF0000"><?php echo ($daichulitixian); ?></b>　<a  href="<?php echo U('Mp/Capital/recashlist');?>" >[进入]</a>
-</div>
-</div><?php endif; ?> -->
-
-<!-- <?php if(($daichulichongzhi) !== ""): ?><div class="follow">
-<div class="follow_t" style="padding:0 0 0 10px">待处理充值</div>
-<div style="padding:10px; font-size:14px;line-height:36px">
-待处理充值 <b style="color:#FF0000"><?php echo ($daichulichongzhi); ?></b>　<a  href="<?php echo U('Mp/Capital/payinlist');?>" >[进入]</a>
-</div>
-</div><?php endif; ?> -->
-<!-- 
-<?php if(($daichuliduihuan) !== ""): ?><div class="follow">
-<div class="follow_t" style="padding:0 0 0 10px">待处理积分兑换</div>
-<div style="padding:10px; font-size:14px;line-height:36px">
-待处理积分兑换 <b style="color:#FF0000"><?php echo ($daichuliduihuan); ?></b>　<a  href="<?php echo U('Mp/Dljf/dljfexch');?>" >[进入]</a>
-</div>
-</div><?php endif; ?> -->
-
-<?php if(($daichuliliuyan) !== ""): ?><div class="follow">
-<div class="follow_t" style="padding:0 0 0 10px">待处理留言</div>
-<div style="padding:10px; font-size:14px;line-height:36px">
-待处理留言 <b style="color:#FF0000"><?php echo ($daichuliliuyan); ?></b>　<a  href="<?php echo U('Mp/Jfmobi/feedback');?>" >[进入]</a>
-</div>
-</div><?php endif; ?>
-
-
-
-
-<div class="height10"></div>
-</div>
-
+<div class="height20"></div>
 </div>
 </div>
 </div>

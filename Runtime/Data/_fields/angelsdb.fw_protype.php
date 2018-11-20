@@ -1,1 +1,0 @@
-a:7:{i:0;s:10:"protype_id";i:1;s:16:"protype_unitcode";i:2;s:12:"protype_name";i:3;s:13:"protype_iswho";i:4;s:13:"protype_order";s:3:"_pk";s:10:"protype_id";s:5:"_type";a:5:{s:10:"protype_id";s:7:"int(11)";s:16:"protype_unitcode";s:11:"varchar(32)";s:12:"protype_name";s:12:"varchar(128)";s:13:"protype_iswho";s:7:"int(11)";s:13:"protype_order";s:7:"int(11)";}}

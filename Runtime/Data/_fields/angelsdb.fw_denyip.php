@@ -1,1 +1,0 @@
-a:5:{i:0;s:7:"deny_id";i:1;s:7:"deny_ip";i:2;s:11:"deny_remark";s:3:"_pk";s:7:"deny_id";s:5:"_type";a:3:{s:7:"deny_id";s:7:"int(11)";s:7:"deny_ip";s:11:"varchar(32)";s:11:"deny_remark";s:11:"varchar(64)";}}

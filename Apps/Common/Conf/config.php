@@ -1,7 +1,7 @@
 <?php
 return array(
 	'SHOW_PAGE_TRACE' =>false,
-  'QY_UNITCODE'  => '3321', // 企业编号
+  'QY_UNITCODE'  => '3408', // 企业编号
   'DEFAULT_MODULE' => 'Angels',
   'URL_HTML_SUFFIX' =>  '',  // URL伪静态后缀设置
   'DB_TYPE'  => 'mysql', // 数据库类型
@@ -18,8 +18,8 @@ return array(
   'TMPL_R_DELIM'          => '}>',        // 模板引擎普通标签结束标记
   'WWW_AUTHKEY'  => '9da23Zx65dS9d40Gc1Ke02cHe5b72Rsc', // 通用加密串
   'API_AUTHKEY'  => 'zDf23Dg65dY8dxA9as6gKoh7dyrt3F67', // api验证 本地服api的
-  'QY_FWDEKEY'   => 'ZdfgC567J3Dhuol08hE410gtpxyg9GrD', // 对企业fwkey机密的key
-  'QY_FWSECRET'   =>'KdegCH87K7g5Fol0iPk4hrFtpxqD5GuK', // 通用fwsecret
+  'QY_FWDEKEY'   => '', // 对企业fwkey机密的key
+  'QY_FWSECRET'   =>'', // 通用fwsecret
   'PAGE_SIZE'  => 50, // 每页记录数
   'URL_MODEL'  => 2,
     'FANLI_SHOUXUFEI'=>0,

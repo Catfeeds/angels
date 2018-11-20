@@ -1,10 +1,10 @@
 <?php
 return array(
     'URL_HTML_SUFFIX'       =>  '',  // URL伪静态后缀设置
-    'QY_UNITCODE'  => '3321', // 企业编号
+    'QY_UNITCODE'  => '3408', // 企业编号
     'QY_COMPANY'  => '安吉思', //企业名称
-    'QY_FWKEY'  => 'c536rnrG2sHgpEYkOHea51Sezeyn2UO1Q6knvGG2g3OI', // 企业查询key
-    'QY_FWSECRET'  => '17bd4134380c40a87d13e2df97674cb712482b4332f0c8e9c6fa12148716d134', // 企业查询key
+    'QY_FWKEY'  => 'a2abren2Wd2p5XeWtFBjrxjBH0V5IRjgw0PvFoJ9pLkm', // 企业查询key
+    'QY_FWSECRET'  => '2d70041a73fec7d27bf8d3ff913041ad4c057bc0c92497773d1bea702a2fff17', // 企业查询key
 	'QY_WXAPPID'  => 'wx59d77f3f0317d4a8', // 公众号appid
 	'QY_WXAPPSECRET'  => '2b975403fa7dc7445b24667771e10ac3', // 公众号的appsecret
 	'QY_GZGONGZHONG'  => '', // 关注公众号链接
